@@ -63,6 +63,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-
-# I don't think this should be in git
-*.pbxproj
