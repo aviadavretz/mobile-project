@@ -39,8 +39,18 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         
         // Update the views
         cell.nameLabel.text = "\(item?.user.firstName! as! String) \(item?.user.lastName! as! String)"
-        cell.imagez.image = UIImage(named: "launch.jpg")! // TODO: item.student.photo
         
+        func refreshImage(image:UIImage?) {
+            if (image != nil) {
+                cell.imagez.image = image
+            }
+            else {
+                cell.imagez.image = UIImage(named: "user.png")
+            }
+        }
+
+        ImageDB.sharedInstance.downloadImage(userId: UserDB.sharedInstance.me?.id as! String, whenFinished: refreshImage)
+
         // Check if the item was purchased
         if (item?.purchased)! {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:item!.itemName! as String)

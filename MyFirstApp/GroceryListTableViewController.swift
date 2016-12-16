@@ -98,10 +98,16 @@ class GroceryListTableViewController : UITableViewController {
         
         // Fetches the appropriate item for the data source layout.
         let list = db.getGroceryList(row: indexPath.row)!
-        
+
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy, HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateString = formatter.string(from: list.date as Date)
+
         // Update the views
         cell.titleLabel.text = "\(list.title)"
-        cell.dateLabel.text = "\(list.date.description)"
+        cell.dateLabel.text = "\(dateString)"
         cell.deleteButton.tag = indexPath.row
         
         cell.deleteButton.isHidden = !deleting
@@ -149,9 +155,10 @@ class GroceryListTableViewController : UITableViewController {
         deleting = !deleting
     }
     
-    @IBAction func deleteList(sender: AnyObject) {
-        // TODO : Make list deletion work
-        table.reloadData()
+    @IBAction func deleteList(sender: UIButton) {
+        let row = (sender as UIButton).tag
+
+        db.deleteList(id: db.getGroceryList(row: row)!.id as String)
     }
     
     @IBAction func backFromNewListController(seque:UIStoryboardSegue) {

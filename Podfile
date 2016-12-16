@@ -9,6 +9,7 @@ target 'MyFirstApp' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
 
   target 'MyFirstAppTests' do
     inherit! :search_paths

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4AB597FCCA38D8717F2EA2E3 /* Pods_MyFirstApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */; };
-		586035F256227484D018A18A /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 5860393DD3671413838AE904 /* user.png */; };
-		58603723152573FDA4ECF806 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 5860393DD3671413838AE904 /* user.png */; };
-		58603E4ACFC69B1741D2AD85 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 5860393DD3671413838AE904 /* user.png */; };
 		7208C65F1DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
 		7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
 		7208C6611DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
@@ -65,6 +62,12 @@
 		84FA51581E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA51591E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA515A1E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
+		84FA51601E044724005943AC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA515F1E044724005943AC /* CameraViewController.swift */; };
+		84FA51611E044724005943AC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA515F1E044724005943AC /* CameraViewController.swift */; };
+		84FA51621E044724005943AC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA515F1E044724005943AC /* CameraViewController.swift */; };
+		84FA51641E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
+		84FA51651E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
+		84FA51661E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
 		AFFE641F8B8904B545707CF3 /* Pods_MyFirstAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */; };
 		E42E40E39B25F1416DD8CDD9 /* Pods_MyFirstAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC0C9EE0FC27C2A30EC68E /* Pods_MyFirstAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -90,7 +93,6 @@
 		0E5E5F1A15064DD7BD1B84EB /* Pods-MyFirstAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5860393DD3671413838AE904 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		5D50D210E2973DB1F964E039 /* Pods-MyFirstApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.release.xcconfig"; sourceTree = "<group>"; };
 		60A7221B3CCE3CF0E02772F9 /* Pods-MyFirstApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,8 @@
 		84DCC3D91DFB57720092586E /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		84DCC3DD1DFB58500092586E /* UserDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
 		84FA51571E044073005943AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		84FA515F1E044724005943AC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		84FA51631E044C14005943AC /* ImageDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDB.swift; sourceTree = "<group>"; };
 		C5BC0C9EE0FC27C2A30EC68E /* Pods_MyFirstAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4C0234F2F9A3DB22A614E7 /* Pods-MyFirstAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppUITests/Pods-MyFirstAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA2273BBA9296239CFA48D6B /* Pods-MyFirstAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,7 +192,6 @@
 				72AAACB81DD3496700A78ED4 /* Products */,
 				3D21E6241459582787800341 /* Pods */,
 				6B3A9AE5642E3E855C23BDDA /* Frameworks */,
-				5860393DD3671413838AE904 /* user.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,6 +256,7 @@
 				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
 				84DCC3DD1DFB58500092586E /* UserDB.swift */,
 				849279CE1E0321670095671E /* GroceryFirebaseDB.swift */,
+				84FA51631E044C14005943AC /* ImageDB.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -269,6 +273,7 @@
 		72AAACF01DD34F5700A78ED4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84FA515F1E044724005943AC /* CameraViewController.swift */,
 				84DCC3D91DFB57720092586E /* MainController.swift */,
 				7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */,
 				8443586B1DFB3DC100B14DB9 /* GroceryRequest */,
@@ -422,7 +427,6 @@
 				72AAACC51DD3496700A78ED4 /* LaunchScreen.storyboard in Resources */,
 				84FA51581E044073005943AC /* GoogleService-Info.plist in Resources */,
 				72AAACC21DD3496700A78ED4 /* Assets.xcassets in Resources */,
-				58603E4ACFC69B1741D2AD85 /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +435,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				844358681DFB392000B14DB9 /* Main.storyboard in Resources */,
-				586035F256227484D018A18A /* user.png in Resources */,
 				84FA51591E044073005943AC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +444,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				844358691DFB392000B14DB9 /* Main.storyboard in Resources */,
-				58603723152573FDA4ECF806 /* user.png in Resources */,
 				84FA515A1E044073005943AC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,9 +591,11 @@
 				84DCC3DA1DFB57720092586E /* MainController.swift in Sources */,
 				72AAACBB1DD3496700A78ED4 /* AppDelegate.swift in Sources */,
 				8434704F1DFB246F00378CA0 /* User.swift in Sources */,
+				84FA51641E044C14005943AC /* ImageDB.swift in Sources */,
 				84DCC3D61DFB55B20092586E /* GroceryDB.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
+				84FA51601E044724005943AC /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,11 +606,13 @@
 				72AAACD01DD3496700A78ED4 /* MyFirstAppTests.swift in Sources */,
 				84DCC3D31DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */,
 				849279D01E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
+				84FA51611E044724005943AC /* CameraViewController.swift in Sources */,
 				8434705C1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				843470581DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
+				84FA51651E044C14005943AC /* ImageDB.swift in Sources */,
 				843470501DFB246F00378CA0 /* User.swift in Sources */,
 				7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */,
@@ -624,11 +630,13 @@
 				72AAACDB1DD3496700A78ED4 /* MyFirstAppUITests.swift in Sources */,
 				84DCC3D41DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */,
 				849279D11E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
+				84FA51621E044724005943AC /* CameraViewController.swift in Sources */,
 				8434705D1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				843470591DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				7208C6611DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
+				84FA51661E044C14005943AC /* ImageDB.swift in Sources */,
 				843470511DFB246F00378CA0 /* User.swift in Sources */,
 				842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
