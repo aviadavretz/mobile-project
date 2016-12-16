@@ -10,7 +10,7 @@ import UIKit
 import Darwin
 
 class MainController: UIViewController {
-    let user:User = User();
+    let user:User = User(id: UIDevice.current.identifierForVendor!.uuidString as NSString);
     let db:UserDB = UserDB.sharedInstance;
     
     // MARK: Properties

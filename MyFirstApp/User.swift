@@ -13,7 +13,7 @@ class User {
     var lastName:NSString?
     var id:NSString
     
-    init() {
-        id = "-1"
+    init(id:NSString) {
+        self.id = id
     }
 }
