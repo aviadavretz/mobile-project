@@ -11,29 +11,34 @@ import FirebaseDatabase
 
 class GroceryFirebaseDB {
     static let sharedInstance: GroceryFirebaseDB = { GroceryFirebaseDB() } ()
-    let childNodeName = "grocery-lists"
-    
-    fileprivate var _databaseHandle: FIRDatabaseHandle!
+    let rootNode = "grocery-lists"
+
     var databaseRef: FIRDatabaseReference!
     var groceryLists: [FIRDataSnapshot]! = []
 
     deinit {
-        self.databaseRef.child(childNodeName).removeObserver(withHandle: _databaseHandle)
+        self.databaseRef.child(rootNode).removeAllObservers()
     }
 
     private init() {
-        configureDatabase()
-    }
-
-    func configureDatabase() {
         databaseRef = FIRDatabase.database().reference()
-        _databaseHandle = listenToNewListsInDb(dbRef: databaseRef)
+        observeChildAddition()
+        observeChildDeletion()
     }
 
-    private func listenToNewListsInDb(dbRef: FIRDatabaseReference!) -> FIRDatabaseHandle! {
-        return databaseRef.child(childNodeName).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
+    private func observeChildAddition() {
+        databaseRef.child(rootNode).observe(FIRDataEventType.childAdded, with: { [weak self] (snapshot) -> Void in
             guard let strongSelf = self else {return }
             strongSelf.groceryLists.append(snapshot)
+
+            strongSelf.notifyChanges()
+        })
+    }
+
+    private func observeChildDeletion() {
+        databaseRef.child(rootNode).observe(FIRDataEventType.childRemoved, with: { [weak self] (snapshot) -> Void in
+            guard let strongSelf = self else {return }
+            strongSelf.groceryLists.remove(at: strongSelf.getSnapshotIndex(key: snapshot.key as String)!)
 
             strongSelf.notifyChanges()
         })
@@ -42,7 +47,11 @@ class GroceryFirebaseDB {
     func addList(list:GroceryList) {
         let values = loadValues(from: list)
 
-        self.databaseRef.child(childNodeName).childByAutoId().setValue(values)
+        self.databaseRef.child(rootNode).childByAutoId().setValue(values)
+    }
+
+    private func getSnapshotIndex(key: String) -> Int? {
+        return groceryLists.index(where: {$0.key == key})
     }
 
     private func notifyChanges() {
@@ -57,8 +66,8 @@ class GroceryFirebaseDB {
         return values
     }
 
-    func deleteList(id:NSString) -> Bool {
-        return false
+    func deleteList(id: String) {
+        self.databaseRef.child(rootNode).child(id).removeValue()
     }
 
     private func getDateFormatter(timeZone: TimeZone) -> DateFormatter {
@@ -79,16 +88,18 @@ class GroceryFirebaseDB {
 
     func getGroceryList(row:Int) -> GroceryList? {
         if (row < getListCount()) {
+            let groceryListKey = groceryLists[row].key as String
             let groceryListValues = groceryLists[row].value as! Dictionary<String, String>
 
-            return extractGroceryList(values: groceryListValues)
+            return extractGroceryList(key: groceryListKey, values: groceryListValues)
         }
         
         return nil
     }
 
-    private func extractGroceryList(values: Dictionary<String, String>) -> GroceryList {
+    private func extractGroceryList(key: String, values: Dictionary<String, String>) -> GroceryList {
         return GroceryList(
+                id: key as NSString,
                 title: values["title"]! as NSString,
                 date: getDateFromString(
                         date: values["date"]!,

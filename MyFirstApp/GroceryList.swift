@@ -18,15 +18,14 @@ class GroceryList {
         self.id = "-1"
         self.title = title
         
-        // This gets the current date
+        // This gets the current date and time at GMT+0 timezone
         self.date = NSDate()
     }
 
-    init(title:NSString, date: NSDate) {
+    init(id: NSString, title:NSString, date: NSDate) {
+        self.id = id
         self.title = title
         self.date = date
-
-        self.id = "-1"
     }
     
     func addRequest(request:GroceryRequest) {
