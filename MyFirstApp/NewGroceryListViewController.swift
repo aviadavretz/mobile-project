@@ -10,11 +10,8 @@ import UIKit
 import Darwin
 
 class NewGroceryListViewController: UIViewController {
-    // MARK: Properties
     @IBOutlet weak var titleTextView: UITextField!
-//    @IBOutlet weak var idTextView: UITextField!
-    
-    // MARK: Actions
+
     @IBAction func SelectAllText(sender: UITextField) {
         sender.selectAll(sender)
     }
@@ -35,10 +32,7 @@ class NewGroceryListViewController: UIViewController {
             let title = titleTextView.text! as NSString
             
             let list:GroceryList = GroceryList(title: title);
-
-//            list.id = idTextView.text! as NSString
-            
-            GroceryDB.sharedInstance.addList(list: list)
+            GroceryFirebaseDB.sharedInstance.addList(list: list)
         }
     }
 

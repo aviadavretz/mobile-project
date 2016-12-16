@@ -21,6 +21,13 @@ class GroceryList {
         // This gets the current date
         self.date = NSDate()
     }
+
+    init(title:NSString, date: NSDate) {
+        self.title = title
+        self.date = date
+
+        self.id = "-1"
+    }
     
     func addRequest(request:GroceryRequest) {
         requests.append(request)
