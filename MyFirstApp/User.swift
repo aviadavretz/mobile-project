@@ -12,7 +12,6 @@ class User {
     var firstName:NSString?
     var lastName:NSString?
     var id:NSString
-    var imageUrl:NSString?
     
     init() {
         id = "-1"
