@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4AB597FCCA38D8717F2EA2E3 /* Pods_MyFirstApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */; };
+		5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
+		58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
+		58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
 		7208C65F1DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
 		7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
 		7208C6611DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
@@ -93,6 +96,7 @@
 		0E5E5F1A15064DD7BD1B84EB /* Pods-MyFirstAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestsDB.swift; sourceTree = "<group>"; };
 		5D50D210E2973DB1F964E039 /* Pods-MyFirstApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.release.xcconfig"; sourceTree = "<group>"; };
 		60A7221B3CCE3CF0E02772F9 /* Pods-MyFirstApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				849279CE1E0321670095671E /* GroceryFirebaseDB.swift */,
 				84FA51631E044C14005943AC /* ImageDB.swift */,
 				847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */,
+				5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84FA51601E044724005943AC /* CameraViewController.swift in Sources */,
+				58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +626,7 @@
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
 				84DCC3D71DFB55B20092586E /* GroceryDB.swift in Sources */,
 				847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
+				5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +651,7 @@
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
 				84DCC3D81DFB55B20092586E /* GroceryDB.swift in Sources */,
 				847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
+				58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,32 +54,12 @@ class GroceryListTableViewController : UITableViewController {
             let destinationVC:GroceryRequestTableViewController = segue.destination as! GroceryRequestTableViewController
         
             let list:GroceryList = db.getGroceryList(row: selectedRow)!
-
-            if (list.requests.count == 0) {
-                addFakeRequests(groceryList: list)
-            }
             
             // Pass the selected list to the next controller
             destinationVC.list = list
         }
     }
-    
-    func addFakeRequests(groceryList: GroceryList) {
-        let user:User = User.me!
 
-        let item1 = GroceryRequest(user: user)
-        item1.itemName = "Chicken Fajitas"
-        let item2 = GroceryRequest(user: user)
-        item2.itemName = "Cheese"
-        item2.purchased = true
-        let item3 = GroceryRequest(user: user)
-        item3.itemName = "Bananas"
-
-        groceryList.addRequest(request: item1)
-        groceryList.addRequest(request: item2)
-        groceryList.addRequest(request: item3)
-    }
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

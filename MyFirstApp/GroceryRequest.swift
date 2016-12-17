@@ -10,17 +10,14 @@ import Foundation
 
 class GroceryRequest {
     var id:NSString
-    var itemName:NSString?
+    var itemName:NSString
     var purchased:Bool
-    var user:User
+    var userId:NSString
     
-    init(user:User) {
-        id = "-1"
-        purchased = false
-        self.user = user
-    }
-    
-    func togglePurchased() {
-        purchased = !purchased
+    init(id: NSString, itemName: NSString, purchased: Bool, userId: NSString) {
+        self.id = id
+        self.itemName = itemName
+        self.purchased = purchased
+        self.userId = userId
     }
 }

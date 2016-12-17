@@ -36,10 +36,7 @@ class NewGroceryRequestViewController : UIViewController {
             
             let itemName = itemNameTextView.text! as NSString
             
-            let newRequest:GroceryRequest = GroceryRequest(user: User.me!)
-            newRequest.itemName = itemName
-            
-            destinationVC.list?.addRequest(request: newRequest)
+            destinationVC.db?.addRequest(itemName: itemName as String, userId: User.me!.id as String)
         }
     }
     
