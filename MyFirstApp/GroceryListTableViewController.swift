@@ -65,7 +65,7 @@ class GroceryListTableViewController : UITableViewController {
     }
     
     func addFakeRequests(groceryList: GroceryList) {
-        let user:User = UserDB.sharedInstance.me!
+        let user:User = User.me!
 
         let item1 = GroceryRequest(user: user)
         item1.itemName = "Chicken Fajitas"

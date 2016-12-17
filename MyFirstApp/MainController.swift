@@ -10,76 +10,84 @@ import UIKit
 import Darwin
 
 class MainController: UIViewController {
-    let user:User = User(id: UIDevice.current.identifierForVendor!.uuidString as NSString);
-    let db:UserDB = UserDB.sharedInstance;
+    var user:User? = nil;
     
     // MARK: Properties
     @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var firstNameTextView: UITextField!
     @IBOutlet weak var lastNameTextView: UITextField!
     
     // MARK: Actions
-    @IBAction func FirstNameChanged(sender: AnyObject) {
-        let newNameNS:NSString = sender.text! as NSString
-        
-        self.user.firstName = newNameNS
-        refreshLabels()
-    }
-    
-    @IBAction func LastNameChanged(sender: AnyObject) {
-        let newNameNS:NSString = sender.text! as NSString
-        
-        self.user.lastName = newNameNS
-        refreshLabels()
-    }
-    
     @IBAction func SelectAllText(sender: UITextField) {
         sender.selectAll(sender)
     }
     
     @IBAction func Exit(sender: AnyObject) {
         // Exit the application
-        print("Bye")
         exit(0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "UserCreated") {
+            
+            let deviceId = UIDevice.current.identifierForVendor!.uuidString
+            let newUser = User(id: deviceId as NSString, firstName: firstNameTextView.text! as NSString, lastName: lastNameTextView.text! as NSString)
+            
             // Add this user
-            db.addUser(user: user)
+            UserFirebaseDB.sharedInstance.addUser(user: newUser)
+            
+            User.me = newUser
         }
-    }
-    
-    @IBAction func ShowItems(sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: "ItemTableViewController")
-        
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        
-        self.present(controller, animated: true, completion: nil)
     }
     
     // MARK: Other functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        user.firstName=""
-        user.lastName=""
+        
+        UserFirebaseDB.sharedInstance.findUserByKey(key: UIDevice.current.identifierForVendor!.uuidString,
+                                                           whenFinished: refreshUserNotificationReceived)
+        
+        ImageDB.sharedInstance.downloadImage(userId: UIDevice.current.identifierForVendor!.uuidString, whenFinished: refreshImage)
+    }
+
+    private func refreshImage(image:UIImage?) {
+        userImage.image = image
+    }
+
+    func refreshUserNotificationReceived(userFromDB : User?) {
+        if (userFromDB != nil) {
+            user = userFromDB
+            
+            createButton.setTitle("Continue", for: .normal)
+            
+            refreshLabelsByUserData()
+        }
     }
     
-    func refreshLabels() {
+    func refreshLabelsByUserData() {
+        firstNameTextView.text = user?.firstName as String?
+        lastNameTextView.text = user?.lastName as String?
+        
+        refreshLabels()
+    }
+    
+    @IBAction func refreshLabels() {
+        let firstName = firstNameTextView.text!
+        let lastName = lastNameTextView.text!
+        
         var finalString:String
         
-        if (user.firstName != "" && user.lastName != "") {
-            finalString = "Hello, \(user.firstName!) \(user.lastName!)!"
+        if (firstName != "" && lastName != "") {
+            finalString = "Hello, \(firstName) \(lastName)!"
         }
-        else if (user.firstName != "") {
-            finalString = "Hello, \(user.firstName!)!"
+        else if (firstName != "") {
+            finalString = "Hello, \(firstName)!"
         }
-        else if (user.lastName != "") {
-            finalString = "Hello, Mr. \(user.lastName!)!"
+        else if (firstName != "") {
+            finalString = "Hello, Mr. \(lastName)!"
         }
         else {
             finalString = "Hello!"

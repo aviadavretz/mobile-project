@@ -143,7 +143,7 @@
             <objects>
                 <navigationController id="ss8-Yt-Ytf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="1.png" selectedImage="1.png" id="Vga-yN-9mh" userLabel="Students"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="C9o-xu-LTI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C9o-xu-LTI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -207,7 +207,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-W6-dKN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-W6-dKN">
                                 <frame key="frameInset" minX="62" minY="104" width="245" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -225,8 +225,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="FirstNameChangedWithSender:" destination="N91-Wq-j8U" eventType="editingChanged" id="YPv-va-Gst"/>
                                     <action selector="SelectAllTextWithSender:" destination="N91-Wq-j8U" eventType="touchDown" id="Xbx-OU-Gr9"/>
+                                    <action selector="refreshLabels" destination="N91-Wq-j8U" eventType="editingChanged" id="XKA-PR-6iA"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5c-eR-Y0f">
@@ -243,12 +243,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="LastNameChangedWithSender:" destination="N91-Wq-j8U" eventType="editingChanged" id="xd8-Cs-E8p"/>
                                     <action selector="SelectAllTextWithSender:" destination="N91-Wq-j8U" eventType="touchDown" id="Zvo-9l-8jD"/>
+                                    <action selector="refreshLabels" destination="N91-Wq-j8U" eventType="editingChanged" id="uiD-Bx-CbY"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-qK-jhQ" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="165" minY="546" width="46" height="30"/>
+                                <frame key="frameInset" minX="114" minY="535" width="146" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
@@ -259,10 +259,12 @@
                         <color key="backgroundColor" red="0.86765998387798138" green="1" blue="0.85189702546939372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="createButton" destination="1Ye-qK-jhQ" id="pZ3-CU-3oJ"/>
                         <outlet property="exitButton" destination="Ipa-CS-nNe" id="oPh-kH-fcn"/>
                         <outlet property="firstNameTextView" destination="idL-Kw-3AO" id="ywj-RQ-eik"/>
                         <outlet property="lastNameTextView" destination="ulb-8J-yDu" id="zKZ-2u-IJc"/>
                         <outlet property="studentNameLabel" destination="a6q-9p-B3X" id="hP1-JL-jgp"/>
+                        <outlet property="userImage" destination="ecC-W6-dKN" id="pNh-OF-QMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVF-3i-8gw" sceneMemberID="firstResponder"/>
@@ -344,7 +346,7 @@
                                             <color key="textColor" red="0.53576343910000002" green="0.53576343910000002" blue="0.53576343910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe">
                                             <frame key="frameInset" minX="5" minY="5" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -501,6 +503,5 @@
         <image name="1.png" width="57" height="57"/>
         <image name="delete.png" width="512" height="411"/>
         <image name="user" width="1600" height="1600"/>
-        <image name="user.png" width="1600" height="1600"/>
     </resources>
 </document>

@@ -49,7 +49,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
             }
         }
 
-        ImageDB.sharedInstance.downloadImage(userId: UserDB.sharedInstance.me?.id as! String, whenFinished: refreshImage)
+        ImageDB.sharedInstance.downloadImage(userId: User.me?.id as! String, whenFinished: refreshImage)
 
         // Check if the item was purchased
         if (item?.purchased)! {

@@ -32,6 +32,9 @@
 		844358671DFB392000B14DB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844358661DFB392000B14DB9 /* Main.storyboard */; };
 		844358681DFB392000B14DB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844358661DFB392000B14DB9 /* Main.storyboard */; };
 		844358691DFB392000B14DB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844358661DFB392000B14DB9 /* Main.storyboard */; };
+		847D46BE1E0551DA00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
+		847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
+		847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
 		849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D01E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D11E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
@@ -56,9 +59,6 @@
 		84DCC3DA1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DB1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DC1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
-		84DCC3DE1DFB58500092586E /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3DD1DFB58500092586E /* UserDB.swift */; };
-		84DCC3DF1DFB58500092586E /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3DD1DFB58500092586E /* UserDB.swift */; };
-		84DCC3E01DFB58500092586E /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3DD1DFB58500092586E /* UserDB.swift */; };
 		84FA51581E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA51591E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA515A1E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
@@ -113,6 +113,7 @@
 		8434705A1DFB25A000378CA0 /* GroceryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequest.swift; sourceTree = "<group>"; };
 		8443585D1DFB373500B14DB9 /* GroceryRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestTableViewCell.swift; sourceTree = "<group>"; };
 		844358661DFB392000B14DB9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirebaseDB.swift; sourceTree = "<group>"; };
 		849279CE1E0321670095671E /* GroceryFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryFirebaseDB.swift; sourceTree = "<group>"; };
 		849279D21E0370950095671E /* MyFirstApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyFirstApp.entitlements; sourceTree = "<group>"; };
 		84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestTableViewController.swift; sourceTree = "<group>"; };
 		84DCC3D51DFB55B20092586E /* GroceryDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryDB.swift; sourceTree = "<group>"; };
 		84DCC3D91DFB57720092586E /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		84DCC3DD1DFB58500092586E /* UserDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
 		84FA51571E044073005943AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		84FA515F1E044724005943AC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		84FA51631E044C14005943AC /* ImageDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDB.swift; sourceTree = "<group>"; };
@@ -254,9 +254,9 @@
 				8434704E1DFB246F00378CA0 /* User.swift */,
 				843470561DFB258C00378CA0 /* GroceryList.swift */,
 				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
-				84DCC3DD1DFB58500092586E /* UserDB.swift */,
 				849279CE1E0321670095671E /* GroceryFirebaseDB.swift */,
 				84FA51631E044C14005943AC /* ImageDB.swift */,
+				847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -585,9 +585,9 @@
 				849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
 				84DCC3CA1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84B6F9E11DF079BE00A4A931 /* RoundedButton.swift in Sources */,
-				84DCC3DE1DFB58500092586E /* UserDB.swift in Sources */,
 				7208C65F1DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				844358611DFB373500B14DB9 /* GroceryRequestTableViewCell.swift in Sources */,
+				847D46BE1E0551DA00A3D771 /* UserFirebaseDB.swift in Sources */,
 				84DCC3DA1DFB57720092586E /* MainController.swift in Sources */,
 				72AAACBB1DD3496700A78ED4 /* AppDelegate.swift in Sources */,
 				8434704F1DFB246F00378CA0 /* User.swift in Sources */,
@@ -616,10 +616,10 @@
 				843470501DFB246F00378CA0 /* User.swift in Sources */,
 				7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */,
-				84DCC3DF1DFB58500092586E /* UserDB.swift in Sources */,
 				84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
 				84DCC3D71DFB55B20092586E /* GroceryDB.swift in Sources */,
+				847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,10 +640,10 @@
 				843470511DFB246F00378CA0 /* User.swift in Sources */,
 				842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
-				84DCC3E01DFB58500092586E /* UserDB.swift in Sources */,
 				84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
 				84DCC3D81DFB55B20092586E /* GroceryDB.swift in Sources */,
+				847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
