@@ -244,11 +244,10 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="SelectAllTextWithSender:" destination="N91-Wq-j8U" eventType="touchDown" id="Zvo-9l-8jD"/>
-                                    <action selector="refreshLabels" destination="N91-Wq-j8U" eventType="editingChanged" id="uiD-Bx-CbY"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-qK-jhQ" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="114" minY="535" width="146" height="30"/>
+                                <frame key="frameInset" minX="165" minY="546" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create"/>
                                 <connections>

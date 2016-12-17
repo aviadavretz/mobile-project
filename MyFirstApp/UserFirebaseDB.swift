@@ -26,8 +26,11 @@ class UserFirebaseDB {
         databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value,
                                                                   with: { (snapshot) in
                                                                     
-                                                                    let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
-                                                                    whenFinished(user)
+                                                                    // Make sure the user was found in the database
+                                                                    if (!(snapshot.value is NSNull)) {
+                                                                        let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
+                                                                        whenFinished(user)
+                                                                    }
         })
     }
     
