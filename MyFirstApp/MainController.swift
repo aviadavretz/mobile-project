@@ -11,6 +11,7 @@ import Darwin
 
 class MainController: UIViewController {
     var user:User? = nil;
+    var greetingPrefix:String = "Hello"
     
     // MARK: Properties
     @IBOutlet weak var exitButton: UIButton!
@@ -62,6 +63,7 @@ class MainController: UIViewController {
             user = userFromDB
             
             createButton.setTitle("Continue", for: .normal)
+            greetingPrefix = "Welcome back"
             
             refreshLabelsByUserData()
         }
@@ -81,16 +83,16 @@ class MainController: UIViewController {
         var finalString:String
         
         if (firstName != "" && lastName != "") {
-            finalString = "Hello, \(firstName) \(lastName)!"
+            finalString = "\(greetingPrefix), \(firstName) \(lastName)!"
         }
         else if (firstName != "") {
-            finalString = "Hello, \(firstName)!"
+            finalString = "\(greetingPrefix), \(firstName)!"
         }
         else if (firstName != "") {
-            finalString = "Hello, Mr. \(lastName)!"
+            finalString = "\(greetingPrefix), Mr. \(lastName)!"
         }
         else {
-            finalString = "Hello!"
+            finalString = "\(greetingPrefix)!"
         }
         
         studentNameLabel.text = finalString
