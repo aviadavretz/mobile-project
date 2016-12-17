@@ -89,7 +89,7 @@ class GroceryFirebaseDB {
     func getGroceryList(row:Int) -> GroceryList? {
         if (row < getListCount()) {
             let groceryListKey = groceryLists[row].key as String
-            let groceryListValues = groceryLists[row].value as! Dictionary<String, String>
+            let groceryListValues = groceryLists[row].value as! Dictionary<String, Any>
 
             return extractGroceryList(key: groceryListKey, values: groceryListValues)
         }
@@ -97,12 +97,12 @@ class GroceryFirebaseDB {
         return nil
     }
 
-    private func extractGroceryList(key: String, values: Dictionary<String, String>) -> GroceryList {
+    private func extractGroceryList(key: String, values: Dictionary<String, Any>) -> GroceryList {
         return GroceryList(
                 id: key as NSString,
-                title: values["title"]! as NSString,
+                title: values["title"]! as! NSString,
                 date: getDateFromString(
-                        date: values["date"]!,
+                        date: values["date"]! as! String,
                         timeZone: TimeZone(secondsFromGMT: 0 - getCurrentTimeZoneSecondsFromGMT())!) as NSDate)
     }
 
