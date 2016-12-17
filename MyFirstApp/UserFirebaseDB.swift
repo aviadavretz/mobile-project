@@ -23,14 +23,12 @@ class UserFirebaseDB {
     }
     
     func findUserByKey(key: String, whenFinished: @escaping (_: User) -> Void) {
-        databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value,
-                                                                  with: { (snapshot) in
-                                                                    
-                                                                    // Make sure the user was found in the database
-                                                                    if (!(snapshot.value is NSNull)) {
-                                                                        let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
-                                                                        whenFinished(user)
-                                                                    }
+        databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                    // Make sure the user was found in the database
+                    if (!(snapshot.value is NSNull)) {
+                        let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
+                        whenFinished(user)
+                    }
         })
     }
     
