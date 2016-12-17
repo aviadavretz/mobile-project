@@ -13,6 +13,7 @@ class UserFirebaseDB {
     static let sharedInstance: UserFirebaseDB = { UserFirebaseDB() } ()
     let rootNode = "users"
     var databaseRef: FIRDatabaseReference!
+    var userCache:Dictionary<String, User> = Dictionary<String, User>()
     
     init() {
         databaseRef = FIRDatabase.database().reference()
@@ -23,13 +24,20 @@ class UserFirebaseDB {
     }
     
     func findUserByKey(key: String, whenFinished: @escaping (_: User) -> Void) {
-        databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+        if (self.userCache[key] == nil) {
+            databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                     // Make sure the user was found in the database
                     if (!(snapshot.value is NSNull)) {
                         let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
+                        self.userCache[key] = user
+                        
                         whenFinished(user)
                     }
-        })
+            })
+        }
+        else {
+            whenFinished(self.userCache[key]!)
+        }
     }
     
     private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
@@ -39,6 +47,7 @@ class UserFirebaseDB {
     func addUser(user:User) {
         let values = loadValues(from: user)
         self.databaseRef.child(rootNode).child(user.id as String).setValue(values)
+        self.userCache[user.id as String] = user
     }
     
     private func loadValues(from: User) -> Dictionary<String, String> {

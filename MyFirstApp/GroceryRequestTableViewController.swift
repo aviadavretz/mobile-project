@@ -138,7 +138,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         cell.itemLabel.alpha = 1
     }
 
-    // MARK:  UITableViewDelegate Methods
+    // MARK: UITableViewDelegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let request = db!.getGroceryRequest(row: indexPath.row) {
             db!.toggleRequestPurchased(request: request)
@@ -146,10 +146,6 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     @IBAction func backFromNewRequestController(seque:UIStoryboardSegue) {
-//        print("Back from grocery request creation")
-//
-//        db!.updateList(list: list!)
-//
-//        table.reloadData()
+        table.reloadData()
     }
 }
