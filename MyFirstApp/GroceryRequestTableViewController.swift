@@ -47,13 +47,14 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     @objc private func requestAdded(notification: Notification) {
-        guard let userInfo = notification.userInfo else {
-            table.reloadData()
-            return
-        }
-
-        table.insertRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
-                with: UITableViewRowAnimation.automatic)
+//        guard let userInfo = notification.userInfo else {
+//            table.reloadData()
+//            return
+//        }
+//
+//        table.insertRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
+//                with: UITableViewRowAnimation.automatic)
+        table.reloadData()
     }
 
     @objc private func requestModified(notification: Notification) {
