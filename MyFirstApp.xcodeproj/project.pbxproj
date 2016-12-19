@@ -62,6 +62,9 @@
 		84DCC3DA1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DB1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DC1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
+		84E766E51E07E59D0073B8B4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E766E41E07E59D0073B8B4 /* Group.swift */; };
+		84E766E61E07E59D0073B8B4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E766E41E07E59D0073B8B4 /* Group.swift */; };
+		84E766E71E07E59D0073B8B4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E766E41E07E59D0073B8B4 /* Group.swift */; };
 		84FA51581E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA51591E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
 		84FA515A1E044073005943AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA51571E044073005943AC /* GoogleService-Info.plist */; };
@@ -127,6 +130,7 @@
 		84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestTableViewController.swift; sourceTree = "<group>"; };
 		84DCC3D51DFB55B20092586E /* GroceryDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryDB.swift; sourceTree = "<group>"; };
 		84DCC3D91DFB57720092586E /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		84E766E41E07E59D0073B8B4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		84FA51571E044073005943AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		84FA515F1E044724005943AC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		84FA51631E044C14005943AC /* ImageDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDB.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				84FA51631E044C14005943AC /* ImageDB.swift */,
 				847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */,
 				5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */,
+				84E766E41E07E59D0073B8B4 /* Group.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -586,6 +591,7 @@
 				84DCC3D21DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */,
 				84BD2DD61DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				8434705B1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
+				84E766E51E07E59D0073B8B4 /* Group.swift in Sources */,
 				843470571DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
 				84DCC3CA1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
@@ -615,6 +621,7 @@
 				84FA51611E044724005943AC /* CameraViewController.swift in Sources */,
 				8434705C1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				843470581DFB258D00378CA0 /* GroceryList.swift in Sources */,
+				84E766E61E07E59D0073B8B4 /* Group.swift in Sources */,
 				84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
@@ -640,6 +647,7 @@
 				84FA51621E044724005943AC /* CameraViewController.swift in Sources */,
 				8434705D1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				843470591DFB258D00378CA0 /* GroceryList.swift in Sources */,
+				84E766E71E07E59D0073B8B4 /* Group.swift in Sources */,
 				84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				7208C6611DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,

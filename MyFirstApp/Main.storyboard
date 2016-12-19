@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lists-->
+        <!--Your Lists-->
         <scene sceneID="48X-PU-dFk">
             <objects>
                 <tableViewController id="EvA-hv-2y6" customClass="GroceryListTableViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,13 +59,13 @@
                             <outlet property="delegate" destination="EvA-hv-2y6" id="AOo-eF-cgj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lists" id="4Sl-b6-cBi">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="trash" id="lHE-Bo-unb">
+                    <navigationItem key="navigationItem" title="Your Lists" id="4Sl-b6-cBi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="lHE-Bo-unb">
                             <connections>
                                 <action selector="toggleDelete" destination="EvA-hv-2y6" id="cGb-Iv-ofq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="GsP-Uu-lRe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GsP-Uu-lRe">
                             <connections>
                                 <segue destination="79M-TB-wAB" kind="show" identifier="New List" id="Nt2-2n-lWp"/>
                             </connections>
@@ -270,58 +270,6 @@
             </objects>
             <point key="canvasLocation" x="-6295.1999999999998" y="-3324.2878560719641"/>
         </scene>
-        <!--Test Controller-->
-        <scene sceneID="4o0-Dy-nqb">
-            <objects>
-                <viewController storyboardIdentifier="TestController" id="dKt-No-wli" customClass="TestController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" id="GSu-Wf-1wE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTableViewCell" rowHeight="47" id="c7O-dg-5k2" customClass="ItemTableViewCell" customModule="MyFirstApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="47"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c7O-dg-5k2" id="bCe-nw-2Si">
-                                    <frame key="frameInset" width="375" height="47"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="itemLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usV-yL-L90">
-                                            <frame key="frameInset" minX="52" width="323" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nameLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1x-AG-UGI">
-                                            <frame key="frameInset" minX="52" minY="23" width="323" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.53576343910000002" green="0.53576343910000002" blue="0.53576343910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFs-Nn-8fl">
-                                            <frame key="frameInset" width="44" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="imagez" destination="bFs-Nn-8fl" id="TcI-4q-cI9"/>
-                                    <outlet property="itemLabel" destination="usV-yL-L90" id="Ov7-IQ-vNW"/>
-                                    <outlet property="nameLabel" destination="l1x-AG-UGI" id="Fa1-2N-Mgx"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="dKt-No-wli" id="pQe-T4-xHr"/>
-                        </connections>
-                    </tableView>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s4e-GH-OOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1004" y="-3131"/>
-        </scene>
         <!--Grocery requests-->
         <scene sceneID="C1n-Ja-uwJ">
             <objects>
@@ -371,7 +319,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Grocery requests" id="zYw-Yp-cwY">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="qO2-b0-s00">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qO2-b0-s00">
                             <connections>
                                 <segue destination="m8l-Yb-j4Z" kind="show" identifier="NewRequest" id="h7o-6E-abY"/>
                             </connections>
@@ -456,12 +404,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select your avatar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-lA-2r9">
+                                <frame key="frameInset" minX="16" minY="20" width="343" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Kjs-WY-3Lj">
-                                <frame key="frameInset" minX="16" minY="52" width="343" height="343"/>
+                                <frame key="frameInset" minX="16" minY="87" width="343" height="343"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46A-eB-Jyv" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="70" minY="487" width="234" height="30"/>
+                                <frame key="frameInset" minX="70" minY="500" width="234" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose from gallery"/>
                                 <connections>
@@ -469,7 +424,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-f8-C2c" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="123" minY="434" width="128" height="30"/>
+                                <frame key="frameInset" minX="123" minY="447" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Camera"/>
                                 <connections>

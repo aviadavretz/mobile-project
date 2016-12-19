@@ -12,10 +12,12 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     var db:GroceryRequestsDB? = nil;
     var list:GroceryList? = nil
     @IBOutlet var table: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = list?.title as String?
+        
         table.delegate = self
         table.dataSource = self
 
