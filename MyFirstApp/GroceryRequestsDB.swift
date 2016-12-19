@@ -20,10 +20,6 @@ class GroceryRequestsDB {
         databaseRef = FIRDatabase.database().reference(withPath: "\(rootNode)/\(listKey)/\(requestsNode)")
     }
 
-    deinit {
-        databaseRef.removeAllObservers()
-    }
-
     func observeRequestAddition() {
         databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
             let addedRequest = self.getGroceryRequestFromSnapshot(snapshot as FIRDataSnapshot)!
@@ -41,6 +37,10 @@ class GroceryRequestsDB {
             self.groceryRequests[updatedIndex] = updatedRequest
             self.notifyObservers(index: updatedIndex, notificationType: GroceryRequestsDB.requestModifiedNotification)
         })
+    }
+
+    func removeObservers() {
+        databaseRef.removeAllObservers()
     }
 
     private func notifyObservers(index: Int, notificationType: String) {

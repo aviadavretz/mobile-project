@@ -49,14 +49,13 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     @objc private func requestAdded(notification: Notification) {
-//        guard let userInfo = notification.userInfo else {
-//            table.reloadData()
-//            return
-//        }
-//
-//        table.insertRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
-//                with: UITableViewRowAnimation.automatic)
-        table.reloadData()
+        guard let userInfo = notification.userInfo else {
+            table.reloadData()
+            return
+        }
+        
+        table.insertRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
+                with: UITableViewRowAnimation.automatic)
     }
 
     @objc private func requestModified(notification: Notification) {
@@ -70,6 +69,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     deinit {
+        db!.removeObservers()
         unregisterObservers()
     }
 
@@ -149,6 +149,6 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     @IBAction func backFromNewRequestController(seque:UIStoryboardSegue) {
-        table.reloadData()
+//        table.reloadData()
     }
 }
