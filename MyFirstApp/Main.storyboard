@@ -235,7 +235,7 @@
                                     <action selector="SelectAllTextWithSender:" destination="N91-Wq-j8U" eventType="touchDown" id="Zvo-9l-8jD"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-qK-jhQ" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-qK-jhQ" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
                                 <frame key="frameInset" minX="114" minY="483" width="147" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create"/>
@@ -254,6 +254,11 @@
                                 <frame key="frameInset" minX="62" minY="112" width="245" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5y-se-jDh">
+                                <frame key="frameInset" minX="103" minY="543" width="168" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.86765998387798138" green="1" blue="0.85189702546939372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -262,6 +267,7 @@
                         <outlet property="exitButton" destination="Ipa-CS-nNe" id="oPh-kH-fcn"/>
                         <outlet property="firstNameTextView" destination="idL-Kw-3AO" id="ywj-RQ-eik"/>
                         <outlet property="lastNameTextView" destination="ulb-8J-yDu" id="zKZ-2u-IJc"/>
+                        <outlet property="loginButtonView" destination="d5y-se-jDh" id="f6u-qG-FrJ"/>
                         <outlet property="studentNameLabel" destination="a6q-9p-B3X" id="hP1-JL-jgp"/>
                         <outlet property="userImage" destination="ecC-W6-dKN" id="pNh-OF-QMZ"/>
                     </connections>
@@ -446,7 +452,7 @@
     </scenes>
     <resources>
         <image name="1.png" width="57" height="57"/>
-        <image name="delete.png" width="512" height="411"/>
+        <image name="delete.png" width="1200" height="1920"/>
         <image name="user" width="1600" height="1600"/>
     </resources>
 </document>

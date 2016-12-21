@@ -23,7 +23,7 @@ class UserFirebaseDB {
         databaseRef.removeAllObservers()
     }
     
-    func findUserByKey(key: String, whenFinished: @escaping (_: User) -> Void) {
+    func findUserByKey(key: String, whenFinished: @escaping (_: User?) -> Void) {
         if (self.userCache[key] == nil) {
             databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                     // Make sure the user was found in the database
@@ -32,6 +32,8 @@ class UserFirebaseDB {
                         self.userCache[key] = user
                         
                         whenFinished(user)
+                    } else {
+                        whenFinished(nil)
                     }
             })
         }
@@ -44,9 +46,9 @@ class UserFirebaseDB {
         return User(id: key, firstName: values["firstName"]! as NSString, lastName: values["lastName"]! as NSString)
     }
     
-    func addUser(user:User) {
+    func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let values = loadValues(from: user)
-        self.databaseRef.child(rootNode).child(user.id as String).setValue(values)
+        self.databaseRef.child(rootNode).child(user.id as String).setValue(values, withCompletionBlock: whenFinished)
         self.userCache[user.id as String] = user
     }
     

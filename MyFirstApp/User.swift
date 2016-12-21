@@ -9,8 +9,6 @@
 import Foundation
 
 class User {
-    static var me:User?
-    
     var firstName:NSString?
     var lastName:NSString?
     var id:NSString

@@ -1,5 +1,5 @@
 //
-//  MyFuckingTableController.swift
+//  GroceryRequestTableViewController.swift
 //  MyFirstApp
 //
 //  Created by admin on 09/12/2016.
@@ -9,7 +9,7 @@
 import UIKit
 
 class GroceryRequestTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var db:GroceryRequestsDB? = nil;
+    var db:GroceryRequestsDB? = nil
     var list:GroceryList? = nil
     @IBOutlet var table: UITableView!
     
@@ -104,7 +104,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
 
     func updateUserDetailsInCell(cell: GroceryRequestTableViewCell, userId: String) {
         UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
-            cell.nameLabel.text = "\(user.firstName!) \(user.lastName!)"
+            cell.nameLabel.text = "\(user!.firstName!) \(user!.lastName!)"
         })
     }
 
