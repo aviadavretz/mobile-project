@@ -30,7 +30,8 @@ class FacebookUserData {
     }
 
     private func getFacebookData(user: FIRUser) -> FIRUserInfo {
-        // TODO : You can't rely that facebook will be first index always
-        return user.providerData[0]
+        let index = user.providerData.index(where: { $0.providerID.contains("facebook.com") })
+            
+        return user.providerData[index!]
     }
 }

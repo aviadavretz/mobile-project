@@ -9,19 +9,16 @@
 import Foundation
 
 class User {
-    var firstName:NSString?
-    var lastName:NSString?
+    var name:NSString?
     var id:NSString
     
     init(id:NSString) {
         self.id = id
-        firstName = ""
-        lastName = ""
+        name = ""
     }
     
-    init(id: NSString, firstName: NSString, lastName: NSString) {
+    init(id: NSString, name: NSString) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.name = name
     }
 }

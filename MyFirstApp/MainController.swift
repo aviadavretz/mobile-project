@@ -21,14 +21,17 @@ class MainController: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var studentNameLabel: UILabel!
-    @IBOutlet weak var firstNameTextView: UITextField!
-    @IBOutlet weak var lastNameTextView: UITextField!
+    @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var loginButtonView: UIView!
+    @IBOutlet weak var pleaseWait: UIActivityIndicatorView!
     
     // MARK: Other functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createButton.isHidden = false
+        createButton.isEnabled = false
+        pleaseWait.isHidden = true
 
         greetingPrefix = defaultGreeting
         initializeFacebookLoginButton()
@@ -45,6 +48,8 @@ class MainController: UIViewController, LoginButtonDelegate {
         let accessToken = AccessTokenCache.sharedInstance.load()
 
         if (accessToken != nil && accessToken!.expirationDate.timeIntervalSince(Date()) > 0) {
+            self.greetingPrefix = "Welcome back"
+            
             AccessToken.current = accessToken
             loadUserData()
         }
@@ -59,46 +64,43 @@ class MainController: UIViewController, LoginButtonDelegate {
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: refreshImage)
 
         createButton.isEnabled = true
+//        hideSpinner()
+    }
+    private func showSpinner() {
+        createButton.isHidden = true
+        pleaseWait.isHidden = false
+        pleaseWait.startAnimating()
+    }
+    
+    private func hideSpinner() {
+        pleaseWait.stopAnimating()
+        pleaseWait.isHidden = true
+        createButton.isHidden = false
     }
 
     func refreshUserNotificationReceived(userFromDB : User?) {
         if (userFromDB != nil) {
             user = userFromDB
 
-            createButton.setTitle("Continue", for: .normal)
-            greetingPrefix = "Welcome back"
-
-            refreshLabelsByUserData()
+            refreshLabels()
+            
+            hideSpinner()
         }
-    }
-
-    func refreshLabelsByUserData() {
-        firstNameTextView.text = user?.firstName as String?
-        lastNameTextView.text = user?.lastName as String?
-
-        refreshLabels()
     }
 
     @IBAction func refreshLabels() {
-        let firstName = firstNameTextView.text!
-        let lastName = lastNameTextView.text!
+        let userName = user!.name!
 
         var finalString:String
 
-        if (firstName != "" && lastName != "") {
-            finalString = "\(greetingPrefix), \(firstName) \(lastName)!"
-        }
-        else if (firstName != "") {
-            finalString = "\(greetingPrefix), \(firstName)!"
-        }
-        else if (firstName != "") {
-            finalString = "\(greetingPrefix), Mr. \(lastName)!"
+        if (userName != "") {
+            finalString = "\(greetingPrefix), \(userName)!"
         }
         else {
             finalString = "\(greetingPrefix)!"
         }
 
-        studentNameLabel.text = finalString
+        greetingLabel.text = finalString
     }
 
     private func refreshImage(image:UIImage?) {
@@ -116,6 +118,8 @@ class MainController: UIViewController, LoginButtonDelegate {
                 // TODO : Show that asshole an angry message
             }
             else {
+                showSpinner()
+                
                 loginToFirebase(authenticationToken: accessToken.authenticationToken, whenFinished: tryFindingUserInDB)
                 AccessTokenCache.sharedInstance.store(accessToken)
             }
@@ -138,9 +142,13 @@ class MainController: UIViewController, LoginButtonDelegate {
     private func tryFindingUserInDB() {
         UserFirebaseDB.sharedInstance.findUserByKey(key: FacebookUserData.sharedInstance.getUserId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
+                self.greetingPrefix = "Welcome back"
+                
                 self.loadUserData()
             }
             else {
+                self.greetingPrefix = "Welcome"
+                
                 self.createUser()
             }
         })
@@ -148,8 +156,7 @@ class MainController: UIViewController, LoginButtonDelegate {
 
     private func createUser() {
         let newUser = User(id: FacebookUserData.sharedInstance.getUserId()! as NSString,
-                           firstName: FacebookUserData.sharedInstance.getDisplayName()! as NSString,
-                           lastName: "" as NSString)
+                           name: FacebookUserData.sharedInstance.getDisplayName()! as NSString)
 
         UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.loadUserData()})
     }
@@ -167,9 +174,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func elapseScreenData() {
-        studentNameLabel.text = defaultGreeting
-        firstNameTextView.text = ""
-        lastNameTextView.text = ""
+        greetingLabel.text = "\(defaultGreeting)!"
         userImage.image = UIImage(named: "user")
     }
 
@@ -181,18 +186,5 @@ class MainController: UIViewController, LoginButtonDelegate {
     @IBAction func Exit(sender: AnyObject) {
         // Exit the application
         exit(0)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "UserCreated") {
-
-//            let deviceId = UIDevice.current.identifierForVendor!.uuidString
-//            let newUser = User(id: deviceId as NSString, firstName: firstNameTextView.text! as NSString, lastName: lastNameTextView.text! as NSString)
-//
-//            // Add this user
-//            UserFirebaseDB.sharedInstance.addUser(user: newUser)
-//
-//            User.me = newUser
-        }
     }
 }
