@@ -6,8 +6,8 @@
 import Foundation
 import FacebookCore
 
-class AccessTokenCache {
-    static let sharedInstance: AccessTokenCache = { AccessTokenCache() } ()
+class FacebookAccessTokenCache {
+    static let sharedInstance: FacebookAccessTokenCache = { FacebookAccessTokenCache() } ()
     let accessTokenKey = "accessToken"
     let expirationDateKey = "expirationDate"
 

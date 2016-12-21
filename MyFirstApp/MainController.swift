@@ -42,7 +42,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     func initializeCurrentUserData() {
-        let accessToken = AccessTokenCache.sharedInstance.load()
+        let accessToken = FacebookAccessTokenCache.sharedInstance.load()
 
         if (accessToken != nil && accessToken!.expirationDate.timeIntervalSince(Date()) > 0) {
             AccessToken.current = accessToken
@@ -117,7 +117,7 @@ class MainController: UIViewController, LoginButtonDelegate {
             }
             else {
                 loginToFirebase(authenticationToken: accessToken.authenticationToken, whenFinished: tryFindingUserInDB)
-                AccessTokenCache.sharedInstance.store(accessToken)
+                FacebookAccessTokenCache.sharedInstance.store(accessToken)
             }
         }
     }
@@ -157,7 +157,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
         do {
             try FIRAuth.auth()?.signOut()
-            AccessTokenCache.sharedInstance.clear()
+            FacebookAccessTokenCache.sharedInstance.clear()
             createButton.isEnabled = false
             elapseScreenData()
         }
