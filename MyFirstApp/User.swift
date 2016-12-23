@@ -11,16 +11,13 @@ import Foundation
 class User {
     var name:NSString?
     var id:NSString
+    var facebookId:NSString?
     var groupId:NSString?
-    
-    init(id:NSString) {
-        self.id = id
-        name = ""
-        groupId = ""
-    }
-    
-    init(id: NSString, name: NSString) {
+
+    init(id: NSString, name: NSString?, facebookId: NSString?) {
         self.id = id
         self.name = name
+        self.facebookId = facebookId
+        self.groupId = ""
     }
 }
