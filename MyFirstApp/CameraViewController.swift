@@ -15,7 +15,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ImageDB.sharedInstance.downloadImage(userId: FacebookUserData.sharedInstance.getUserId()!, whenFinished: refreshImage)
+        ImageDB.sharedInstance.downloadImage(userId: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: refreshImage)
     }
     
     private func refreshImage(image:UIImage?) {
@@ -50,7 +50,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func saveImage() {
         // Save the image to db
-        ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: FacebookUserData.sharedInstance.getUserId()!)
+        ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: CurrentFirebaseUser.sharedInstance.getId()!)
     }
     
     func save() {

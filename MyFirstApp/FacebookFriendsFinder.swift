@@ -10,7 +10,7 @@ class FacebookFriendsFinder {
     func find(forEachFriend: @escaping (_: User?) -> Void) {
         let connection = GraphRequestConnection()
 
-        connection.add(GraphRequest(graphPath: "/me/friends", parameters: ["fields": "email, name, id"])) {
+        connection.add(GraphRequest(graphPath: "/me/friends", parameters: ["fields": "name, id"])) {
             (httpResponse, result) in
             switch result {
                 case .success(let response):

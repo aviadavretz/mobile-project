@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		4AB597FCCA38D8717F2EA2E3 /* Pods_MyFirstApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */; };
 		5860306854BF6557D30E25BD /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */; };
-		586032FEC03CF9F7B426CDF7 /* FacebookUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035430F04EA2E190F167F /* FacebookUserData.swift */; };
+		5860347CCE9F037305A5CFC8 /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DDE97895B01EE2304FA /* CurrentFirebaseUser.swift */; };
 		5860348279BC68AE97DBAAB3 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */; };
 		58603493E914C3601547EACF /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */; };
-		586035D742A52BCF4EA505C6 /* FacebookUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035430F04EA2E190F167F /* FacebookUserData.swift */; };
 		5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
 		586038FBCD5D3FC6360F2506 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */; };
 		58603A6BAE18AEA007F812E2 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */; };
+		58603BC657395FF984B4B70F /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DDE97895B01EE2304FA /* CurrentFirebaseUser.swift */; };
 		58603C716459330ECDD14821 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */; };
 		58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
-		58603D9852B96C508B3DA3A0 /* FacebookUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035430F04EA2E190F167F /* FacebookUserData.swift */; };
+		58603F784DDC781D94B9FD0B /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DDE97895B01EE2304FA /* CurrentFirebaseUser.swift */; };
 		58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
 		7208C65F1DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
 		7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */; };
@@ -108,10 +108,10 @@
 		0E5E5F1A15064DD7BD1B84EB /* Pods-MyFirstAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		586035430F04EA2E190F167F /* FacebookUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookUserData.swift; sourceTree = "<group>"; };
 		586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookFriendsFinder.swift; sourceTree = "<group>"; };
 		5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestsDB.swift; sourceTree = "<group>"; };
 		58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenCache.swift; sourceTree = "<group>"; };
+		58603DDE97895B01EE2304FA /* CurrentFirebaseUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentFirebaseUser.swift; sourceTree = "<group>"; };
 		5D50D210E2973DB1F964E039 /* Pods-MyFirstApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.release.xcconfig"; sourceTree = "<group>"; };
 		60A7221B3CCE3CF0E02772F9 /* Pods-MyFirstApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 				84E766E41E07E59D0073B8B4 /* Group.swift */,
 				586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */,
 				58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */,
-				586035430F04EA2E190F167F /* FacebookUserData.swift */,
+				58603DDE97895B01EE2304FA /* CurrentFirebaseUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 				58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */,
 				5860348279BC68AE97DBAAB3 /* FacebookFriendsFinder.swift in Sources */,
 				58603C716459330ECDD14821 /* FacebookAccessTokenCache.swift in Sources */,
-				586035D742A52BCF4EA505C6 /* FacebookUserData.swift in Sources */,
+				58603BC657395FF984B4B70F /* CurrentFirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +654,7 @@
 				5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */,
 				58603A6BAE18AEA007F812E2 /* FacebookFriendsFinder.swift in Sources */,
 				58603493E914C3601547EACF /* FacebookAccessTokenCache.swift in Sources */,
-				586032FEC03CF9F7B426CDF7 /* FacebookUserData.swift in Sources */,
+				5860347CCE9F037305A5CFC8 /* CurrentFirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +683,7 @@
 				58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */,
 				586038FBCD5D3FC6360F2506 /* FacebookFriendsFinder.swift in Sources */,
 				5860306854BF6557D30E25BD /* FacebookAccessTokenCache.swift in Sources */,
-				58603D9852B96C508B3DA3A0 /* FacebookUserData.swift in Sources */,
+				58603F784DDC781D94B9FD0B /* CurrentFirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
