@@ -41,6 +41,17 @@ class UserFirebaseDB {
             whenFinished(self.userCache[key]!)
         }
     }
+
+    func findUserByFacebookId(facebookId: String, whenFinished: @escaping (_: User) -> Void) {
+        databaseRef.child(rootNode).queryOrdered(byChild: "facebookId").queryEqual(toValue: facebookId).observeSingleEvent(
+                        of: FIRDataEventType.value, with: {(snapshot) in
+                    if !(snapshot.value is NSNull) {
+                        let userSnapshot = (snapshot.value as! Dictionary<String, Any>).first!
+                        let user = self.extractUser(key: userSnapshot.key as NSString, values: userSnapshot.value as! Dictionary<String, String>)
+                        whenFinished(user)
+                    }
+                })
+    }
     
     private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
         return User(key: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString, groupKey: values["groupKey"]! as NSString)
