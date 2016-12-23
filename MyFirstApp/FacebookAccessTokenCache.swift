@@ -11,9 +11,7 @@ class FacebookAccessTokenCache {
     let accessTokenKey = "accessToken"
     let expirationDateKey = "expirationDate"
 
-    private init() {
-
-    }
+    private init() {}
 
     func load() -> AccessToken? {
         let cachedAccessToken = UserDefaults.standard.object(forKey: accessTokenKey)

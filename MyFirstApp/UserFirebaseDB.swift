@@ -43,7 +43,7 @@ class UserFirebaseDB {
     }
     
     private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
-        return User(id: key, name: values["name"]! as NSString)
+        return User(id: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString)
     }
     
     func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {
@@ -56,6 +56,7 @@ class UserFirebaseDB {
         var values = Dictionary<String, String>()
         values["id"] = from.id as String
         values["name"] = from.name as? String
+        values["facebookId"] = from.facebookId as? String
     
         return values
     }

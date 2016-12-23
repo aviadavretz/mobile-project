@@ -59,18 +59,15 @@
 		84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
 		84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
 		84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
-		84BF51251E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51241E0D4D8600A4E480 /* GroupTableViewController.swift */; };
-		84BF51261E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51241E0D4D8600A4E480 /* GroupTableViewController.swift */; };
-		84BF51271E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51241E0D4D8600A4E480 /* GroupTableViewController.swift */; };
-		84BF51291E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */; };
-		84BF512A1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */; };
-		84BF512B1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */; };
 		84DCC3CA1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3C91DFB44F20092586E /* NewGroceryRequestViewController.swift */; };
 		84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3C91DFB44F20092586E /* NewGroceryRequestViewController.swift */; };
 		84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3C91DFB44F20092586E /* NewGroceryRequestViewController.swift */; };
 		84DCC3D21DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */; };
 		84DCC3D31DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */; };
 		84DCC3D41DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */; };
+		84DCC3D61DFB55B20092586E /* GroceryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D51DFB55B20092586E /* GroceryDB.swift */; };
+		84DCC3D71DFB55B20092586E /* GroceryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D51DFB55B20092586E /* GroceryDB.swift */; };
+		84DCC3D81DFB55B20092586E /* GroceryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D51DFB55B20092586E /* GroceryDB.swift */; };
 		84DCC3DA1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DB1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
 		84DCC3DC1DFB57720092586E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCC3D91DFB57720092586E /* MainController.swift */; };
@@ -86,9 +83,6 @@
 		84FA51641E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
 		84FA51651E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
 		84FA51661E044C14005943AC /* ImageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA51631E044C14005943AC /* ImageDB.swift */; };
-		84FDDE171E0D514800C63138 /* GroupFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDE161E0D514800C63138 /* GroupFirebaseDB.swift */; };
-		84FDDE181E0D514800C63138 /* GroupFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDE161E0D514800C63138 /* GroupFirebaseDB.swift */; };
-		84FDDE191E0D514800C63138 /* GroupFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDE161E0D514800C63138 /* GroupFirebaseDB.swift */; };
 		AFFE641F8B8904B545707CF3 /* Pods_MyFirstAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */; };
 		E42E40E39B25F1416DD8CDD9 /* Pods_MyFirstAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC0C9EE0FC27C2A30EC68E /* Pods_MyFirstAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -144,16 +138,14 @@
 		84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
-		84BF51241E0D4D8600A4E480 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
-		84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberCell.swift; sourceTree = "<group>"; };
 		84DCC3C91DFB44F20092586E /* NewGroceryRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryRequestViewController.swift; sourceTree = "<group>"; };
 		84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestTableViewController.swift; sourceTree = "<group>"; };
+		84DCC3D51DFB55B20092586E /* GroceryDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryDB.swift; sourceTree = "<group>"; };
 		84DCC3D91DFB57720092586E /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		84E766E41E07E59D0073B8B4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		84FA51571E044073005943AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		84FA515F1E044724005943AC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		84FA51631E044C14005943AC /* ImageDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDB.swift; sourceTree = "<group>"; };
-		84FDDE161E0D514800C63138 /* GroupFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFirebaseDB.swift; sourceTree = "<group>"; };
 		C5BC0C9EE0FC27C2A30EC68E /* Pods_MyFirstAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4C0234F2F9A3DB22A614E7 /* Pods-MyFirstAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppUITests/Pods-MyFirstAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA2273BBA9296239CFA48D6B /* Pods-MyFirstAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,12 +270,18 @@
 		72AAACEA1DD34DF200A78ED4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84FDDE1B1E0D5A9A00C63138 /* Facebook */,
-				84FDDE1A1E0D5A8200C63138 /* Database */,
+				84DCC3D51DFB55B20092586E /* GroceryDB.swift */,
 				8434704E1DFB246F00378CA0 /* User.swift */,
 				843470561DFB258C00378CA0 /* GroceryList.swift */,
 				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
+				849279CE1E0321670095671E /* GroceryFirebaseDB.swift */,
+				84FA51631E044C14005943AC /* ImageDB.swift */,
+				847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */,
+				5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */,
 				84E766E41E07E59D0073B8B4 /* Group.swift */,
+				586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */,
+				58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */,
+				586035430F04EA2E190F167F /* FacebookUserData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,7 +298,6 @@
 		72AAACF01DD34F5700A78ED4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				84BF51231E0D4D6C00A4E480 /* Group */,
 				84FA515F1E044724005943AC /* CameraViewController.swift */,
 				84DCC3D91DFB57720092586E /* MainController.swift */,
 				7208C65E1DF84481008CA8EF /* CustomTabBarController.swift */,
@@ -328,37 +325,6 @@
 				84DCC3D11DFB506B0092586E /* GroceryRequestTableViewController.swift */,
 			);
 			name = GroceryRequest;
-			sourceTree = "<group>";
-		};
-		84BF51231E0D4D6C00A4E480 /* Group */ = {
-			isa = PBXGroup;
-			children = (
-				84BF51241E0D4D8600A4E480 /* GroupTableViewController.swift */,
-				84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */,
-			);
-			name = Group;
-			sourceTree = "<group>";
-		};
-		84FDDE1A1E0D5A8200C63138 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				84FDDE161E0D514800C63138 /* GroupFirebaseDB.swift */,
-				5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */,
-				847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */,
-				84FA51631E044C14005943AC /* ImageDB.swift */,
-				849279CE1E0321670095671E /* GroceryFirebaseDB.swift */,
-			);
-			name = Database;
-			sourceTree = "<group>";
-		};
-		84FDDE1B1E0D5A9A00C63138 /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				586035430F04EA2E190F167F /* FacebookUserData.swift */,
-				58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */,
-				586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */,
-			);
-			name = Facebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,19 +608,17 @@
 				8434705B1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				84E766E51E07E59D0073B8B4 /* Group.swift in Sources */,
 				843470571DFB258D00378CA0 /* GroceryList.swift in Sources */,
-				84BF51251E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
 				84DCC3CA1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84B6F9E11DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				7208C65F1DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				844358611DFB373500B14DB9 /* GroceryRequestTableViewCell.swift in Sources */,
 				847D46BE1E0551DA00A3D771 /* UserFirebaseDB.swift in Sources */,
-				84BF51291E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
 				84DCC3DA1DFB57720092586E /* MainController.swift in Sources */,
 				72AAACBB1DD3496700A78ED4 /* AppDelegate.swift in Sources */,
-				84FDDE171E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				8434704F1DFB246F00378CA0 /* User.swift in Sources */,
 				84FA51641E044C14005943AC /* ImageDB.swift in Sources */,
+				84DCC3D61DFB55B20092586E /* GroceryDB.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84FA51601E044724005943AC /* CameraViewController.swift in Sources */,
@@ -679,18 +643,16 @@
 				84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
-				84BF51261E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				84FA51651E044C14005943AC /* ImageDB.swift in Sources */,
 				843470501DFB246F00378CA0 /* User.swift in Sources */,
 				7208C6601DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
-				84FDDE181E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
+				84DCC3D71DFB55B20092586E /* GroceryDB.swift in Sources */,
 				847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
 				5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */,
 				58603A6BAE18AEA007F812E2 /* FacebookFriendsFinder.swift in Sources */,
-				84BF512A1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
 				58603493E914C3601547EACF /* FacebookAccessTokenCache.swift in Sources */,
 				586032FEC03CF9F7B426CDF7 /* FacebookUserData.swift in Sources */,
 			);
@@ -710,18 +672,16 @@
 				84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				7208C6611DF84481008CA8EF /* CustomTabBarController.swift in Sources */,
 				84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
-				84BF51271E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				84FA51661E044C14005943AC /* ImageDB.swift in Sources */,
 				843470511DFB246F00378CA0 /* User.swift in Sources */,
 				842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
-				84FDDE191E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
+				84DCC3D81DFB55B20092586E /* GroceryDB.swift in Sources */,
 				847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
 				58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */,
 				586038FBCD5D3FC6360F2506 /* FacebookFriendsFinder.swift in Sources */,
-				84BF512B1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
 				5860306854BF6557D30E25BD /* FacebookAccessTokenCache.swift in Sources */,
 				58603D9852B96C508B3DA3A0 /* FacebookUserData.swift in Sources */,
 			);

@@ -56,7 +56,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func loadUserData() {
-        let userId = FacebookUserData.sharedInstance.getUserId()!
+        let userId = CurrentFirebaseUser.sharedInstance.getId()!
 
         UserFirebaseDB.sharedInstance.findUserByKey(key: userId,
                 whenFinished: refreshUserNotificationReceived)
@@ -149,7 +149,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func tryFindingUserInDB() {
-        UserFirebaseDB.sharedInstance.findUserByKey(key: FacebookUserData.sharedInstance.getUserId()!, whenFinished: {(existingUser) in
+        UserFirebaseDB.sharedInstance.findUserByKey(key: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
                 self.greetingPrefix = "Welcome back"
                 
@@ -164,8 +164,9 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func createUser() {
-        let newUser = User(id: FacebookUserData.sharedInstance.getUserId()! as NSString,
-                           name: FacebookUserData.sharedInstance.getDisplayName()! as NSString)
+        let newUser = User(id: CurrentFirebaseUser.sharedInstance.getId()! as NSString,
+                           name: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.displayName! as NSString,
+                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString)
 
         UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.loadUserData()})
     }
