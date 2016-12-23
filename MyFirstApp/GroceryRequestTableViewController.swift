@@ -104,7 +104,9 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
 
     func updateUserDetailsInCell(cell: GroceryRequestTableViewCell, userId: String) {
         UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
-            cell.nameLabel.text = "\(user!.name!)"
+            if (user != nil) {
+                cell.nameLabel.text = "\(user!.name!)"
+            }
         })
     }
 

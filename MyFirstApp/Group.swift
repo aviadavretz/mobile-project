@@ -9,33 +9,17 @@
 import Foundation
 
 class Group {
-    var id:NSString
+    var key:NSString
     var title:NSString?
     var adminUserId:NSString
     var lists = Array<GroceryList>()
     var members = Array<NSString>()
     
-    init(title:NSString, adminUserId: NSString, lists: Array<GroceryList>, members: Array<NSString>) {
-        self.id = "-1"
+    init(key: NSString, title:NSString, adminUserId: NSString, lists: Array<GroceryList>, members: Array<NSString>) {
+        self.key = key
         self.title = title
         self.adminUserId = adminUserId
         self.lists = lists
         self.members = members
     }
-    
-    init(id: NSString, title:NSString, adminUserId: NSString, lists: Array<GroceryList>, members: Array<NSString>) {
-        self.id = id
-        self.title = title
-        self.adminUserId = adminUserId
-        self.lists = lists
-        self.members = members
-    }
-    
-//    func addList(list:GroceryList) {
-//        lists.append(list)
-//    }
-//
-//    func addMember(userId:NSString) {
-//        members.append(userId)
-//    }
 }

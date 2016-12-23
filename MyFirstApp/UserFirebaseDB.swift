@@ -43,21 +43,25 @@ class UserFirebaseDB {
     }
     
     private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
-        return User(id: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString)
+        return User(key: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString, groupKey: values["groupKey"]! as NSString)
     }
     
     func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let values = loadValues(from: user)
-        self.databaseRef.child(rootNode).child(user.id as String).setValue(values, withCompletionBlock: whenFinished)
-        self.userCache[user.id as String] = user
+        self.databaseRef.child(rootNode).child(user.key as String).setValue(values, withCompletionBlock: whenFinished)
+        self.userCache[user.key as String] = user
     }
     
     private func loadValues(from: User) -> Dictionary<String, String> {
         var values = Dictionary<String, String>()
-        values["id"] = from.id as String
         values["name"] = from.name as? String
         values["facebookId"] = from.facebookId as? String
-    
+        values["groupKey"] = from.groupKey as? String
+        
         return values
+    }
+    
+    func setGroup(forUserId: String, groupKey: String) {
+        databaseRef.child(rootNode).child(forUserId).updateChildValues(["groupKey" : groupKey])
     }
 }

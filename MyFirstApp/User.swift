@@ -10,14 +10,14 @@ import Foundation
 
 class User {
     var name:NSString?
-    var id:NSString
+    var key:NSString
     var facebookId:NSString?
-    var groupId:NSString?
+    var groupKey:NSString?
 
-    init(id: NSString, name: NSString?, facebookId: NSString?) {
-        self.id = id
+    init(key: NSString, name: NSString?, facebookId: NSString?, groupKey:NSString?) {
+        self.key = key
         self.name = name
         self.facebookId = facebookId
-        self.groupId = ""
+        self.groupKey = groupKey
     }
 }

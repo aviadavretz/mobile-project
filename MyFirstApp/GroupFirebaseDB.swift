@@ -50,14 +50,17 @@ class GroupFirebaseDB {
     
     func addMember(userId:NSString) {
         if (myGroup != nil) {
-            self.databaseRef.child(rootNode).child(myGroup?.id as! String).childByAutoId().setValue(userId)
+            self.databaseRef.child(rootNode).child(myGroup?.key as! String).childByAutoId().setValue(userId)
         }
     }
     
     func addGroup(group:Group) {
         let values = loadValues(from: group)
         
-        self.databaseRef.child(rootNode).childByAutoId().setValue(values)
+        let generatedKey = self.databaseRef.child(rootNode).childByAutoId().key
+        self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
+        
+        UserFirebaseDB.sharedInstance.setGroup(forUserId: group.adminUserId as String, groupKey: generatedKey as String)
         
         self.myGroup = group
     }
@@ -72,11 +75,10 @@ class GroupFirebaseDB {
     
     private func loadValues(from: Group) -> Dictionary<String, Any> {
         var values = Dictionary<String, Any>()
-//        values["id"] = from.id as String
         values["title"] = from.title as String?
         values["adminUserId"] = from.adminUserId as String
-        values["lists"] = from.lists
         values["members"] = from.members
+        values["lists"] = from.lists
         
         return values
     }
@@ -97,11 +99,18 @@ class GroupFirebaseDB {
 //    }
     
     private func extractGroup(key: String, values: Dictionary<String, Any>) -> Group {
+        var lists = values["lists"]
+
+        // Avoid NullPointerExceptions
+        if (lists == nil) {
+            lists = Array<GroceryList>()
+        }
+        
         return Group(
-            id: key as NSString,
+            key: key as NSString,
             title: values["title"]! as! NSString,
             adminUserId: values["adminUserId"] as! NSString,
-            lists: values["lists"] as! Array<GroceryList>,
+            lists: lists as! Array<GroceryList>,
             members: values["members"] as! Array<NSString>)
     }
     
@@ -110,7 +119,7 @@ class GroupFirebaseDB {
             databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                 // Make sure the group was found in the database
                 if (!(snapshot.value is NSNull)) {
-                    let group = self.extractGroup(key: snapshot.key, values: snapshot.value as! Dictionary<String, String>)
+                    let group = self.extractGroup(key: snapshot.key, values: snapshot.value as! Dictionary<String, Any>)
                     self.myGroup = group
                     
                     whenFinished(group)

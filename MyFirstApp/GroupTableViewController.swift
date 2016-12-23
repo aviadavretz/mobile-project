@@ -16,7 +16,7 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = group?.title as String?
+        navigationItem.title = group?.title as String?
         
         table.delegate = self
         table.dataSource = self
@@ -104,12 +104,12 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
         UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
             cell.nameLabel.text = "\(user!.name!)"
             
-            if (user!.id.isEqual(to: self.group?.adminUserId as! String)) {
+            if (user!.key.isEqual(to: self.group?.adminUserId as! String)) {
                 cell.adminLabel.isHidden = false
             }
             
             // Fetch the user's group
-            if let groupId = user?.groupId {
+            if let groupId = user?.groupKey {
                 GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in
                     // TODO: This is shit, think how to make it better
                     GroupFirebaseDB.sharedInstance.myGroup = group

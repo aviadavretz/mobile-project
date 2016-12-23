@@ -90,11 +90,22 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
     
     private func addGroupStub(user:User) {
-        var members = Array<NSString>()
-        members.append(user.id)
-        
-        let newGroup = Group(title: "This is our group ya'll!", adminUserId: user.id, lists: Array<GroceryList>(), members: members)
-        GroupFirebaseDB.sharedInstance.addGroup(group: newGroup)
+        if let groupId = user.groupKey {
+            GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: {(group) in
+                if (group != nil) {
+                    // TODO: Not really necessary to repeat it
+                    GroupFirebaseDB.sharedInstance.myGroup = group
+                }
+            })
+        }
+        else {
+            // TODO: Don't just add it automatically
+            var members = Array<NSString>()
+            members.append(user.key)
+            
+            let newGroup = Group(key: "-1", title: "This is our group ya'll!", adminUserId: user.key, lists: Array<GroceryList>(), members: members)
+            GroupFirebaseDB.sharedInstance.addGroup(group: newGroup)
+        }
     }
 
     @IBAction func refreshLabels() {
@@ -164,9 +175,10 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func createUser() {
-        let newUser = User(id: CurrentFirebaseUser.sharedInstance.getId()! as NSString,
+        let newUser = User(key: CurrentFirebaseUser.sharedInstance.getId()! as NSString,
                            name: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.displayName! as NSString,
-                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString)
+                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString,
+                           groupKey: nil)
 
         UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.loadUserData()})
     }
