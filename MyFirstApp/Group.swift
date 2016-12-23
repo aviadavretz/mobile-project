@@ -11,16 +11,31 @@ import Foundation
 class Group {
     var id:NSString
     var title:NSString?
-    var admin:User
+    var adminUserId:NSString
     var lists = Array<GroceryList>()
+    var members = Array<NSString>()
     
-    init(id: NSString, title:NSString, admin: User) {
+    init(title:NSString, adminUserId: NSString, lists: Array<GroceryList>, members: Array<NSString>) {
+        self.id = "-1"
+        self.title = title
+        self.adminUserId = adminUserId
+        self.lists = lists
+        self.members = members
+    }
+    
+    init(id: NSString, title:NSString, adminUserId: NSString, lists: Array<GroceryList>, members: Array<NSString>) {
         self.id = id
         self.title = title
-        self.admin = admin
+        self.adminUserId = adminUserId
+        self.lists = lists
+        self.members = members
     }
     
-    func addList(list:GroceryList) {
-        lists.append(list)
-    }
+//    func addList(list:GroceryList) {
+//        lists.append(list)
+//    }
+//
+//    func addMember(userId:NSString) {
+//        members.append(userId)
+//    }
 }

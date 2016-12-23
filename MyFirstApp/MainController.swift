@@ -64,7 +64,6 @@ class MainController: UIViewController, LoginButtonDelegate {
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: refreshImage)
 
         createButton.isEnabled = true
-//        hideSpinner()
     }
     private func showSpinner() {
         createButton.isHidden = true
@@ -85,7 +84,17 @@ class MainController: UIViewController, LoginButtonDelegate {
             refreshLabels()
             
             hideSpinner()
+            
+            addGroupStub(user: userFromDB!)
         }
+    }
+    
+    private func addGroupStub(user:User) {
+        var members = Array<NSString>()
+        members.append(user.id)
+        
+        let newGroup = Group(title: "This is our group ya'll!", adminUserId: user.id, lists: Array<GroceryList>(), members: members)
+        GroupFirebaseDB.sharedInstance.addGroup(group: newGroup)
     }
 
     @IBAction func refreshLabels() {

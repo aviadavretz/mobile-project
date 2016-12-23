@@ -142,7 +142,7 @@
         <scene sceneID="1bc-GL-tsB">
             <objects>
                 <navigationController id="ss8-Yt-Ytf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="1.png" selectedImage="1.png" id="Vga-yN-9mh" userLabel="Students"/>
+                    <tabBarItem key="tabBarItem" title="" image="cart" selectedImage="cart" id="Vga-yN-9mh" userLabel="Students"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C9o-xu-LTI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -167,6 +167,7 @@
                     <connections>
                         <segue destination="ss8-Yt-Ytf" kind="relationship" relationship="viewControllers" id="MgS-TI-yLD"/>
                         <segue destination="xiH-gz-4me" kind="relationship" relationship="viewControllers" id="8Mz-xx-NZR"/>
+                        <segue destination="aT3-Cf-jWL" kind="relationship" relationship="viewControllers" id="ELd-JE-Gcr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wlp-SJ-CeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,6 +247,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVF-3i-8gw" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6295.1999999999998" y="-3324.2878560719641"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SsG-t5-sxN">
+            <objects>
+                <navigationController id="aT3-Cf-jWL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="group" selectedImage="group" id="MNT-eu-sKh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fg5-W1-cxX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PXG-c5-tUa" kind="relationship" relationship="rootViewController" id="dnL-33-Fa0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T09-b8-e28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5138" y="-2205"/>
         </scene>
         <!--Grocery requests-->
         <scene sceneID="C1n-Ja-uwJ">
@@ -411,7 +429,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95489278720000004" green="0.8144524111" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="mjc-cW-4Al"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="camera" id="mjc-cW-4Al"/>
                     <connections>
                         <outlet property="imagePicked" destination="Kjs-WY-3Lj" id="eGg-r1-YmR"/>
                     </connections>
@@ -420,10 +438,71 @@
             </objects>
             <point key="canvasLocation" x="-4178.3999999999996" y="-2884.4077961019493"/>
         </scene>
+        <!--Your group-->
+        <scene sceneID="qmp-mS-Ekz">
+            <objects>
+                <viewController storyboardIdentifier="GroupTableViewController" id="PXG-c5-tUa" customClass="GroupTableViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="9QL-OB-x8t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupMemberCell" rowHeight="54" id="rmd-AN-7v2" customClass="GroupMemberCell" customModule="MyFirstApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="54"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmd-AN-7v2" id="h7J-zk-aJV">
+                                    <frame key="frameInset" width="375" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-6O-chV">
+                                            <frame key="frameInset" minX="8" minY="3" width="49" height="49"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcx-r1-RDm">
+                                            <frame key="frameInset" minX="50" width="325" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghk-aq-TwE">
+                                            <frame key="frameInset" minX="315" minY="33" width="60" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" red="0.37738227399843605" green="0.70409650259067358" blue="0.39326416312616835" alpha="0.77233714788732399" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="adminLabel" destination="ghk-aq-TwE" id="3Lj-hx-nyo"/>
+                                    <outlet property="imagez" destination="c8G-6O-chV" id="cZo-aF-VlZ"/>
+                                    <outlet property="nameLabel" destination="rcx-r1-RDm" id="FzY-Gz-1kJ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PXG-c5-tUa" id="vMG-MH-3KE"/>
+                            <outlet property="delegate" destination="PXG-c5-tUa" id="wgc-9I-O7l"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your group" id="pDJ-vF-xyq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K0D-Vu-fgT"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="9QL-OB-x8t" id="St3-C5-acF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whq-WI-iCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4178.3999999999996" y="-2205.2473763118442"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="1.png" width="57" height="57"/>
+        <image name="camera" width="57" height="57"/>
+        <image name="cart" width="57" height="57"/>
         <image name="delete.png" width="1200" height="1920"/>
+        <image name="group" width="57" height="57"/>
         <image name="user" width="1600" height="1600"/>
     </resources>
 </document>
