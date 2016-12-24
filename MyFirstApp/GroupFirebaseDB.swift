@@ -54,13 +54,13 @@ class GroupFirebaseDB {
         }
     }
     
-    func addGroup(group:Group) {
+    func addGroup(group:Group, forUser: User) {
         let values = loadValues(from: group)
         
         let generatedKey = self.databaseRef.child(rootNode).childByAutoId().key
         self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
         
-        UserFirebaseDB.sharedInstance.setGroup(forUserId: group.adminUserId as String, groupKey: generatedKey as String)
+        UserFirebaseDB.sharedInstance.setGroup(forUserId: forUser.key as String, groupKey: generatedKey as String)
         
         self.myGroup = group
     }
@@ -76,7 +76,6 @@ class GroupFirebaseDB {
     private func loadValues(from: Group) -> Dictionary<String, Any> {
         var values = Dictionary<String, Any>()
         values["title"] = from.title as String?
-        values["adminUserId"] = from.adminUserId as String
         values["members"] = from.members
         values["lists"] = from.lists
         
@@ -109,7 +108,6 @@ class GroupFirebaseDB {
         return Group(
             key: key as NSString,
             title: values["title"]! as! NSString,
-            adminUserId: values["adminUserId"] as! NSString,
             lists: lists as! Array<GroceryList>,
             members: values["members"] as! Array<NSString>)
     }

@@ -465,17 +465,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghk-aq-TwE">
-                                            <frame key="frameInset" minX="315" minY="33" width="60" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <color key="textColor" red="0.37738227399843605" green="0.70409650259067358" blue="0.39326416312616835" alpha="0.77233714788732399" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="adminLabel" destination="ghk-aq-TwE" id="3Lj-hx-nyo"/>
                                     <outlet property="imagez" destination="c8G-6O-chV" id="cZo-aF-VlZ"/>
                                     <outlet property="nameLabel" destination="rcx-r1-RDm" id="FzY-Gz-1kJ"/>
                                 </connections>

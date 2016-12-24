@@ -104,10 +104,6 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
         UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
             cell.nameLabel.text = "\(user!.name!)"
             
-            if (user!.key.isEqual(to: self.group?.adminUserId as! String)) {
-                cell.adminLabel.isHidden = false
-            }
-            
             // Fetch the user's group
             if let groupId = user?.groupKey {
                 GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in

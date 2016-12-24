@@ -103,8 +103,8 @@ class MainController: UIViewController, LoginButtonDelegate {
             var members = Array<NSString>()
             members.append(user.key)
             
-            let newGroup = Group(key: "-1", title: "This is our group ya'll!", adminUserId: user.key, lists: Array<GroceryList>(), members: members)
-            GroupFirebaseDB.sharedInstance.addGroup(group: newGroup)
+            let newGroup = Group(key: "-1", title: "This is our group ya'll!", lists: Array<GroceryList>(), members: members)
+            GroupFirebaseDB.sharedInstance.addGroup(group: newGroup, forUser: user)
         }
     }
 

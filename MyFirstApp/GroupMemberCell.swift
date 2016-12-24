@@ -11,7 +11,6 @@ class GroupMemberCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var adminLabel: UILabel!
     @IBOutlet weak var imagez: UIImageView!
     
     override func awakeFromNib() {
