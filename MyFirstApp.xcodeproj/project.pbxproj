@@ -59,6 +59,12 @@
 		849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D01E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D11E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
+		84B5C39C1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
+		84B5C39D1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
+		84B5C39E1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
+		84B5C3A01E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */; };
+		84B5C3A11E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */; };
+		84B5C3A21E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */; };
 		84B6F9E11DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
 		84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
 		84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
@@ -153,6 +159,8 @@
 		8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		849279CE1E0321670095671E /* GroceryFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryFirebaseDB.swift; sourceTree = "<group>"; };
 		849279D21E0370950095671E /* MyFirstApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyFirstApp.entitlements; sourceTree = "<group>"; };
+		84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageDialogViewController.swift; sourceTree = "<group>"; };
+		84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedDialog.swift; sourceTree = "<group>"; };
 		84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
@@ -316,6 +324,7 @@
 				84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */,
 				847BEFB61E1041960007A26A /* RoundedImageView.swift */,
 				847BEFBA1E104A110007A26A /* CircleButton.swift */,
+				84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -329,6 +338,7 @@
 				8443586B1DFB3DC100B14DB9 /* GroceryRequest */,
 				8443586A1DFB3DB400B14DB9 /* GroceryList */,
 				8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */,
+				84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -665,6 +675,7 @@
 				8434705B1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				84E766E51E07E59D0073B8B4 /* Group.swift in Sources */,
 				843470571DFB258D00378CA0 /* GroceryList.swift in Sources */,
+				84B5C39C1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */,
 				84BF51251E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */,
 				847BEFB71E1041970007A26A /* RoundedImageView.swift in Sources */,
@@ -678,6 +689,7 @@
 				72AAACBB1DD3496700A78ED4 /* AppDelegate.swift in Sources */,
 				84FDDE171E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				8434704F1DFB246F00378CA0 /* User.swift in Sources */,
+				84B5C3A01E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */,
 				84FA51641E044C14005943AC /* ImageDB.swift in Sources */,
 				847BEFBB1E104A120007A26A /* CircleButton.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
@@ -704,12 +716,14 @@
 				847BEFBC1E104A120007A26A /* CircleButton.swift in Sources */,
 				843470581DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				84E766E61E07E59D0073B8B4 /* Group.swift in Sources */,
+				84B5C39D1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */,
 				84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84BF51261E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				84FA51651E044C14005943AC /* ImageDB.swift in Sources */,
 				843470501DFB246F00378CA0 /* User.swift in Sources */,
+				84B5C3A11E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */,
 				847BEFB41E1028EF0007A26A /* NewGroupViewController.swift in Sources */,
 				84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
@@ -738,12 +752,14 @@
 				847BEFBD1E104A120007A26A /* CircleButton.swift in Sources */,
 				843470591DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				84E766E71E07E59D0073B8B4 /* Group.swift in Sources */,
+				84B5C39E1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */,
 				84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */,
 				84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				84BF51271E0D4D8600A4E480 /* GroupTableViewController.swift in Sources */,
 				84FA51661E044C14005943AC /* ImageDB.swift in Sources */,
 				843470511DFB246F00378CA0 /* User.swift in Sources */,
 				842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */,
+				84B5C3A21E1062EC00C2C7E9 /* RoundedDialog.swift in Sources */,
 				847BEFB51E1028EF0007A26A /* NewGroupViewController.swift in Sources */,
 				84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,

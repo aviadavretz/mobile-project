@@ -15,9 +15,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var loginButtonView: UIButton!
     @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var chooseImageDialog: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chooseImageDialog.isHidden = true
         
         // Get the User & Image (this will fetch only from cache, because the user was already fetched from DB)
         UserFirebaseDB.sharedInstance.findUserByKey( key: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: refreshLabels)
@@ -46,45 +49,23 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         loginButtonView.addSubview(loginButton)
     }
     
-    private func refreshImage(image:UIImage?) {
+    public func refreshImage(image:UIImage?) {
         imagePicked.image = image
+        
+        saveImage()
     }
     
-    @IBAction func openCameraButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
-        }
+    @IBAction func showChooseImageDialog(sender: AnyObject) {
+        chooseImageDialog.isHidden = false
     }
     
-    @IBAction func openPhotoLibraryButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicked.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-
-        self.dismiss(animated: true, completion: saveImage);
+    private func hideChooseImageDialog() {
+        chooseImageDialog.isHidden = true
     }
     
     func saveImage() {
         // Save the image to db
         ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: CurrentFirebaseUser.sharedInstance.getId()!)
-    }
-    
-    func save() {
-        let imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
-        let compressedJPGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
     }
     
     public func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {}
@@ -95,5 +76,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // Unwind back to MainController
         self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
+    }
+    
+    @IBAction func backFromChooseImageDialog(seque:UIStoryboardSegue) {
+        hideChooseImageDialog()
     }
 }
