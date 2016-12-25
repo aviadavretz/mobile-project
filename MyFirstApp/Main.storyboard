@@ -136,7 +136,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISg-KG-njW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dDf-nE-ECr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2354" y="-3168"/>
+            <point key="canvasLocation" x="-1906" y="-3143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1bc-GL-tsB">
@@ -155,19 +155,19 @@
             </objects>
             <point key="canvasLocation" x="-4178" y="-3672"/>
         </scene>
-        <!--Custom Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="9JI-aB-2HP">
             <objects>
-                <tabBarController id="TDw-0j-Kvg" customClass="CustomTabBarController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="TDw-0j-Kvg" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ec7-JD-ooK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ss8-Yt-Ytf" kind="relationship" relationship="viewControllers" id="MgS-TI-yLD"/>
-                        <segue destination="xiH-gz-4me" kind="relationship" relationship="viewControllers" id="8Mz-xx-NZR"/>
-                        <segue destination="aT3-Cf-jWL" kind="relationship" relationship="viewControllers" id="ELd-JE-Gcr"/>
+                        <segue destination="aT3-Cf-jWL" kind="relationship" relationship="viewControllers" id="hDM-ot-lCb"/>
+                        <segue destination="ss8-Yt-Ytf" kind="relationship" relationship="viewControllers" id="C9R-E5-8g4"/>
+                        <segue destination="xiH-gz-4me" kind="relationship" relationship="viewControllers" id="gfT-9c-cas"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wlp-SJ-CeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,7 +207,7 @@
                                     <segue destination="TDw-0j-Kvg" kind="show" identifier="UserCreated" id="7Oc-31-U7G"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-W6-dKN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-W6-dKN" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
                                 <frame key="frameInset" minX="65" minY="150" width="245" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -233,7 +233,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.86765998387798138" green="1" blue="0.85189702546939372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.66708243739999995" green="0.90172945140000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="createButton" destination="1Ye-qK-jhQ" id="pZ3-CU-3oJ"/>
@@ -258,12 +258,70 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="PXG-c5-tUa" kind="relationship" relationship="rootViewController" id="dnL-33-Fa0"/>
+                        <segue destination="pVI-wy-Y1G" kind="relationship" relationship="rootViewController" id="PH0-F8-oKp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T09-b8-e28" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5138" y="-2205"/>
+            <point key="canvasLocation" x="-4178" y="-4655"/>
+        </scene>
+        <!--New Group-->
+        <scene sceneID="9Ar-SD-743">
+            <objects>
+                <viewController id="pVI-wy-Y1G" customClass="NewGroupViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sbx-P8-rWi"/>
+                        <viewControllerLayoutGuide type="bottom" id="uAz-sk-6LX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KG3-J5-QFV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib6-xk-yd4">
+                                <frame key="frameInset" minX="19" minY="89" width="56" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kwn-VM-IHf">
+                                <frame key="frameInset" minX="79" minY="84" width="277" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="SelectAllTextWithSender:" destination="pVI-wy-Y1G" eventType="touchDown" id="lbS-hz-sWE"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9T8-ph-hmR" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
+                                <frame key="frameInset" minX="79" minY="171" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Clear all"/>
+                                <connections>
+                                    <action selector="clearAllWithSender:" destination="pVI-wy-Y1G" eventType="touchDown" id="m8G-GZ-awu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eI-eJ-qng" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
+                                <frame key="frameInset" minX="204" minY="171" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <segue destination="PXG-c5-tUa" kind="show" identifier="UnwindNewGroup" id="vFT-vs-oju"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96269834844559588" green="0.55622247496901756" blue="0.53934711355323028" alpha="0.62604533450704214" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Group" id="iWx-nF-dqN"/>
+                    <connections>
+                        <outlet property="titleTextView" destination="Kwn-VM-IHf" id="UTb-TR-1GM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Ia-K14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3084" y="-4656"/>
         </scene>
         <!--Grocery requests-->
         <scene sceneID="C1n-Ja-uwJ">
@@ -281,7 +339,7 @@
                                     <frame key="frameInset" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
                                             <frame key="frameInset" minX="8" minY="3" width="49" height="49"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -399,19 +457,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select your avatar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-lA-2r9">
-                                <frame key="frameInset" minX="16" minY="20" width="343" height="59"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-lA-2r9">
+                                <frame key="frameInset" minX="16" minY="20" width="343" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Kjs-WY-3Lj">
-                                <frame key="frameInset" minX="16" minY="87" width="343" height="343"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Kjs-WY-3Lj" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
+                                <frame key="frameInset" minX="70" minY="131" width="235" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46A-eB-Jyv" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="70" minY="500" width="234" height="30"/>
+                                <frame key="frameInset" minX="71" minY="473" width="234" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose from gallery"/>
                                 <connections>
@@ -419,24 +477,43 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-f8-C2c" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="123" minY="447" width="128" height="30"/>
+                                <frame key="frameInset" minX="123" minY="413" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Camera"/>
                                 <connections>
                                     <action selector="openCameraButtonWithSender:" destination="xiH-gz-4me" eventType="touchUpInside" id="gpu-GD-yyg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQc-NI-XFI">
+                                <frame key="frameInset" minX="247" minY="131" width="58" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="camera"/>
+                                <connections>
+                                    <action selector="openPhotoLibraryButtonWithSender:" destination="xiH-gz-4me" eventType="touchUpInside" id="NGa-S5-yQ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJO-wt-3I6" customClass="RoundedButton" customModule="MyFirstApp" customModuleProvider="target">
+                                <frame key="frameInset" minX="104" minY="535" width="168" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="oZa-4b-tkU" kind="unwind" identifier="UnwindLogOut" unwindAction="backFromLogOutWithSeque:" id="vQO-sm-wxs"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.95489278720000004" green="0.8144524111" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.64076026269999997" green="1" blue="0.61512966469999997" alpha="0.453125" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="camera" id="mjc-cW-4Al"/>
+                    <tabBarItem key="tabBarItem" title="" image="user_tab" selectedImage="user_tab" id="mjc-cW-4Al"/>
                     <connections>
+                        <outlet property="greetingLabel" destination="jHN-lA-2r9" id="EGm-LB-Mzo"/>
                         <outlet property="imagePicked" destination="Kjs-WY-3Lj" id="eGg-r1-YmR"/>
+                        <outlet property="loginButtonView" destination="YJO-wt-3I6" id="vea-mo-WUs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEj-Wn-gue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oZa-4b-tkU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-4178.3999999999996" y="-2884.4077961019493"/>
+            <point key="canvasLocation" x="-4178.3999999999996" y="-2731.4842578710645"/>
         </scene>
         <!--Your group-->
         <scene sceneID="qmp-mS-Ekz">
@@ -454,7 +531,7 @@
                                     <frame key="frameInset" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-6O-chV">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-6O-chV" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
                                             <frame key="frameInset" minX="8" minY="3" width="49" height="49"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -487,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whq-WI-iCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4178.3999999999996" y="-2205.2473763118442"/>
+            <point key="canvasLocation" x="-1906" y="-4656"/>
         </scene>
     </scenes>
     <resources>
@@ -496,5 +573,6 @@
         <image name="delete.png" width="1200" height="1920"/>
         <image name="group" width="57" height="57"/>
         <image name="user" width="1600" height="1600"/>
+        <image name="user_tab" width="50" height="50"/>
     </resources>
 </document>

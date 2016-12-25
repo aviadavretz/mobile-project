@@ -54,7 +54,7 @@ class UserFirebaseDB {
     }
     
     private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
-        return User(key: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString, groupKey: values["groupKey"] as? NSString)
+        return User(key: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString, groupKey: values["groupKey"] as NSString?)
     }
     
     func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {

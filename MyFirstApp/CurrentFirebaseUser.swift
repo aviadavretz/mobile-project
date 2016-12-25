@@ -27,4 +27,13 @@ class CurrentFirebaseUser {
     private func getCurrentUser() -> FIRUser? {
         return FIRAuth.auth()?.currentUser
     }
+    
+    public func signOut() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out from Firebase: \(signOutError)")
+        }
+    }
 }

@@ -14,11 +14,10 @@ class GroupFirebaseDB {
     let rootNode = "groups"
     var databaseRef: FIRDatabaseReference!
     
-    // This array holds the userIds of all the group members
-    var groupMembers: Array<NSString> = []
+//    // This array holds the userIds of all the group members
+//    var groupMembers: Array<NSString> = []
     
-    // This variable is the cache for groups
-    var myGroup:Group? = nil
+    var groupCache: Dictionary<NSString, Group> = Dictionary<NSString, Group>()
     
     deinit {
         self.databaseRef.child(rootNode).removeAllObservers()
@@ -26,48 +25,51 @@ class GroupFirebaseDB {
     
     private init() {
         databaseRef = FIRDatabase.database().reference()
-        observeChildAddition()
-        observeChildDeletion()
+//        observeChildAddition()
+//        observeChildDeletion()
     }
     
-    private func observeChildAddition() {
-        databaseRef.child(rootNode).observe(FIRDataEventType.childAdded, with: { [weak self] (snapshot) -> Void in
-            guard let strongSelf = self else {return }
-            strongSelf.groupMembers.append(snapshot.key as NSString)
-            
-            strongSelf.notifyChanges()
-        })
+//    private func observeChildAddition() {
+//        databaseRef.child(rootNode).observe(FIRDataEventType.childAdded, with: { [weak self] (snapshot) -> Void in
+//            guard let strongSelf = self else {return }
+//            strongSelf.groupCache[.append(snapshot.key as NSString)
+//            
+//            strongSelf.notifyChanges()
+//        })
+//    }
+//    
+//    private func observeChildDeletion() {
+//        databaseRef.child(rootNode).observe(FIRDataEventType.childRemoved, with: { [weak self] (snapshot) -> Void in
+//            guard let strongSelf = self else {return }
+//            strongSelf.groupMembers.remove(at: strongSelf.getSnapshotIndex(key: snapshot.key as String)!)
+//            
+//            strongSelf.notifyChanges()
+//        })
+//    }
+    
+    func addMember(userId:NSString, forGroupId: NSString) {
+        self.databaseRef.child(rootNode).child(forGroupId as String).childByAutoId().setValue(userId)
     }
     
-    private func observeChildDeletion() {
-        databaseRef.child(rootNode).observe(FIRDataEventType.childRemoved, with: { [weak self] (snapshot) -> Void in
-            guard let strongSelf = self else {return }
-            strongSelf.groupMembers.remove(at: strongSelf.getSnapshotIndex(key: snapshot.key as String)!)
-            
-            strongSelf.notifyChanges()
-        })
-    }
-    
-    func addMember(userId:NSString) {
-        if (myGroup != nil) {
-            self.databaseRef.child(rootNode).child(myGroup?.key as! String).childByAutoId().setValue(userId)
+    func addGroup(group:Group, forUserId: NSString) {
+        // Make sure the user is in the group
+        if (!group.members.contains(forUserId)) {
+            group.members.append(forUserId)
         }
-    }
-    
-    func addGroup(group:Group, forUser: User) {
+        
         let values = loadValues(from: group)
         
         let generatedKey = self.databaseRef.child(rootNode).childByAutoId().key
         self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
         
-        UserFirebaseDB.sharedInstance.setGroup(forUserId: forUser.key as String, groupKey: generatedKey as String)
-        
-        self.myGroup = group
+        UserFirebaseDB.sharedInstance.setGroup(forUserId: forUserId as String, groupKey: generatedKey as String)
+
+        self.groupCache[generatedKey as NSString] = group
     }
     
-    private func getSnapshotIndex(key: String) -> Int? {
-        return groupMembers.index(where: { $0 as String == key })
-    }
+//    private func getSnapshotIndex(key: String) -> Int? {
+//        return groupMembers.index(where: { $0 as String == key })
+//    }
     
     private func notifyChanges() {
         NotificationCenter.default.post(name: NSNotification.Name("groupMembersModelChanged"), object: nil)
@@ -113,12 +115,12 @@ class GroupFirebaseDB {
     }
     
     func findGroupByKey(key: String, whenFinished: @escaping (_: Group?) -> Void) {
-        if (self.myGroup == nil) {
+        if (self.groupCache[key as NSString] == nil) {
             databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                 // Make sure the group was found in the database
                 if (!(snapshot.value is NSNull)) {
                     let group = self.extractGroup(key: snapshot.key, values: snapshot.value as! Dictionary<String, Any>)
-                    self.myGroup = group
+                    self.groupCache[key as NSString] = group
                     
                     whenFinished(group)
                 } else {
@@ -127,11 +129,11 @@ class GroupFirebaseDB {
             })
         }
         else {
-            whenFinished(self.myGroup!)
+            whenFinished(self.groupCache[key as NSString]!)
         }
     }
 
-    func getMembersCount() -> Int {
-        return groupMembers.count
-    }
+//    func getMembersCount() -> Int {
+//        return groupMembers.count
+//    }
 }

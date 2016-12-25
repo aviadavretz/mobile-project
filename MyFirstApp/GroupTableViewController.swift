@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class GroupTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var group:Group? = GroupFirebaseDB.sharedInstance.myGroup
+    var group:Group? = nil
     @IBOutlet var table: UITableView!
     
     override func viewDidLoad() {
@@ -20,10 +20,6 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
         
         table.delegate = self
         table.dataSource = self
-        
-//        initializeModel()
-//        registerRequestAddedObserver()
-//        registerRequestModifiedObserver()
     }
     
 //    private func initializeModel() {
@@ -106,10 +102,7 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
             
             // Fetch the user's group
             if let groupId = user?.groupKey {
-                GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in
-                    // TODO: This is shit, think how to make it better
-                    GroupFirebaseDB.sharedInstance.myGroup = group
-                })
+                GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in })
             }
         })
     }
@@ -131,7 +124,5 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
 //        }
 //    }
     
-//    @IBAction func backFromNewRequestController(seque:UIStoryboardSegue) {
-//        //        table.reloadData()
-//    }
+    @IBAction func backFromNewMemberController(seque:UIStoryboardSegue) {}
 }

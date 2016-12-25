@@ -85,26 +85,14 @@ class MainController: UIViewController, LoginButtonDelegate {
             
             hideSpinner()
             
-            addGroupStub(user: userFromDB!)
+            fetchAllGroupsForUser(user: userFromDB!)
         }
     }
     
-    private func addGroupStub(user:User) {
+    private func fetchAllGroupsForUser(user:User) {
+        // TODO: Change this to foreach, when user has multiple groups
         if let groupId = user.groupKey {
-            GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: {(group) in
-                if (group != nil) {
-                    // TODO: Not really necessary to repeat it
-                    GroupFirebaseDB.sharedInstance.myGroup = group
-                }
-            })
-        }
-        else {
-            // TODO: Don't just add it automatically
-            var members = Array<NSString>()
-            members.append(user.key)
-            
-            let newGroup = Group(key: "-1", title: "This is our group ya'll!", lists: Array<GroceryList>(), members: members)
-            GroupFirebaseDB.sharedInstance.addGroup(group: newGroup, forUser: user)
+            GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in })
         }
     }
 
@@ -184,15 +172,11 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        do {
-            try FIRAuth.auth()?.signOut()
-            FacebookAccessTokenCache.sharedInstance.clear()
-            createButton.isEnabled = false
-            elapseScreenData()
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError)")
-        }
+        CurrentFirebaseUser.sharedInstance.signOut()
+        FacebookAccessTokenCache.sharedInstance.clear()
+        
+        createButton.isEnabled = false
+        elapseScreenData()
     }
 
     private func elapseScreenData() {
@@ -208,5 +192,10 @@ class MainController: UIViewController, LoginButtonDelegate {
     @IBAction func Exit(sender: AnyObject) {
         // Exit the application
         exit(0)
+    }
+    
+    @IBAction func backFromLogOut(seque:UIStoryboardSegue) {
+        createButton.isEnabled = false
+        elapseScreenData()
     }
 }
