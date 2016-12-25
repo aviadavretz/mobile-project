@@ -312,7 +312,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.96269834844559588" green="0.55622247496901756" blue="0.53934711355323028" alpha="0.62604533450704214" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96269834844559588" green="0.6664443847672562" blue="0.63226258157767934" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Group" id="iWx-nF-dqN"/>
                     <connections>
@@ -457,7 +457,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-lA-2r9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-lA-2r9">
                                 <frame key="frameInset" minX="16" minY="20" width="343" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -484,10 +484,11 @@
                                     <action selector="openCameraButtonWithSender:" destination="xiH-gz-4me" eventType="touchUpInside" id="gpu-GD-yyg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQc-NI-XFI">
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQc-NI-XFI" customClass="CircleButton" customModule="MyFirstApp" customModuleProvider="target">
                                 <frame key="frameInset" minX="247" minY="131" width="58" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="camera"/>
+                                <color key="backgroundColor" white="1" alpha="0.348206426056338" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="openPhotoLibraryButtonWithSender:" destination="xiH-gz-4me" eventType="touchUpInside" id="NGa-S5-yQ2"/>
                                 </connections>
@@ -501,7 +502,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.64076026269999997" green="1" blue="0.61512966469999997" alpha="0.453125" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.79988547119167153" green="1" blue="0.7874569049913861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="user_tab" selectedImage="user_tab" id="mjc-cW-4Al"/>
                     <connections>
@@ -568,7 +569,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" width="57" height="57"/>
+        <image name="camera" width="40" height="40"/>
         <image name="cart" width="57" height="57"/>
         <image name="delete.png" width="1200" height="1920"/>
         <image name="group" width="57" height="57"/>

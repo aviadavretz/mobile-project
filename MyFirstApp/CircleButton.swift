@@ -16,5 +16,7 @@ class CircleButton: UIButton {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = (self.frame.size.width / 2)
         self.layer.borderColor = UIColor.white.cgColor
+        self.clipsToBounds = true
+        self.layer.backgroundColor = UIColor.white.cgColor
     }
 }
