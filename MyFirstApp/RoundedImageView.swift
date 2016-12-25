@@ -1,5 +1,5 @@
 //
-//  CircleImageView.swift
+//  RoundedImage.swift
 //  MyFirstApp
 //
 //  Created by admin on 25/12/2016.
@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-class CircleButton: UIButton {
+class RoundedImageView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.borderWidth = 0.5
-        self.layer.cornerRadius = (self.frame.size.width / 2)
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 0
+        self.layer.cornerRadius = self.frame.size.width / 4.5
         self.clipsToBounds = true
     }
 }
