@@ -7,12 +7,11 @@
 //
 
 import UIKit
-class GroceryRequestTableViewCell: UITableViewCell {
+class GroceryRequestTableViewCell: ImageTableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var imagez: UIImageView!
     @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {

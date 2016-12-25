@@ -90,10 +90,12 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
         
+        cell.showSpinner()
+        
         // Fetches the appropriate item for the data source layout.
         let item = db!.getGroceryRequest(row: indexPath.row)
         let userId = item?.userId as! String
-        
+
         // Update the views
         updateUserDetailsInCell(cell: cell, userId: userId)
         updateUserImageInCell(cell: cell, userId: userId)
@@ -117,6 +119,8 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
             } else {
                 cell.imagez.image = UIImage(named: "user.png")
             }
+            
+            cell.hideSpinner()
         })
     }
 

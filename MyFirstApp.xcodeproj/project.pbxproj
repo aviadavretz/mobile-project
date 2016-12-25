@@ -53,6 +53,9 @@
 		847D46BE1E0551DA00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
 		847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
 		847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */; };
+		8483141E1E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */; };
+		8483141F1E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */; };
+		848314201E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */; };
 		849279CF1E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D01E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
 		849279D11E0321670095671E /* GroceryFirebaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849279CE1E0321670095671E /* GroceryFirebaseDB.swift */; };
@@ -147,6 +150,7 @@
 		847BEFB61E1041960007A26A /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		847BEFBA1E104A110007A26A /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		847D46BD1E0551DA00A3D771 /* UserFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirebaseDB.swift; sourceTree = "<group>"; };
+		8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		849279CE1E0321670095671E /* GroceryFirebaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryFirebaseDB.swift; sourceTree = "<group>"; };
 		849279D21E0370950095671E /* MyFirstApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyFirstApp.entitlements; sourceTree = "<group>"; };
 		84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				84DCC3D91DFB57720092586E /* MainController.swift */,
 				8443586B1DFB3DC100B14DB9 /* GroceryRequest */,
 				8443586A1DFB3DB400B14DB9 /* GroceryList */,
+				8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				84FA51641E044C14005943AC /* ImageDB.swift in Sources */,
 				847BEFBB1E104A120007A26A /* CircleButton.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
+				8483141E1E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */,
 				84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84FA51601E044724005943AC /* CameraViewController.swift in Sources */,
 				58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */,
@@ -710,6 +716,7 @@
 				84FDDE181E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
 				847D46BF1E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
+				8483141F1E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */,
 				5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */,
 				58603A6BAE18AEA007F812E2 /* FacebookFriendsFinder.swift in Sources */,
 				84BF512A1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
@@ -743,6 +750,7 @@
 				84FDDE191E0D514800C63138 /* GroupFirebaseDB.swift in Sources */,
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
 				847D46C01E0551DB00A3D771 /* UserFirebaseDB.swift in Sources */,
+				848314201E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */,
 				58603FF603AD1699CAC0BAD2 /* GroceryRequestsDB.swift in Sources */,
 				586038FBCD5D3FC6360F2506 /* FacebookFriendsFinder.swift in Sources */,
 				84BF512B1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,

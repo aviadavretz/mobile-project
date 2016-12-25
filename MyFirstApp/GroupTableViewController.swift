@@ -86,6 +86,8 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMemberCell", for: indexPath) as! GroupMemberCell
         
+        cell.showSpinner()
+        
         // Fetches the appropriate item for the data source layout.
         let item = group?.members[indexPath.row]
         
@@ -114,6 +116,8 @@ class GroupTableViewController : UIViewController, UITableViewDataSource, UITabl
             } else {
                 cell.imagez.image = UIImage(named: "user.png")
             }
+            
+            cell.hideSpinner()
         })
     }
     

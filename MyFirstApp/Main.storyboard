@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LTb-7a-gkN" id="wAL-ya-649">
-                                    <frame key="frameInset" width="342" height="44"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yD-2S-5zm">
@@ -336,7 +336,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLp-FI-m9h" id="BgW-5d-7D8">
-                                    <frame key="frameInset" width="375" height="54"/>
+                                    <frame key="frameInset" width="375" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -357,12 +357,18 @@
                                             <color key="textColor" red="0.53576343910000002" green="0.53576343910000002" blue="0.53576343910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-Vr-xsG">
+                                            <frame key="frameInset" minX="14" minY="9" width="37" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="color" red="0.38331074180000002" green="0.55303598229999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imagez" destination="IDi-S3-Efe" id="dzX-Wt-9qx"/>
                                     <outlet property="itemLabel" destination="jQm-S4-OGx" id="dqh-GO-oNi"/>
                                     <outlet property="nameLabel" destination="ENQ-ST-tEs" id="yxo-c1-Ha6"/>
+                                    <outlet property="pleaseWait" destination="sSF-Vr-xsG" id="8Ay-gG-cjt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -529,7 +535,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmd-AN-7v2" id="h7J-zk-aJV">
-                                    <frame key="frameInset" width="375" height="54"/>
+                                    <frame key="frameInset" width="375" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-6O-chV" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -543,11 +549,17 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zla-7Y-urU">
+                                            <frame key="frameInset" minX="14" minY="9" width="37" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="color" red="0.38331074180000002" green="0.55303598229999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imagez" destination="c8G-6O-chV" id="cZo-aF-VlZ"/>
+                                    <outlet property="imagez" destination="c8G-6O-chV" id="y7e-6S-yoO"/>
                                     <outlet property="nameLabel" destination="rcx-r1-RDm" id="FzY-Gz-1kJ"/>
+                                    <outlet property="pleaseWait" destination="zla-7Y-urU" id="j8b-Nh-fXZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
