@@ -77,7 +77,20 @@ class GroupFirebaseDB {
 //    }
     
     func addListToGroup(listKey:NSString, forGroupKey:NSString) {
-        self.databaseRef.child(rootNode).child(forGroupKey as String).child(listNode).child(listKey as String).setValue(listKey)
+        // TODO: Find a better way to insert into the db (the keys should be 0,1,2...)
+        let group = groupCache[forGroupKey]
+        group?.lists.append(listKey)
+        
+        updateGroup(group: group!)
+    }
+    
+    private func updateGroup(group: Group) {
+        let values = loadValues(from: group)
+        
+        let key = group.key
+        self.databaseRef.child(rootNode).child(key as String).setValue(values)
+        
+        self.groupCache[key] = group
     }
     
     private func notifyChanges() {
@@ -97,8 +110,18 @@ class GroupFirebaseDB {
         self.databaseRef.child(rootNode).child(userId).removeValue()
     }
     
+//    public func removeList(listKey: NSString, fromGroupKey: NSString) {
+//        self.databaseRef.child(rootNode).child(fromGroupKey as String).child(listNode).child(listKey as String).removeValue()
+//    }
+    
     public func removeList(listKey: NSString, fromGroupKey: NSString) {
-        self.databaseRef.child(rootNode).child(fromGroupKey as String).child(listNode).child(listKey as String).removeValue()
+        // TODO: Find a better way to remove from the db (the keys should be 0,1,2...)
+        let group = groupCache[fromGroupKey]
+        let index = group?.lists.index(of: listKey)
+        
+        group?.lists.remove(at: index!)
+        
+        updateGroup(group: group!)
     }
     
 //    func getGroceryList(row:Int) -> GroceryList? {
