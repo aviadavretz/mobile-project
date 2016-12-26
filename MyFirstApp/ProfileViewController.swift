@@ -1,5 +1,5 @@
 //
-//  CameraViewController.swift
+//  ProfileViewController.swift
 //  MyFirstApp
 //
 //  Created by Naveh Ohana on 14/12/2016.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FacebookLogin
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LoginButtonDelegate
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LoginButtonDelegate
 {
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var loginButtonView: UIButton!
@@ -20,7 +20,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chooseImageDialog.isHidden = true
+        hideChooseImageDialog()
         
         // Get the User & Image (this will fetch only from cache, because the user was already fetched from DB)
         UserFirebaseDB.sharedInstance.findUserByKey( key: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: refreshLabels)

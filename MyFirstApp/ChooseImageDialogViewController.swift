@@ -54,7 +54,7 @@ class ChooseImageDialogViewController: UIViewController, UIImagePickerController
             // Save the image only if one was selected
             if (image != nil) {
                 // Get a reference to the destination view controller
-                let destinationVC:CameraViewController = segue.destination as! CameraViewController
+                let destinationVC:ProfileViewController = segue.destination as! ProfileViewController
             
                 destinationVC.refreshImage(image: image)
             }

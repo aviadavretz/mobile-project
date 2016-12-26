@@ -13,22 +13,21 @@ class GroceryList {
     var title:NSString
     var date:NSDate
     var requests = Array<GroceryRequest>()
+    var groupKey:NSString
     
-    init(title:NSString) {
+    init(title:NSString, groupKey:NSString) {
         self.id = "-1"
         self.title = title
+        self.groupKey = groupKey
         
         // This gets the current date and time at GMT+0 timezone
         self.date = NSDate()
     }
 
-    init(id: NSString, title:NSString, date: NSDate) {
+    init(id: NSString, title:NSString, date: NSDate, groupKey: NSString) {
         self.id = id
         self.title = title
         self.date = date
-    }
-    
-    func addRequest(request:GroceryRequest) {
-        requests.append(request)
+        self.groupKey = groupKey
     }
 }

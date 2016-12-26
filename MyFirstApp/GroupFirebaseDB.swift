@@ -12,6 +12,7 @@ import FirebaseDatabase
 class GroupFirebaseDB {
     static let sharedInstance: GroupFirebaseDB = { GroupFirebaseDB() } ()
     let rootNode = "groups"
+    let listNode = "lists"
     var databaseRef: FIRDatabaseReference!
     
 //    // This array holds the userIds of all the group members
@@ -48,6 +49,7 @@ class GroupFirebaseDB {
 //    }
     
     func addMember(userId:NSString, forGroupId: NSString) {
+        // TODO:(?) add .child(memberNode)
         self.databaseRef.child(rootNode).child(forGroupId as String).childByAutoId().setValue(userId)
     }
     
@@ -63,6 +65,9 @@ class GroupFirebaseDB {
         self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
         
         UserFirebaseDB.sharedInstance.setGroup(forUserId: forUserId as String, groupKey: generatedKey as String)
+        
+        // Update the group's key in the cache
+        group.key = generatedKey as NSString
 
         self.groupCache[generatedKey as NSString] = group
     }
@@ -70,6 +75,10 @@ class GroupFirebaseDB {
 //    private func getSnapshotIndex(key: String) -> Int? {
 //        return groupMembers.index(where: { $0 as String == key })
 //    }
+    
+    func addListToGroup(listKey:NSString, forGroupKey:NSString) {
+        self.databaseRef.child(rootNode).child(forGroupKey as String).child(listNode).child(listKey as String).setValue(listKey)
+    }
     
     private func notifyChanges() {
         NotificationCenter.default.post(name: NSNotification.Name("groupMembersModelChanged"), object: nil)
@@ -88,6 +97,10 @@ class GroupFirebaseDB {
         self.databaseRef.child(rootNode).child(userId).removeValue()
     }
     
+    public func removeList(listKey: NSString, fromGroupKey: NSString) {
+        self.databaseRef.child(rootNode).child(fromGroupKey as String).child(listNode).child(listKey as String).removeValue()
+    }
+    
 //    func getGroceryList(row:Int) -> GroceryList? {
 //        if (row < getListCount()) {
 //            let groceryListKey = groceryLists[row].key as String
@@ -104,13 +117,13 @@ class GroupFirebaseDB {
 
         // Avoid NullPointerExceptions
         if (lists == nil) {
-            lists = Array<GroceryList>()
+            lists = Array<NSString>()
         }
         
         return Group(
             key: key as NSString,
             title: values["title"]! as! NSString,
-            lists: lists as! Array<GroceryList>,
+            lists: lists as! Array<NSString>,
             members: values["members"] as! Array<NSString>)
     }
     

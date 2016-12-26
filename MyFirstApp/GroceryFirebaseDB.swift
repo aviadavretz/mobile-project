@@ -44,11 +44,20 @@ class GroceryFirebaseDB {
         })
     }
     
-    func addList(list:GroceryList) {
+    func addList(list:GroceryList) -> String {
         let values = loadValues(from: list)
 
-        self.databaseRef.child(rootNode).childByAutoId().setValue(values)
+        let generatedKey = self.databaseRef.child(rootNode).childByAutoId().key
+        self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
+        
+        return generatedKey
     }
+    
+//    func addList(list:GroceryList, forGroupId:NSString) {
+//        let values = loadValues(from: list)
+//        
+//        self.databaseRef.child(rootNode).childByAutoId().setValue(values)
+//    }
 
     private func getSnapshotIndex(key: String) -> Int? {
         return groceryLists.index(where: {$0.key == key})
@@ -62,10 +71,11 @@ class GroceryFirebaseDB {
         var values = Dictionary<String, String>()
         values["title"] = from.title as String
         values["date"] = getStringFromDate(date: from.date as Date, timeZone: TimeZone(secondsFromGMT: 0)!)
+        values["groupKey"] = from.groupKey as String
 
         return values
     }
-
+    
     func deleteList(id: String) {
         self.databaseRef.child(rootNode).child(id).removeValue()
     }
@@ -103,7 +113,8 @@ class GroceryFirebaseDB {
                 title: values["title"]! as! NSString,
                 date: getDateFromString(
                         date: values["date"]! as! String,
-                        timeZone: TimeZone(secondsFromGMT: 0 - getCurrentTimeZoneSecondsFromGMT())!) as NSDate)
+                        timeZone: TimeZone(secondsFromGMT: 0 - getCurrentTimeZoneSecondsFromGMT())!) as NSDate,
+                groupKey: values["groupKey"] as! NSString)
     }
 
     private func getCurrentTimeZoneSecondsFromGMT() -> Int {

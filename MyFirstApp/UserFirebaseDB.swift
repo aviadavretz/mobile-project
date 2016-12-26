@@ -73,6 +73,10 @@ class UserFirebaseDB {
     }
     
     func setGroup(forUserId: String, groupKey: String) {
+        // Set in database
         databaseRef.child(rootNode).child(forUserId).updateChildValues(["groupKey" : groupKey])
+        
+        // Set in cache as well
+        userCache[forUserId]?.groupKey = groupKey as NSString?
     }
 }
