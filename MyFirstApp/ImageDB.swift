@@ -3,7 +3,7 @@
 //  MyFirstApp
 //
 //  Created by admin on 16/12/2016.
-//  Copyright © 2016 Naveh Ohana. All rights reserved.
+//  Copyright © 2016 Aviad Avretz. All rights reserved.
 //
 
 import Foundation
