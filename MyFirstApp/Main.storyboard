@@ -273,12 +273,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="pVI-wy-Y1G" kind="relationship" relationship="rootViewController" id="PH0-F8-oKp"/>
+                        <segue destination="kT7-p1-jWb" kind="relationship" relationship="rootViewController" id="lCy-oa-Zgi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T09-b8-e28" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4178" y="-4655"/>
+            <point key="canvasLocation" x="-4465" y="-4657"/>
         </scene>
         <!--New Group-->
         <scene sceneID="9Ar-SD-743">
@@ -323,7 +323,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <segue destination="PXG-c5-tUa" kind="show" identifier="UnwindNewGroup" id="vFT-vs-oju"/>
+                                    <segue destination="BoO-Rx-zZQ" kind="unwind" identifier="UnwindNewGroup" unwindAction="backFromNewGroupControllerWithSeque:" id="Zza-G5-38Y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -335,8 +335,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Ia-K14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BoO-Rx-zZQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3084" y="-4656"/>
+            <point key="canvasLocation" x="-2434" y="-5195"/>
         </scene>
         <!--Grocery Requests-->
         <scene sceneID="C1n-Ja-uwJ">
@@ -547,10 +548,61 @@
             </objects>
             <point key="canvasLocation" x="-4178.3999999999996" y="-2731.4842578710645"/>
         </scene>
+        <!--Your Groups-->
+        <scene sceneID="c9d-qi-j1q">
+            <objects>
+                <tableViewController storyboardIdentifier="GroupsTableViewController" id="kT7-p1-jWb" customClass="GroupsTableViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="OKB-dA-sSS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupTableViewCell" id="8Mk-gF-0UI" customClass="GroupTableViewCell" customModule="MyFirstApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Mk-gF-0UI" id="9sW-JS-uiZ">
+                                    <frame key="frameInset" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd6-8h-UXE">
+                                            <frame key="frameInset" minX="35" minY="11" width="307" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Cd6-8h-UXE" id="JZ8-PB-wXj"/>
+                                    <segue destination="PXG-c5-tUa" kind="show" identifier="GroupMembers" id="be5-nl-CWt"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kT7-p1-jWb" id="eo2-TY-19A"/>
+                            <outlet property="delegate" destination="kT7-p1-jWb" id="oRU-2y-LjT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Groups" id="Cv0-M7-eCj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="k0D-Zf-dD6">
+                            <connections>
+                                <segue destination="pVI-wy-Y1G" kind="show" id="l3F-c3-WJg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="OKB-dA-sSS" id="fXX-ls-zEF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xdu-gj-31F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3526" y="-4657"/>
+        </scene>
         <!--Your group-->
         <scene sceneID="qmp-mS-Ekz">
             <objects>
-                <viewController storyboardIdentifier="GroupTableViewController" id="PXG-c5-tUa" customClass="GroupTableViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupMembersTableViewController" id="PXG-c5-tUa" customClass="GroupMembersTableViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="9QL-OB-x8t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -602,7 +654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whq-WI-iCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1906" y="-4656"/>
+            <point key="canvasLocation" x="-1681" y="-4698"/>
         </scene>
         <!--Choose Image Dialog View Controller-->
         <scene sceneID="dfL-Cd-SWj">
@@ -666,8 +718,8 @@
             <objects>
                 <viewController id="gUb-LY-kOm" customClass="ChooseGroupDialogViewController" customModule="MyFirstApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pkh-9a-DeX"/>
-                        <viewControllerLayoutGuide type="bottom" id="6tD-G1-C6l"/>
+                        <viewControllerLayoutGuide type="top" id="QJC-5D-Ebj"/>
+                        <viewControllerLayoutGuide type="bottom" id="lGp-ic-M4T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eQL-XW-4xe">
                         <rect key="frame" x="0.0" y="0.0" width="308" height="284"/>

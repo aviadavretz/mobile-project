@@ -28,22 +28,14 @@ class NewGroceryListViewController: UIViewController {
     }
     
     private func chooseFirstGroup() {
-        // Fetch the user from cache
-        UserFirebaseDB.sharedInstance.findUserByKey(key: CurrentFirebaseUser.sharedInstance.getId()!) { (user) in
-            // TODO: Get user!.groupKeys!.first
-            let firstGroupKey = user!.groupKey!
-            
-            // Fetch the group from cache
-            GroupFirebaseDB.sharedInstance.findGroupByKey(key: firstGroupKey as String, whenFinished: { (group) in
-                self.refreshGroup(group: group!)
-            })
-        }
+        UserGroupsDB(userKey: CurrentFirebaseUser.sharedInstance.getId()! as NSString).findFirstGroup(whenFound: refreshGroup)
     }
     
-    public func refreshGroup(group: Group) {
-        self.groupId = group.key
-        
-        groupButton.setTitle(group.title as String?, for: .normal)
+    public func refreshGroup(group: Group?) {
+        if group != nil {
+            self.groupId = group!.key
+            groupButton.setTitle(group!.title as String?, for: .normal)
+        }
     }
     
     @IBAction func showChooseGroupDialog(sender: AnyObject) {
@@ -60,7 +52,7 @@ class NewGroceryListViewController: UIViewController {
             
             let list:GroceryList = GroceryList(title: title, groupKey: groupId);
             let generatedKey = GroceryFirebaseDB.sharedInstance.addList(list: list)
-            GroupFirebaseDB.sharedInstance.addListToGroup(listKey: generatedKey as NSString, forGroupKey: groupId)
+            GroupFirebaseDB.sharedInstance.addList(toGroupKey: groupId, listKey: generatedKey as NSString)
         }
     }
 

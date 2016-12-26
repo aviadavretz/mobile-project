@@ -52,12 +52,6 @@ class GroceryFirebaseDB {
         
         return generatedKey
     }
-    
-//    func addList(list:GroceryList, forGroupId:NSString) {
-//        let values = loadValues(from: list)
-//        
-//        self.databaseRef.child(rootNode).childByAutoId().setValue(values)
-//    }
 
     private func getSnapshotIndex(key: String) -> Int? {
         return groceryLists.index(where: {$0.key == key})

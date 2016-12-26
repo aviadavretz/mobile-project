@@ -28,7 +28,7 @@ class UserFirebaseDB {
             databaseRef.child(rootNode).child(key).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                     // Make sure the user was found in the database
                     if (!(snapshot.value is NSNull)) {
-                        let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, String>)
+                        let user = self.extractUser(key: snapshot.key as NSString, values: snapshot.value as! Dictionary<String, Any>)
                         self.userCache[key] = user
                         
                         whenFinished(user)
@@ -47,14 +47,14 @@ class UserFirebaseDB {
                         of: FIRDataEventType.value, with: {(snapshot) in
                     if !(snapshot.value is NSNull) {
                         let userSnapshot = (snapshot.value as! Dictionary<String, Any>).first!
-                        let user = self.extractUser(key: userSnapshot.key as NSString, values: userSnapshot.value as! Dictionary<String, String>)
+                        let user = self.extractUser(key: userSnapshot.key as NSString, values: userSnapshot.value as! Dictionary<String, Any>)
                         whenFinished(user)
                     }
                 })
     }
     
-    private func extractUser(key: NSString, values: Dictionary<String, String>) -> User {
-        return User(key: key, name: values["name"]! as NSString, facebookId: values["facebookId"]! as NSString, groupKey: values["groupKey"] as NSString?)
+    private func extractUser(key: NSString, values: Dictionary<String, Any>) -> User {
+        return User(key: key, name: values["name"] as? NSString, facebookId: values["facebookId"] as? NSString)
     }
     
     func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {
@@ -67,16 +67,7 @@ class UserFirebaseDB {
         var values = Dictionary<String, String>()
         values["name"] = from.name as? String
         values["facebookId"] = from.facebookId as? String
-        values["groupKey"] = from.groupKey as? String
         
         return values
-    }
-    
-    func setGroup(forUserId: String, groupKey: String) {
-        // Set in database
-        databaseRef.child(rootNode).child(forUserId).updateChildValues(["groupKey" : groupKey])
-        
-        // Set in cache as well
-        userCache[forUserId]?.groupKey = groupKey as NSString?
     }
 }

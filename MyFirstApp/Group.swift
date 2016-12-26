@@ -11,13 +11,9 @@ import Foundation
 class Group {
     var key:NSString
     var title:NSString?
-    var lists = Array<NSString>()
-    var members = Array<NSString>()
     
-    init(key: NSString, title:NSString, lists: Array<NSString>, members: Array<NSString>) {
+    init(key: NSString, title:NSString) {
         self.key = key
         self.title = title
-        self.lists = lists
-        self.members = members
     }
 }

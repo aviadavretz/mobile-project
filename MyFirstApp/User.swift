@@ -12,12 +12,10 @@ class User {
     var name:NSString?
     var key:NSString
     var facebookId:NSString?
-    var groupKey:NSString?
 
-    init(key: NSString, name: NSString?, facebookId: NSString?, groupKey:NSString?) {
+    init(key: NSString, name: NSString?, facebookId: NSString?) {
         self.key = key
         self.name = name
         self.facebookId = facebookId
-        self.groupKey = groupKey
     }
 }

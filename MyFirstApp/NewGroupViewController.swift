@@ -30,13 +30,7 @@ class NewGroupViewController: UIViewController {
         if (segue.identifier == "UnwindNewGroup") {
             let title = titleTextView.text! as NSString
             
-            let group:Group = Group(key: "-1", title:title, lists: Array<NSString>(), members: Array<NSString>())
-            
-            GroupFirebaseDB.sharedInstance.addGroup(group: group, forUserId: CurrentFirebaseUser.sharedInstance.getId()! as NSString)
-            
-            // Get a reference to the destination view controller
-            let destinationVC:GroupTableViewController = segue.destination as! GroupTableViewController
-            destinationVC.group = group
+            GroupFirebaseDB.sharedInstance.addGroup(groupTitle: title, forUserKey: CurrentFirebaseUser.sharedInstance.getId()! as NSString)
         }
     }
     

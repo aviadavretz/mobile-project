@@ -84,15 +84,6 @@ class MainController: UIViewController, LoginButtonDelegate {
             refreshLabels()
             
             hideSpinner()
-            
-            fetchAllGroupsForUser(user: userFromDB!)
-        }
-    }
-    
-    private func fetchAllGroupsForUser(user:User) {
-        // TODO: Change this to foreach, when user has multiple groups
-        if let groupId = user.groupKey {
-            GroupFirebaseDB.sharedInstance.findGroupByKey(key: groupId as String, whenFinished: { (group) in })
         }
     }
 
@@ -165,8 +156,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     private func createUser() {
         let newUser = User(key: CurrentFirebaseUser.sharedInstance.getId()! as NSString,
                            name: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.displayName! as NSString,
-                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString,
-                           groupKey: nil)
+                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString)
 
         UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.loadUserData()})
     }
@@ -174,7 +164,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
         CurrentFirebaseUser.sharedInstance.signOut()
         FacebookAccessTokenCache.sharedInstance.clear()
-        
+
         createButton.isEnabled = false
         elapseScreenData()
     }
@@ -193,7 +183,7 @@ class MainController: UIViewController, LoginButtonDelegate {
         // Exit the application
         exit(0)
     }
-    
+
     @IBAction func backFromLogOut(seque:UIStoryboardSegue) {
         createButton.isEnabled = false
         elapseScreenData()

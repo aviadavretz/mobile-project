@@ -12,7 +12,6 @@ class GroceryList {
     var id:NSString
     var title:NSString
     var date:NSDate
-    var requests = Array<GroceryRequest>()
     var groupKey:NSString
     
     init(title:NSString, groupKey:NSString) {

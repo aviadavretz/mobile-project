@@ -140,7 +140,7 @@ class GroceryListTableViewController : UITableViewController {
         let list = db.getGroceryList(row: row)!
         
         db.deleteList(id: list.id as String)
-        GroupFirebaseDB.sharedInstance.removeList(listKey: list.id, fromGroupKey: list.groupKey)
+        GroupFirebaseDB.sharedInstance.removeList(fromGroupKey: list.groupKey, listKey: list.id)
     }
     
     @IBAction func backFromNewListController(seque:UIStoryboardSegue) {
