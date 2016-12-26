@@ -7,9 +7,6 @@ import Foundation
 import FirebaseDatabase
 
 class GroceryRequestsDB {
-    static let requestAddedNotification = "groceryRequestAdded"
-    static let requestModifiedNotification = "groceryRequestModified"
-
     let rootNode = "grocery-lists"
     let requestsNode = "requests"
 
@@ -20,31 +17,27 @@ class GroceryRequestsDB {
         databaseRef = FIRDatabase.database().reference(withPath: "\(rootNode)/\(listKey)/\(requestsNode)")
     }
 
-    func observeRequestAddition() {
+    func observeRequestAddition(whenRequestAdded: @escaping (_: Int) -> Void) {
         databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
             let addedRequest = self.getGroceryRequestFromSnapshot(snapshot as FIRDataSnapshot)!
 
             self.groceryRequests.append(addedRequest)
-            self.notifyObservers(index: self.groceryRequests.count - 1, notificationType: GroceryRequestsDB.requestAddedNotification)
+            whenRequestAdded(self.groceryRequests.count - 1)
         })
     }
 
-    func observeRequestModification() {
+    func observeRequestModification(whenRequestModified: @escaping (_: Int) -> Void) {
         databaseRef.observe(FIRDataEventType.childChanged, with: { (snapshot) in
             let updatedRequest = self.getGroceryRequestFromSnapshot(snapshot as FIRDataSnapshot)!
             let updatedIndex = self.findRequestIndex(id: updatedRequest.id)!
 
             self.groceryRequests[updatedIndex] = updatedRequest
-            self.notifyObservers(index: updatedIndex, notificationType: GroceryRequestsDB.requestModifiedNotification)
+            whenRequestModified(updatedIndex)
         })
     }
 
     func removeObservers() {
         databaseRef.removeAllObservers()
-    }
-
-    private func notifyObservers(index: Int, notificationType: String) {
-        NotificationCenter.default.post(name: NSNotification.Name(notificationType), object: nil, userInfo: ["row" : index])
     }
 
     private func findRequestIndex(id: NSString) -> Int? {
