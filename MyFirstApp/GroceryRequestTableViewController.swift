@@ -22,26 +22,67 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         table.dataSource = self
 
         initializeModel()
+        registerRequestAddedObserver()
+        registerRequestModifiedObserver()
+        
+        // tapRecognizer
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        self.view.addGestureRecognizer(longPressRecognizer)
     }
 
     private func initializeModel() {
         db = GroceryRequestsDB(listKey: list!.id)
-        db!.observeRequestAddition(whenRequestAdded: requestAdded)
-        db!.observeRequestModification(whenRequestModified: requestModified)
+        db!.observeRequestAddition()
+        db!.observeRequestModification()
     }
 
-    private func requestAdded(requestIndex: Int) {
-        table.insertRows(at: [IndexPath(row: requestIndex, section: 0)],
+    private func registerRequestAddedObserver() {
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(GroceryRequestTableViewController.requestAdded(notification:)),
+                name: NSNotification.Name(GroceryRequestsDB.requestAddedNotification),
+                object: nil)
+    }
+
+    private func registerRequestModifiedObserver() {
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(GroceryRequestTableViewController.requestModified(notification:)),
+                name: NSNotification.Name(GroceryRequestsDB.requestModifiedNotification),
+                object: nil)
+    }
+
+    @objc private func requestAdded(notification: Notification) {
+        guard let userInfo = notification.userInfo else {
+            table.reloadData()
+            return
+        }
+        
+        // TODO: Hello, Aviad.
+        // TODO: How are you?
+        // TODO: YOUR BUG THROWS AN EXCEPTION IN THE FOLLOWING LINE.
+        // TODO: A-HOLE
+        table.insertRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
                 with: UITableViewRowAnimation.automatic)
     }
 
-    private func requestModified(requestIndex: Int) {
-        table.reloadRows(at: [IndexPath(row: requestIndex, section: 0)],
+    @objc private func requestModified(notification: Notification) {
+        guard let userInfo = notification.userInfo else {
+            table.reloadData()
+            return
+        }
+
+        table.reloadRows(at: [IndexPath(row: userInfo["row"] as! Int, section: 0)],
                 with: UITableViewRowAnimation.automatic)
     }
 
     deinit {
         db!.removeObservers()
+        unregisterObservers()
+    }
+
+    private func unregisterObservers() {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK:  UITextFieldDelegate Methods
@@ -57,18 +98,22 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
         
+        manageCell(cell: cell, row: indexPath.row)
+        
+        return cell
+    }
+    
+    private func manageCell(cell: GroceryRequestTableViewCell, row: Int) {
         cell.showSpinner()
         
         // Fetches the appropriate item for the data source layout.
-        let item = db!.getGroceryRequest(row: indexPath.row)
+        let item = db!.getGroceryRequest(row: row)
         let userId = item?.userId as! String
-
+        
         // Update the views
         updateUserDetailsInCell(cell: cell, userId: userId)
         updateUserImageInCell(cell: cell, userId: userId)
         updateItemNameInCell(cell: cell, item: item!)
-        
-        return cell
     }
 
     func updateUserDetailsInCell(cell: GroceryRequestTableViewCell, userId: String) {
@@ -118,6 +163,34 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let request = db!.getGroceryRequest(row: indexPath.row) {
             db!.toggleRequestPurchased(request: request)
+        }
+    }
+    
+    // Called when long press occurred
+    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            
+            // Get the path in which the long press occured
+            if let indexPath = table.indexPathForRow(at: touchPoint) {
+                // Get the referenced request
+                if let request = db!.getGroceryRequest(row: indexPath.row) {
+                    // Make sure the current user created the request
+                    if (request.userId.isEqual(to: CurrentFirebaseUser.sharedInstance.getId()!)) {
+                        // Table view cells are reused and should be dequeued using a cell identifier.
+                        let cell = table.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
+                        
+                        manageCell(cell: cell, row: indexPath.row)
+                        
+                        cell.startEditing(whenFinishedEditing: { (newItemName) in
+                            request.itemName = newItemName as NSString
+                            
+                            // Save the new item name
+                            self.db!.updateRequestItemName(request: request, index: indexPath.row)
+                        })
+                    }
+                }
+            }
         }
     }
 
