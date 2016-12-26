@@ -82,4 +82,8 @@ class GroceryRequestsDB {
     func toggleRequestPurchased(request: GroceryRequest) {
         databaseRef.child(request.id as String).updateChildValues(["purchased" : (!request.purchased).description])
     }
+    
+    func updateRequestItemName(request: GroceryRequest, index: Int) {
+        databaseRef.child(request.id as String).updateChildValues(["itemName" : request.itemName])
+    }
 }
