@@ -114,7 +114,8 @@ class MainController: UIViewController, LoginButtonDelegate {
             print("User cancelled login.")
         case .success( _, let declinedPermissions, let accessToken):
             if declinedPermissions.count > 0 {
-                // TODO : Show that asshole an angry message
+                showCantDeclinePermissionsAlert()
+                AccessToken.current = nil
             }
             else {
                 showSpinner()
@@ -123,6 +124,15 @@ class MainController: UIViewController, LoginButtonDelegate {
                 FacebookAccessTokenCache.sharedInstance.store(accessToken)
             }
         }
+    }
+
+    private func showCantDeclinePermissionsAlert() {
+        let alert = UIAlertController(
+                title: "Sorry!",
+                message: "All permissions must be approved in order to use this app",
+                preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     private func loginToFirebase(authenticationToken: String, whenFinished: @escaping () -> Void) {
