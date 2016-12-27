@@ -31,9 +31,7 @@ class ChooseGroupDialogViewController: UIViewController, UIPickerViewDataSource,
 
     private func groupAdded(groupIndex: Int) {
         pickerView.reloadAllComponents()
-
-        // TODO: Select only the first group
-        selectedGroup = db!.getGroup(row: groupIndex)
+        selectedGroup = db!.getGroup(row: 0)
     }
 
     deinit {
