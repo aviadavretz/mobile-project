@@ -12,16 +12,17 @@ class UserGroceryListsDB {
     var listsDb = Array<GroceryListsByGroupDB>()
 
     var whenListAdded: ((_: Int) -> Void)?
-    var whenListDeleted: ((_: Int) -> Void)?
+    var whenListDeleted: ((_: Int?) -> Void)?
 
     init(userKey: NSString) {
         groupsDb = UserGroupsDB(userKey: userKey)
     }
 
-    func observeLists(whenListAdded: @escaping (_: Int) -> Void, whenListDeleted: @escaping(_: Int) -> Void) {
+    func observeLists(whenListAdded: @escaping (_: Int) -> Void, whenListDeleted: @escaping(_: Int?) -> Void) {
         self.whenListAdded = whenListAdded
         self.whenListDeleted = whenListDeleted
         groupsDb!.observeUserGroupsAddition(whenGroupAdded: groupAdded)
+        groupsDb!.observeUserGroupsDeletion(whenGroupDeleted: groupDeleted)
     }
 
     private func groupAdded(groupIndex: Int) {
@@ -43,6 +44,22 @@ class UserGroceryListsDB {
         let deletedListIndex = lists.index(where: { $0.id == deletedList.id })!
         lists.remove(at: deletedListIndex)
         whenListDeleted!(deletedListIndex)
+    }
+
+    private func groupDeleted(_: Int, deletedGroup: Group) {
+        removeGroupObserver(groupKey: deletedGroup.key)
+        removeGroupLists(groupKey: deletedGroup.key)
+        whenListDeleted!(nil)
+    }
+
+    private func removeGroupObserver(groupKey: NSString) {
+        guard let dbIndex = listsDb.index(where: { $0.groupKey == groupKey }) else { return }
+
+        listsDb[dbIndex].removeObservers()
+    }
+
+    private func removeGroupLists(groupKey: NSString) {
+        lists = lists.filter({ $0.groupKey != groupKey })
     }
 
     func removeObservers() {

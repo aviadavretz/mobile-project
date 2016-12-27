@@ -36,7 +36,7 @@ class GroupsTableViewController : UITableViewController {
         table.insertRows(at: [IndexPath(row: groupIndex, section: 0)], with: UITableViewRowAnimation.automatic)
     }
 
-    private func groupDeleted(groupIndex: Int) {
+    private func groupDeleted(groupIndex: Int, _: Group) {
         table.deleteRows(at: [IndexPath(row: groupIndex, section: 0)],
                 with: UITableViewRowAnimation.automatic)
     }

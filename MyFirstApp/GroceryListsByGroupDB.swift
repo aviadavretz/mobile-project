@@ -10,8 +10,10 @@ class GroceryListsByGroupDB {
     let listsNode = "grocery-lists"
 
     var query: FIRDatabaseQuery!
+    var groupKey: NSString
 
     init(groupKey: NSString) {
+        self.groupKey = groupKey
         query = FIRDatabase.database().reference(withPath: listsNode)
                 .queryOrdered(byChild: "groupKey").queryEqual(toValue: groupKey)
     }

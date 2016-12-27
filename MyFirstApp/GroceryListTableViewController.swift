@@ -34,7 +34,7 @@ class GroceryListTableViewController : UITableViewController {
         table.insertRows(at: [IndexPath(row: listIndex, section: 0)], with: UITableViewRowAnimation.fade)
     }
 
-    private func listDeleted(listIndex: Int) {
+    private func listDeleted(listIndex: Int?) {
         table.reloadData()
     }
 
