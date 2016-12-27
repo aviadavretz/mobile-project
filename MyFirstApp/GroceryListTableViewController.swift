@@ -19,6 +19,8 @@ class GroceryListTableViewController : UITableViewController {
         super.viewDidLoad()
         toggleDelete()
         registerTableObserver()
+        
+        // TODO: If the user doesn't have a group yet, disable the "+" button.
     }
 
     deinit {
