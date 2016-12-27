@@ -269,12 +269,12 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
-		586039C8B3F78407E1200C8D /* utils */ = {
+		586039C8B3F78407E1200C8D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */,
 			);
-			name = utils;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		6B3A9AE5642E3E855C23BDDA /* Frameworks */ = {
@@ -361,7 +361,7 @@
 				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
 				84E766E41E07E59D0073B8B4 /* Group.swift */,
 				5860339B2829CEBA2B4375E5 /* Authentication */,
-				586039C8B3F78407E1200C8D /* utils */,
+				586039C8B3F78407E1200C8D /* Utils */,
 			);
 			name = Model;
 			sourceTree = "<group>";
