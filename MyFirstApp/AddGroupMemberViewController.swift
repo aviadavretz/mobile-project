@@ -1,0 +1,102 @@
+//
+//  AddGroupMemberViewController.swift
+//  MyFirstApp
+//
+//  Created by admin on 27/12/2016.
+//  Copyright © 2016 Naveh Ohana. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class AddGroupMemberViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var db:GroupMembersDB?
+    @IBOutlet var table: UITableView!
+    var friendsToAdd: Array<User> = Array<User>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        table.delegate = self
+        table.dataSource = self
+
+        FacebookFriendsFinder().find(currentMembers: (db?.members)!, forEachFriend: { (user) in
+            self.friendsToAdd.append(user)
+            
+            self.table.reloadData()
+        },
+        whenFinished: checkDataNotEmpty)
+        
+        // No need to observe, because the db is already observing (registered in the previous controller)
+    }
+    
+    private func checkDataNotEmpty(noFriendsToAdd: Bool) {
+        if (noFriendsToAdd) {
+            let alert = UIAlertController(title: "Sorry!", message: "There are no friends left to be added.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func memberAdded(memberIndex: Int) {
+        table.insertRows(at: [IndexPath(row: memberIndex, section: 0)], with: UITableViewRowAnimation.automatic)
+    }
+    
+    // MARK:  UITextFieldDelegate Methods
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friendsToAdd.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewGroupMemberCell", for: indexPath) as! NewGroupMemberCell
+        cell.setTag(tag: indexPath.row)
+        
+        cell.showSpinner()
+        
+        // Fetche the appropriate item for the data source layout.
+        let user = friendsToAdd[indexPath.row]
+        
+        // Update the views
+        updateUserDetailsInCell(cell: cell, userId: user.key as String)
+        updateUserImageInCell(cell: cell, userId: user.key as String)
+        
+        return cell
+    }
+    
+    func updateUserDetailsInCell(cell: GroupMemberCell, userId:String) {
+        UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
+            cell.nameLabel.text = "\(user!.name!)"
+        })
+    }
+    
+    func updateUserImageInCell(cell: GroupMemberCell, userId: String) {
+        ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: { (image) in
+            cell.imagez.image = image
+            
+            cell.hideSpinner()
+        })
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NewGroupMemberCell
+        cell.toggleDone()
+    }
+    
+    private func addMember(userKey: NSString) {
+        db?.addMember(userKey: userKey)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "UnwindAddGroupMember") {
+            let selectedRow = (sender as! UIView).tag
+            let user = friendsToAdd[selectedRow]
+            
+            addMember(userKey: user.key)
+        }
+    }
+}

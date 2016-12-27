@@ -50,6 +50,12 @@ class GroupsTableViewController : UITableViewController {
 
         let group = db!.getGroup(row: indexPath.row)!
         cell.nameLabel.text = group.title! as String
+
+        // TODO: Write something like "8 lists, 9 members" in the description
+//        let membersNum = 
+//        let listsNum =
+//        cell.descriptionLabel.text = ""
+        
         cell.tag = indexPath.row
 
         return cell

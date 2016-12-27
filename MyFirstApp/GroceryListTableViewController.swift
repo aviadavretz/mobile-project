@@ -79,16 +79,19 @@ class GroceryListTableViewController : UITableViewController {
         // Fetches the appropriate item for the data source layout.
         let list = db.getGroceryList(row: indexPath.row)!
 
-
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy, HH:mm"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateString = formatter.string(from: list.date as Date)
-
+        
         // Update the views
         cell.titleLabel.text = "\(list.title)"
         cell.dateLabel.text = "\(dateString)"
         cell.deleteButton.tag = indexPath.row
+
+        GroupFirebaseDB.sharedInstance.findGroupByKey(key: list.groupKey as String, whenFinished: { (group) in
+            cell.dateLabel.text = "\(cell.dateLabel!.text!), \"\(group!.title!)\""
+        })
         
         cell.deleteButton.isHidden = !deleting
         

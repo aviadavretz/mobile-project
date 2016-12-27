@@ -51,6 +51,8 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMemberCell", for: indexPath) as! GroupMemberCell
         
+        cell.showSpinner()
+        
         // Fetches the appropriate item for the data source layout.
         let user = db!.getGroup(row: indexPath.row)!
         
@@ -69,11 +71,23 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
     
     func updateUserImageInCell(cell: GroupMemberCell, userId: String) {
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: { (image) in
-            if (image != nil) {
-                cell.imagez.image = image
-            } else {
-                cell.imagez.image = UIImage(named: "user.png")
-            }
+            cell.imagez.image = image
+            
+            cell.hideSpinner()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "AddGroupMember") {
+            // Get a reference to the destination view controller
+            let destinationVC:AddGroupMemberViewController = segue.destination as! AddGroupMemberViewController
+            
+            // Pass the GroupMembersDB to the next controller
+            destinationVC.db = self.db
+        }
+    }
+    
+    @IBAction func backFromAddGroupMemberController(seque:UIStoryboardSegue) {
+        print("Back from add group member")
     }
 }

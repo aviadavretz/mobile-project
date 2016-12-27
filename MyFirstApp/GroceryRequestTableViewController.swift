@@ -35,11 +35,6 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
     
     private func requestAdded(requestIndex: Int) {
-        // TODO: Hello, Aviad.
-        // TODO: How are you?
-        // TODO: How u doin'?
-        // TODO: YOUR BUG THROWS AN EXCEPTION IN THE FOLLOWING LINE.
-        // TODO: A-HOLE D-BAG HOE
         table.insertRows(at: [IndexPath(row: requestIndex, section: 0)],
                          with: UITableViewRowAnimation.automatic)
     }
@@ -98,11 +93,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
 
     func updateUserImageInCell(cell: GroceryRequestTableViewCell, userId: String) {
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: { (image) in
-            if (image != nil) {
-                cell.imagez.image = image
-            } else {
-                cell.imagez.image = UIImage(named: "user.png")
-            }
+            cell.imagez.image = image
             
             cell.hideSpinner()
         })

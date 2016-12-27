@@ -10,6 +10,8 @@ import Foundation
 import Firebase
 
 class ImageDB {
+    private static let defaultImage = UIImage(named: "user")
+    
     static let sharedInstance: ImageDB = { ImageDB() } ()
     var storageRef: FIRStorageReference?
     var imagesCache:Dictionary<String, UIImage> = Dictionary<String, UIImage>()
@@ -48,6 +50,11 @@ class ImageDB {
             self.storageRef?.child(imagePath).data(withMaxSize: INT64_MAX){ (data, error) in
                     if let error = error {
                         print("Error downloading: \(error)")
+                        
+                        // We don't want it to try loading every time when an image is missing
+                        self.imagesCache[userId] = ImageDB.defaultImage
+                        
+                        whenFinished(self.imagesCache[userId])
                         return
                     }
 
