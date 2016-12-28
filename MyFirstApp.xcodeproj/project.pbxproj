@@ -354,12 +354,9 @@
 		72AAACEA1DD34DF200A78ED4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				842DC0E61E13C95B00185F5F /* Entities */,
 				84FDDE1B1E0D5A9A00C63138 /* Facebook */,
 				84FDDE1A1E0D5A8200C63138 /* Database */,
-				8434704E1DFB246F00378CA0 /* User.swift */,
-				843470561DFB258C00378CA0 /* GroceryList.swift */,
-				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
-				84E766E41E07E59D0073B8B4 /* Group.swift */,
 				5860339B2829CEBA2B4375E5 /* Authentication */,
 				586039C8B3F78407E1200C8D /* Utils */,
 			);
@@ -381,15 +378,42 @@
 		72AAACF01DD34F5700A78ED4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				842DC0E51E13C90400185F5F /* Grocery */,
+				842DC0E41E13C8D700185F5F /* Profile */,
 				84BF51231E0D4D6C00A4E480 /* Group */,
-				84FA515F1E044724005943AC /* ProfileViewController.swift */,
 				84DCC3D91DFB57720092586E /* MainController.swift */,
-				8443586B1DFB3DC100B14DB9 /* GroceryRequest */,
-				8443586A1DFB3DB400B14DB9 /* GroceryList */,
 				8483141D1E10559D00BC76F4 /* ImageTableViewCell.swift */,
-				84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		842DC0E41E13C8D700185F5F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */,
+				84FA515F1E044724005943AC /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		842DC0E51E13C90400185F5F /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+				8443586B1DFB3DC100B14DB9 /* GroceryRequest */,
+				8443586A1DFB3DB400B14DB9 /* GroceryList */,
+			);
+			name = Grocery;
+			sourceTree = "<group>";
+		};
+		842DC0E61E13C95B00185F5F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				84E766E41E07E59D0073B8B4 /* Group.swift */,
+				8434705A1DFB25A000378CA0 /* GroceryRequest.swift */,
+				843470561DFB258C00378CA0 /* GroceryList.swift */,
+				8434704E1DFB246F00378CA0 /* User.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		8443586A1DFB3DB400B14DB9 /* GroceryList */ = {
