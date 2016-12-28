@@ -28,12 +28,12 @@ class UserGroupsDB {
         })
     }
 
-    func observeUserGroupsDeletion(whenGroupDeleted: @escaping (_: Int) -> Void) {
+    func observeUserGroupsDeletion(whenGroupDeleted: @escaping (_: Int, _: Group) -> Void) {
         databaseRef.observe(FIRDataEventType.childRemoved, with: {(snapshot) in
             guard let groupIndex = self.findGroupIndexByKey(groupKey: snapshot.key as NSString) else { return }
 
-            self.groups.remove(at: groupIndex)
-            whenGroupDeleted(groupIndex)
+            let removedGroup = self.groups.remove(at: groupIndex)
+            whenGroupDeleted(groupIndex, removedGroup)
         })
     }
 

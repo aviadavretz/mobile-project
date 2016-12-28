@@ -51,7 +51,7 @@ class NewGroceryListViewController: UIViewController {
             let title = titleTextView.text! as NSString
             
             let list:GroceryList = GroceryList(title: title, groupKey: groupId);
-            let generatedKey = GroceryFirebaseDB.sharedInstance.addList(list: list)
+            let generatedKey = GroceryListsDB.sharedInstance.addList(list: list)
             GroupFirebaseDB.sharedInstance.addList(toGroupKey: groupId, listKey: generatedKey as NSString)
         }
     }
