@@ -162,13 +162,28 @@ class MainController: UIViewController, LoginButtonDelegate {
             }
         })
     }
+    
+    private func downloadAndSaveFacebookProfilePic(facebookId: NSString) {
+        FacebookImageManager().getFacebookProfilePic(facebookId: facebookId, whenFinished: gotFacebookProfilePic)
+    }
+    
+    private func gotFacebookProfilePic(image:UIImage?) {
+        // If there's no profile pic, the default user.png pic will be loaded.
+        if let profilePic = image {
+            refreshImage(image: profilePic)
+            ImageDB.sharedInstance.storeImage(image: profilePic, userId: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: loadUserData)
+        }
+    }
 
     private func createUser() {
+        let facebookId = CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString
+        
         let newUser = User(key: CurrentFirebaseUser.sharedInstance.getId()! as NSString,
                            name: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.displayName! as NSString,
-                           facebookId: CurrentFirebaseUser.sharedInstance.getFacebookUser()!.uid as NSString)
+                           facebookId: facebookId)
 
-        UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.loadUserData()})
+        // When finished: downloadAndSaveFacebookProfilePic
+        UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.downloadAndSaveFacebookProfilePic(facebookId: facebookId)})
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {

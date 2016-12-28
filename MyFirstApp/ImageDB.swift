@@ -26,6 +26,10 @@ class ImageDB {
     }
     
     func storeImage(image: UIImage, userId: String) {
+        storeImage(image: image, userId: userId, whenFinished: {})
+    }
+    
+    func storeImage(image: UIImage, userId: String, whenFinished: @escaping ()->()) {
         let imageData = UIImageJPEGRepresentation(image, 0.0)
         let imagePath = "\(userId).jpg"
         let metadata = FIRStorageMetadata()
@@ -37,7 +41,9 @@ class ImageDB {
                     return
                 }
                 
-            self.imagesCache[userId] = image
+                self.imagesCache[userId] = image
+                
+                whenFinished()
         }
     }
     

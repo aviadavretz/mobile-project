@@ -49,6 +49,9 @@
 		842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
+		842DC0E81E13CBF800185F5F /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */; };
+		842DC0E91E13CBF800185F5F /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */; };
+		842DC0EA1E13CBF800185F5F /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */; };
 		8434704F1DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
 		843470501DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
 		843470511DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
@@ -184,6 +187,7 @@
 		72AAACDC1DD3496700A78ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupMemberViewController.swift; sourceTree = "<group>"; };
 		842D16BE1DF046750024794F /* NewGroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryListViewController.swift; sourceTree = "<group>"; };
+		842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImageManager.swift; sourceTree = "<group>"; };
 		8434704E1DFB246F00378CA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		843470561DFB258C00378CA0 /* GroceryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		8434705A1DFB25A000378CA0 /* GroceryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequest.swift; sourceTree = "<group>"; };
@@ -472,6 +476,7 @@
 			children = (
 				58603C5E906F70E151B473F2 /* FacebookAccessTokenCache.swift */,
 				586037115CC9B3139E6A8802 /* FacebookFriendsFinder.swift */,
+				842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				847BEFBB1E104A120007A26A /* CircleButton.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				8483141E1E10559D00BC76F4 /* ImageTableViewCell.swift in Sources */,
+				842DC0E81E13CBF800185F5F /* FacebookImageManager.swift in Sources */,
 				84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84FA51601E044724005943AC /* ProfileViewController.swift in Sources */,
 				58603CC88DCA2EFF449BB40D /* GroceryRequestsDB.swift in Sources */,
@@ -836,6 +842,7 @@
 				58603C2F47D1031CF4A920A3 /* UserGroupsDB.swift in Sources */,
 				58603DB0F72CBFC747968466 /* GroupMembersDB.swift in Sources */,
 				5860328EDBF105BC9D258263 /* GroceryListsByGroupDB.swift in Sources */,
+				842DC0E91E13CBF800185F5F /* FacebookImageManager.swift in Sources */,
 				586037E04E8AE96DA1F95784 /* UserGroceryListsDB.swift in Sources */,
 				58603AFB18D50E92DE72ADD7 /* TimeUtilities.swift in Sources */,
 			);
@@ -882,6 +889,7 @@
 				58603C8D8651B9E6D81E31D4 /* UserGroupsDB.swift in Sources */,
 				5860365BA56B466615834EE9 /* GroupMembersDB.swift in Sources */,
 				586032AB8DCC3ADD7EB00590 /* GroceryListsByGroupDB.swift in Sources */,
+				842DC0EA1E13CBF800185F5F /* FacebookImageManager.swift in Sources */,
 				586032AD7075998D09358FFA /* UserGroceryListsDB.swift in Sources */,
 				586036854D4518E54FFD3EC0 /* TimeUtilities.swift in Sources */,
 			);
