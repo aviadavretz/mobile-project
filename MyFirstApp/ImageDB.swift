@@ -30,12 +30,15 @@ class ImageDB {
     }
     
     func storeImage(image: UIImage, userId: String, whenFinished: @escaping ()->()) {
-        let imageData = UIImageJPEGRepresentation(image, 0.0)
-        let imagePath = "\(userId).jpg"
-        let metadata = FIRStorageMetadata()
-        metadata.contentType = "image/jpeg"
-        self.storageRef?.child(imagePath)
+        // Don't store the default picture
+        if (!(ImageDB.defaultImage!.isEqual(image))) {
+            let imageData = UIImageJPEGRepresentation(image, 0.0)
+            let imagePath = "\(userId).jpg"
+            let metadata = FIRStorageMetadata()
+                metadata.contentType = "image/jpeg"
+            self.storageRef?.child(imagePath)
             .put(imageData!, metadata: metadata) {(metadata, error) in
+                
                 if let error = error {
                     print("Error uploading: \(error)")
                     return
@@ -44,6 +47,7 @@ class ImageDB {
                 self.imagesCache[userId] = image
                 
                 whenFinished()
+            }
         }
     }
     
