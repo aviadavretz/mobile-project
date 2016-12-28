@@ -8,16 +8,19 @@
 
 import Foundation
 import UIKit
+import FacebookCore
 
 class FacebookImageManager {
 
     func getFacebookProfilePic(facebookId: NSString, whenFinished: @escaping (UIImage?)->()) {
-        let url = NSURL(string: "https://graph.facebook.com/\(facebookId)/picture?type=large")
-        let urlRequest = NSURLRequest(url: url! as URL)
-        
-        NSURLConnection.sendAsynchronousRequest(urlRequest as URLRequest, queue: OperationQueue.main) { (response:URLResponse?, data:Data?, error:Error?) -> Void in
-            let image = UIImage(data: data!)
+        let url = URL(string: "https://graph.facebook.com/\(facebookId)/picture?type=large")
+
+        do {
+            let image = try UIImage(data: NSData(contentsOf: url!) as Data)
             whenFinished(image)
+        }
+        catch let error as NSError {
+            print ("Error fetching user profile photo: \(error)")
         }
     }
 }
