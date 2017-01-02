@@ -70,6 +70,10 @@ class UserGroceryListsDB {
     func getListsCount() -> Int {
         return lists.count
     }
+    
+    func doesUserHaveGroup() -> Bool {
+        return groupsDb!.getGroupsCount() > 0
+    }
 
     func getGroceryList(row: Int) -> GroceryList? {
         if (row < getListsCount()) {

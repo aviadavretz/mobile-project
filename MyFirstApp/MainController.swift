@@ -16,6 +16,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     let defaultGreeting = "Hello"
     var user:User? = nil;
     var greetingPrefix:String = ""
+    var newUser: Bool = true
     
     // MARK: Properties
     @IBOutlet weak var exitButton: UIButton!
@@ -49,6 +50,8 @@ class MainController: UIViewController, LoginButtonDelegate {
 
         if (accessToken != nil && accessToken!.expirationDate.timeIntervalSince(Date()) > 0) {
             self.greetingPrefix = "Welcome back"
+            
+            self.newUser = false
             
             AccessToken.current = accessToken
             loadUserData()
@@ -84,6 +87,9 @@ class MainController: UIViewController, LoginButtonDelegate {
             refreshLabels()
             
             hideSpinner()
+
+            // Continue
+            self.performSegue(withIdentifier: "ContinueSegue", sender: self)
         }
     }
 
@@ -118,6 +124,9 @@ class MainController: UIViewController, LoginButtonDelegate {
                 AccessToken.current = nil
             }
             else {
+                // Hide the logOut button
+                loginButton.isHidden = true
+                loginButtonView.isHidden = true
                 showSpinner()
                 
                 loginToFirebase(authenticationToken: accessToken.authenticationToken, whenFinished: tryFindingUserInDB)
@@ -152,6 +161,8 @@ class MainController: UIViewController, LoginButtonDelegate {
         UserFirebaseDB.sharedInstance.findUserByKey(key: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
                 self.greetingPrefix = "Welcome back"
+                
+                self.newUser = false
                 
                 self.loadUserData()
             }
@@ -212,5 +223,17 @@ class MainController: UIViewController, LoginButtonDelegate {
     @IBAction func backFromLogOut(seque:UIStoryboardSegue) {
         createButton.isEnabled = false
         elapseScreenData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ContinueSegue") {
+            // Get a reference to the destination view controller
+            let destinationVC:UITabBarController = segue.destination as! UITabBarController
+
+            if (!self.newUser) {
+                // Select the grocery tab
+                destinationVC.selectedIndex = 1
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@ class ImageDB {
     func storeImage(image: UIImage, userId: String, whenFinished: @escaping ()->()) {
         // Don't store the default picture
         if (!(ImageDB.defaultImage!.isEqual(image))) {
-            let imageData = UIImageJPEGRepresentation(image, 0.0)
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
             let imagePath = "\(userId).jpg"
             let metadata = FIRStorageMetadata()
                 metadata.contentType = "image/jpeg"

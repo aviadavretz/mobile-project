@@ -12,7 +12,6 @@ class GroceryListTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -46,6 +46,9 @@
 		840FF7921E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
 		840FF7931E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
 		840FF7941E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
+		8416B2451E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */; };
+		8416B2461E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */; };
+		8416B2471E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */; };
 		842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
@@ -101,9 +104,6 @@
 		84B6F9E11DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
 		84B6F9E21DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
 		84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */; };
-		84BD2DD61DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */; };
-		84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */; };
-		84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */; };
 		84BD2DDA1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
 		84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
 		84BD2DDC1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */; };
@@ -186,6 +186,7 @@
 		72AAACDA1DD3496700A78ED4 /* MyFirstAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstAppUITests.swift; sourceTree = "<group>"; };
 		72AAACDC1DD3496700A78ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupMemberViewController.swift; sourceTree = "<group>"; };
+		8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		842D16BE1DF046750024794F /* NewGroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryListViewController.swift; sourceTree = "<group>"; };
 		842DC0E71E13CBF800185F5F /* FacebookImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImageManager.swift; sourceTree = "<group>"; };
 		8434704E1DFB246F00378CA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 		84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageDialogViewController.swift; sourceTree = "<group>"; };
 		84B5C39F1E1062EC00C2C7E9 /* RoundedDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedDialog.swift; sourceTree = "<group>"; };
 		84B6F9E01DF079BE00A4A931 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		84BF51241E0D4D8600A4E480 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
 		84BF51281E0D4F5700A4E480 /* GroupMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberCell.swift; sourceTree = "<group>"; };
@@ -423,10 +423,10 @@
 		8443586A1DFB3DB400B14DB9 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
-				84BD2DD51DF0282700C630A0 /* GroceryListTableViewController.swift */,
 				84BD2DD91DF02A6C00C630A0 /* GroceryListTableViewCell.swift */,
 				842D16BE1DF046750024794F /* NewGroceryListViewController.swift */,
 				8479F7E91E1138F400E9185B /* ChooseGroupDialogViewController.swift */,
+				8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */,
 			);
 			name = GroceryList;
 			sourceTree = "<group>";
@@ -758,7 +758,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DCC3D21DFB506B0092586E /* GroceryRequestTableViewController.swift in Sources */,
-				84BD2DD61DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				8434705B1DFB25A000378CA0 /* GroceryRequest.swift in Sources */,
 				84E766E51E07E59D0073B8B4 /* Group.swift in Sources */,
 				843470571DFB258D00378CA0 /* GroceryList.swift in Sources */,
@@ -793,6 +792,7 @@
 				58603C716459330ECDD14821 /* FacebookAccessTokenCache.swift in Sources */,
 				586034A5CD69934B4B4EBE78 /* CurrentFirebaseUser.swift in Sources */,
 				58603349162319AC38D555F1 /* GroupTableViewCell.swift in Sources */,
+				8416B2451E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
 				586034BF77C2CDC31B846A10 /* UserGroupsDB.swift in Sources */,
 				58603ECB4CC6B0C0F749CABA /* GroupMembersDB.swift in Sources */,
 				58603B261B9323B98F5F2541 /* GroceryListsByGroupDB.swift in Sources */,
@@ -815,7 +815,6 @@
 				843470581DFB258D00378CA0 /* GroceryList.swift in Sources */,
 				84E766E61E07E59D0073B8B4 /* Group.swift in Sources */,
 				84B5C39D1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */,
-				84BD2DD71DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84BD2DDB1DF02A6C00C630A0 /* GroceryListTableViewCell.swift in Sources */,
 				84BF51261E0D4D8600A4E480 /* GroupMembersTableViewController.swift in Sources */,
@@ -837,6 +836,7 @@
 				58603A6BAE18AEA007F812E2 /* FacebookFriendsFinder.swift in Sources */,
 				84BF512A1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
 				58603493E914C3601547EACF /* FacebookAccessTokenCache.swift in Sources */,
+				8416B2461E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
 				586036BAB43D813725DE21EC /* CurrentFirebaseUser.swift in Sources */,
 				58603572D02E89D47A836181 /* GroupTableViewCell.swift in Sources */,
 				58603C2F47D1031CF4A920A3 /* UserGroupsDB.swift in Sources */,
@@ -863,7 +863,6 @@
 				84E766E71E07E59D0073B8B4 /* Group.swift in Sources */,
 				84B5C39E1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */,
 				84B6F9E31DF079BE00A4A931 /* RoundedButton.swift in Sources */,
-				84BD2DD81DF0282700C630A0 /* GroceryListTableViewController.swift in Sources */,
 				84BF51271E0D4D8600A4E480 /* GroupMembersTableViewController.swift in Sources */,
 				84FA51661E044C14005943AC /* ImageDB.swift in Sources */,
 				84878AF41E12942B00F75ABD /* RoundedImageView.swift in Sources */,
@@ -884,6 +883,7 @@
 				586038FBCD5D3FC6360F2506 /* FacebookFriendsFinder.swift in Sources */,
 				84BF512B1E0D4F5700A4E480 /* GroupMemberCell.swift in Sources */,
 				5860306854BF6557D30E25BD /* FacebookAccessTokenCache.swift in Sources */,
+				8416B2471E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
 				586039C9EC4F9492661551A8 /* CurrentFirebaseUser.swift in Sources */,
 				5860362B71BB6A71B46184B3 /* GroupTableViewCell.swift in Sources */,
 				58603C8D8651B9E6D81E31D4 /* UserGroupsDB.swift in Sources */,

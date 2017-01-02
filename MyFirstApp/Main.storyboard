@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LTb-7a-gkN" id="wAL-ya-649">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yD-2S-5zm">
@@ -29,14 +29,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-6z-Mra">
-                                            <frame key="frameInset" minX="316" minY="8" width="43" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="delete.png"/>
-                                            <connections>
-                                                <action selector="deleteListWithSender:" destination="EvA-hv-2y6" eventType="touchUpInside" id="UWY-XJ-Mtj"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtK-Vl-LGg">
                                             <frame key="frameInset" minX="8" minY="22" width="300" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,7 +40,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="HtK-Vl-LGg" id="nsQ-Xq-W8G"/>
-                                    <outlet property="deleteButton" destination="3wQ-6z-Mra" id="Tcm-0L-IQC"/>
                                     <outlet property="titleLabel" destination="3yD-2S-5zm" id="8zr-TS-aWk"/>
                                     <segue destination="gK6-mg-zas" kind="show" identifier="ListDetails" id="pl9-5N-KQg"/>
                                 </connections>
@@ -60,11 +51,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Lists" id="4Sl-b6-cBi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="lHE-Bo-unb">
-                            <connections>
-                                <action selector="toggleDelete" destination="EvA-hv-2y6" id="cGb-Iv-ofq"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="lHE-Bo-unb"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GsP-Uu-lRe">
                             <connections>
                                 <segue destination="79M-TB-wAB" kind="show" identifier="New List" id="Nt2-2n-lWp"/>
@@ -219,7 +206,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="TDw-0j-Kvg" kind="show" identifier="UserCreated" id="7Oc-31-U7G"/>
+                                    <segue destination="TDw-0j-Kvg" kind="show" identifier="ContinueSegue" id="7Oc-31-U7G"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-W6-dKN" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -352,7 +339,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLp-FI-m9h" id="BgW-5d-7D8">
-                                    <frame key="frameInset" width="375" height="53"/>
+                                    <frame key="frameInset" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-S3-Efe" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -561,7 +548,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Mk-gF-0UI" id="9sW-JS-uiZ">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-KZ-el7">
@@ -620,7 +607,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmd-AN-7v2" id="h7J-zk-aJV">
-                                    <frame key="frameInset" width="375" height="53"/>
+                                    <frame key="frameInset" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-6O-chV" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -778,7 +765,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ZL-qH-oub" id="oSP-tR-wem">
-                                    <frame key="frameInset" width="375" height="53"/>
+                                    <frame key="frameInset" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="QnT-l4-oAw" customClass="RoundedImageView" customModule="MyFirstApp" customModuleProvider="target">
@@ -837,7 +824,6 @@
         <image name="camera" width="40" height="40"/>
         <image name="cart" width="57" height="57"/>
         <image name="checkmark" width="46" height="46"/>
-        <image name="delete.png" width="1200" height="1920"/>
         <image name="group" width="57" height="57"/>
         <image name="user" width="256" height="256"/>
         <image name="user_tab" width="50" height="50"/>
