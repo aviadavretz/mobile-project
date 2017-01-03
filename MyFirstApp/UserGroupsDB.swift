@@ -44,6 +44,10 @@ class UserGroupsDB {
     func addGroupToUser(groupKey: NSString) {
         databaseRef.updateChildValues([groupKey : true])
     }
+    
+    func removeGroupFromUser(groupKey: String) {
+        databaseRef.child(groupKey).removeValue()
+    }
 
     func removeObservers() {
         databaseRef.removeAllObservers()

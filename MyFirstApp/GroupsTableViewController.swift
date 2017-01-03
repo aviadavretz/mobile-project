@@ -64,6 +64,12 @@ class GroupsTableViewController : UITableViewController {
     @IBAction func backFromNewGroupController(seque:UIStoryboardSegue) {
         print("Back from group creation")
     }
+    
+    @IBAction func leftGroup(seque:UIStoryboardSegue) {
+        print("Left group")
+        
+        table.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "GroupMembers") {

@@ -93,10 +93,18 @@ class AddGroupMemberViewController : UIViewController, UITableViewDataSource, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "UnwindAddGroupMember") {
+            // Get a reference to the destination view controller
+            let destinationVC:GroupMembersTableViewController = segue.destination as! GroupMembersTableViewController
+            let group = destinationVC.group
+            
             let selectedRow = (sender as! UIView).tag
             let user = friendsToAdd[selectedRow]
             
-            addMember(userKey: user.key)
+            // Add the member to the group
+            self.addMember(userKey: user.key)
+            
+            // Add the group to the member as well
+            UserGroupsDB(userKey: user.key).addGroupToUser(groupKey: (group?.key)!)
         }
     }
 }

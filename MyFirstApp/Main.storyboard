@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -640,18 +641,29 @@
                             <outlet property="delegate" destination="PXG-c5-tUa" id="wgc-9I-O7l"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Your Group" id="pDJ-vF-xyq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K0D-Vu-fgT">
-                            <connections>
-                                <segue destination="bKy-M7-6gh" kind="show" identifier="AddGroupMember" id="yV1-44-qkx"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="K0D-Vu-fgT">
+                                <connections>
+                                    <segue destination="bKy-M7-6gh" kind="show" identifier="AddGroupMember" id="yV1-44-qkx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="tKH-sk-kVJ">
+                                <connections>
+                                    <action selector="leaveGroup" destination="PXG-c5-tUa" id="3pV-Ms-tTg"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="9QL-OB-x8t" id="St3-C5-acF"/>
+                        <segue destination="xHv-Ca-ZXn" kind="unwind" identifier="LeftGroup" unwindAction="leftGroupWithSeque:" id="bbX-Tl-WaX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whq-WI-iCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xHv-Ca-ZXn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1681" y="-4698"/>
         </scene>

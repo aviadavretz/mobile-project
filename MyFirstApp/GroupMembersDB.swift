@@ -31,6 +31,10 @@ class GroupMembersDB {
     func addMember(userKey: NSString) {
         databaseRef.updateChildValues([userKey : true])
     }
+    
+    func removeMember(userKey: String) {
+        databaseRef.child(userKey).removeValue()
+    }
 
     func removeObservers() {
         databaseRef.removeAllObservers()
@@ -40,7 +44,7 @@ class GroupMembersDB {
         return members.count
     }
 
-    func getGroup(row: Int) -> User? {
+    func getMember(row: Int) -> User? {
         if (row < getMembersCount()) {
             return members[row]
         }
