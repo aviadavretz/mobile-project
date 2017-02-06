@@ -13,7 +13,7 @@ class CircleButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.borderWidth = 0.5
+        self.layer.borderWidth = (self.frame.size.width / 100) // 0.5
         self.layer.cornerRadius = (self.frame.size.width / 2)
         self.layer.borderColor = UIColor.black.cgColor
         self.clipsToBounds = true
