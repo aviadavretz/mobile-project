@@ -14,7 +14,7 @@ class GroupsTableViewController : UITableViewController {
     @IBOutlet var table: UITableView!
 
     deinit {
-        db!.removeObservers()
+        db?.removeObservers()
     }
 
     override func viewDidLoad() {

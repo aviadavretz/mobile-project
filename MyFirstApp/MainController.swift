@@ -125,7 +125,6 @@ class MainController: UIViewController, LoginButtonDelegate {
             }
             else {
                 // Hide the logOut button
-                loginButton.isHidden = true
                 loginButtonView.isHidden = true
                 showSpinner()
                 
@@ -201,8 +200,7 @@ class MainController: UIViewController, LoginButtonDelegate {
         CurrentFirebaseUser.sharedInstance.signOut()
         FacebookAccessTokenCache.sharedInstance.clear()
 
-        createButton.isEnabled = false
-        elapseScreenData()
+        elapseScreenAfterLogout()
     }
 
     private func elapseScreenData() {
@@ -221,6 +219,11 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     @IBAction func backFromLogOut(seque:UIStoryboardSegue) {
+        elapseScreenAfterLogout()
+    }
+    
+    func elapseScreenAfterLogout() {
+        loginButtonView.isHidden = false
         createButton.isEnabled = false
         elapseScreenData()
     }
