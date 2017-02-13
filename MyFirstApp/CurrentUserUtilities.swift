@@ -27,6 +27,19 @@ class CurrentUserUtilities {
     private func getCurrentUser() -> FIRUser? {
         return FIRAuth.auth()?.currentUser
     }
+
+    public func signIn(facebookAuthenticationToken: String, whenFinished: @escaping () -> Void) {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: facebookAuthenticationToken)
+
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("Error logging in : \(error)")
+                return
+            }
+
+            whenFinished()
+        }
+    }
     
     public func signOut() {
         do {

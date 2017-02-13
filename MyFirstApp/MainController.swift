@@ -128,7 +128,9 @@ class MainController: UIViewController, LoginButtonDelegate {
                 loginButtonView.isHidden = true
                 showSpinner()
                 
-                loginToFirebase(authenticationToken: accessToken.authenticationToken, whenFinished: tryFindingUserInDB)
+                CurrentUserUtilities.sharedInstance.signIn(
+                        facebookAuthenticationToken: accessToken.authenticationToken,
+                        whenFinished: tryFindingUserInDB)
                 FacebookAccessTokenCache.sharedInstance.store(accessToken)
             }
         }
@@ -141,19 +143,6 @@ class MainController: UIViewController, LoginButtonDelegate {
                 preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-
-    private func loginToFirebase(authenticationToken: String, whenFinished: @escaping () -> Void) {
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: authenticationToken)
-
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("Error logging in : \(error)")
-                return
-            }
-
-            whenFinished()
-        }
     }
 
     private func tryFindingUserInDB() {
