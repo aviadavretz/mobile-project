@@ -23,7 +23,7 @@ class FacebookFriendsFinder {
                         
                         // Make sure this user isn't already a member in the group
                         if (!currentMembers.contains(where: { $0.facebookId!.isEqual(to: currentFriendFacebookId) })) {
-                            UserFirebaseDB.sharedInstance.findUserByFacebookId(facebookId: currentFriendFacebookId,
+                            UsersDB.sharedInstance.findUserByFacebookId(facebookId: currentFriendFacebookId,
                                                                                whenFinished: forEachFriend)
                             noFriendsToAdd = false
                         }

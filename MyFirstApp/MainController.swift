@@ -61,7 +61,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     private func loadUserData() {
         let userId = CurrentUserUtilities.sharedInstance.getId()!
 
-        UserFirebaseDB.sharedInstance.findUserByKey(key: userId,
+        UsersDB.sharedInstance.findUserByKey(key: userId,
                 whenFinished: refreshUserNotificationReceived)
 
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: refreshImage)
@@ -157,7 +157,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func tryFindingUserInDB() {
-        UserFirebaseDB.sharedInstance.findUserByKey(key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: {(existingUser) in
+        UsersDB.sharedInstance.findUserByKey(key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
                 self.greetingPrefix = "Welcome back"
                 
@@ -193,7 +193,7 @@ class MainController: UIViewController, LoginButtonDelegate {
                            facebookId: facebookId)
 
         // When finished: downloadAndSaveFacebookProfilePic
-        UserFirebaseDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.downloadAndSaveFacebookProfilePic(facebookId: facebookId)})
+        UsersDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.downloadAndSaveFacebookProfilePic(facebookId: facebookId)})
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {

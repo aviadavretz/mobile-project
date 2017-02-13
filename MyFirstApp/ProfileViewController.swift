@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         hideChooseImageDialog()
         
         // Get the User & Image (this will fetch only from cache, because the user was already fetched from DB)
-        UserFirebaseDB.sharedInstance.findUserByKey( key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: refreshLabels)
+        UsersDB.sharedInstance.findUserByKey( key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: refreshLabels)
         ImageDB.sharedInstance.downloadImage(userId: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: refreshImage)
         
         initializeFacebookLoginButton()

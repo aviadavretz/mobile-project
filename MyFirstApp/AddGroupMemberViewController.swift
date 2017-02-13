@@ -69,7 +69,7 @@ class AddGroupMemberViewController : UIViewController, UITableViewDataSource, UI
     }
     
     func updateUserDetailsInCell(cell: GroupMemberCell, userId:String) {
-        UserFirebaseDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
+        UsersDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
             cell.nameLabel.text = "\(user!.name!)"
         })
     }

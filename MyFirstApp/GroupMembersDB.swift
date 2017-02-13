@@ -19,7 +19,7 @@ class GroupMembersDB {
 
     func observeGroupMembersAddition(whenMemberAdded: @escaping (_: Int) -> Void) {
         databaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            UserFirebaseDB.sharedInstance.findUserByKey(key: snapshot.key, whenFinished: {(user) in
+            UsersDB.sharedInstance.findUserByKey(key: snapshot.key, whenFinished: {(user) in
                 guard let foundUser = user else { return }
 
                 self.members.append(foundUser)

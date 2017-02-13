@@ -1,5 +1,5 @@
 //
-//  UserFirebaseDB.swift
+//  UsersDB.swift
 //  MyFirstApp
 //
 //  Created by admin on 17/12/2016.
@@ -9,8 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
-class UserFirebaseDB {
-    static let sharedInstance: UserFirebaseDB = { UserFirebaseDB() } ()
+class UsersDB {
+    static let sharedInstance: UsersDB = { UsersDB() } ()
     let rootNode = "users"
     var databaseRef: FIRDatabaseReference!
     var userCache:Dictionary<String, User> = Dictionary<String, User>()
