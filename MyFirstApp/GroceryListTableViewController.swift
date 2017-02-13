@@ -89,7 +89,6 @@ class GroceryListTableViewController: UITableViewController {
         let list = db!.getGroceryList(row: row)!
         
         GroceryListsDB.sharedInstance.deleteList(id: list.id as String)
-        GroupsDB.sharedInstance.removeList(fromGroupKey: list.groupKey, listKey: list.id)
     }
     
     @IBAction func backFromNewListController(seque:UIStoryboardSegue) {

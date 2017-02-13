@@ -19,13 +19,8 @@ class GroceryListsDB {
         databaseRef = FIRDatabase.database().reference(withPath: rootNode)
     }
     
-    func addList(list:GroceryList) -> String {
-        let values = loadValues(from: list)
-
-        let generatedKey = self.databaseRef.childByAutoId().key
-        self.databaseRef.child(generatedKey).setValue(values)
-        
-        return generatedKey
+    func addList(list:GroceryList) {
+        self.databaseRef.childByAutoId().setValue(loadValues(from: list))
     }
 
     private func loadValues(from: GroceryList) -> Dictionary<String, String> {

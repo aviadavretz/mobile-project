@@ -13,7 +13,6 @@ class GroupsDB {
     static let sharedInstance: GroupsDB = { GroupsDB() } ()
 
     let rootNode = "groups"
-    let listsNode = "lists"
 
     var databaseRef: FIRDatabaseReference!
     var groupCache: Dictionary<NSString, Group> = Dictionary<NSString, Group>()
@@ -56,13 +55,5 @@ class GroupsDB {
 
     private func extractGroup(key: String, values: Dictionary<String, Any>) -> Group {
         return Group(key: key as NSString, title: values["title"]! as! NSString)
-    }
-
-    func removeList(fromGroupKey: NSString, listKey: NSString) {
-        databaseRef.child(fromGroupKey as String).child(listsNode).child(listKey as String).removeValue()
-    }
-
-    func addList(toGroupKey: NSString, listKey: NSString) {
-        databaseRef.child(toGroupKey as String).child(listsNode).updateChildValues([listKey: true])
     }
 }

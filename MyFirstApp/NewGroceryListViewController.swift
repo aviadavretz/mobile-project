@@ -51,8 +51,7 @@ class NewGroceryListViewController: UIViewController {
             let title = titleTextView.text! as NSString
             
             let list:GroceryList = GroceryList(title: title, groupKey: groupId);
-            let generatedKey = GroceryListsDB.sharedInstance.addList(list: list)
-            GroupsDB.sharedInstance.addList(toGroupKey: groupId, listKey: generatedKey as NSString)
+            GroceryListsDB.sharedInstance.addList(list: list)
         }
     }
 
