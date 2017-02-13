@@ -82,7 +82,7 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
         
         leaveAlert.addAction(UIAlertAction(title: "Leave!", style: .default, handler: { (action: UIAlertAction!) in
             // Remove the member from the group
-            self.db?.removeMember(userKey: CurrentFirebaseUser.sharedInstance.getId()!)
+            self.db?.removeMember(userKey: CurrentUserUtilities.sharedInstance.getId()!)
             
             // Fire an UnwindSegue to "Your groups" view
             self.performSegue(withIdentifier: "LeftGroup", sender: self)

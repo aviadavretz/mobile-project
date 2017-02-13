@@ -25,7 +25,7 @@ class ChooseGroupDialogViewController: UIViewController, UIPickerViewDataSource,
     }
 
     private func initializeModel() {
-        db = UserGroupsDB(userKey: CurrentFirebaseUser.sharedInstance.getId()! as NSString)
+        db = UserGroupsDB(userKey: CurrentUserUtilities.sharedInstance.getId()! as NSString)
         db!.observeUserGroupsAddition(whenGroupAdded: groupAdded)
     }
 

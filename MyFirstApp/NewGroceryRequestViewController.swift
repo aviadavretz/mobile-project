@@ -35,7 +35,7 @@ class NewGroceryRequestViewController : UIViewController {
             
             let itemName = itemNameTextView.text! as NSString
             
-            destinationVC.db?.addRequest(itemName: itemName as String, userId: CurrentFirebaseUser.sharedInstance.getId()!)
+            destinationVC.db?.addRequest(itemName: itemName as String, userId: CurrentUserUtilities.sharedInstance.getId()!)
         }
     }
     

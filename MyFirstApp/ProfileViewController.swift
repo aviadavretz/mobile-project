@@ -23,8 +23,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         hideChooseImageDialog()
         
         // Get the User & Image (this will fetch only from cache, because the user was already fetched from DB)
-        UserFirebaseDB.sharedInstance.findUserByKey( key: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: refreshLabels)
-        ImageDB.sharedInstance.downloadImage(userId: CurrentFirebaseUser.sharedInstance.getId()!, whenFinished: refreshImage)
+        UserFirebaseDB.sharedInstance.findUserByKey( key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: refreshLabels)
+        ImageDB.sharedInstance.downloadImage(userId: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: refreshImage)
         
         initializeFacebookLoginButton()
     }
@@ -65,13 +65,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func saveImage() {
         // Save the image to db
-        ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: CurrentFirebaseUser.sharedInstance.getId()!)
+        ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: CurrentUserUtilities.sharedInstance.getId()!)
     }
     
     public func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {}
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        CurrentFirebaseUser.sharedInstance.signOut()
+        CurrentUserUtilities.sharedInstance.signOut()
         FacebookAccessTokenCache.sharedInstance.clear()
         
         // Unwind back to MainController

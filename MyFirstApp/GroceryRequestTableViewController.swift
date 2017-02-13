@@ -139,7 +139,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
                 // Get the referenced request
                 if let request = db!.getGroceryRequest(row: indexPath.row) {
                     // Make sure the current user created the request
-                    if (request.userId.isEqual(to: CurrentFirebaseUser.sharedInstance.getId()!)) {
+                    if (request.userId.isEqual(to: CurrentUserUtilities.sharedInstance.getId()!)) {
                         // Table view cells are reused and should be dequeued using a cell identifier.
                         let cell = table.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
                         
