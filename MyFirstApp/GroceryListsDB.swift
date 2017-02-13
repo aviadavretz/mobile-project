@@ -16,18 +16,14 @@ class GroceryListsDB {
     var databaseRef: FIRDatabaseReference!
 
     private init() {
-        databaseRef = FIRDatabase.database().reference()
-    }
-
-    deinit {
-        self.databaseRef.child(rootNode).removeAllObservers()
+        databaseRef = FIRDatabase.database().reference(withPath: rootNode)
     }
     
     func addList(list:GroceryList) -> String {
         let values = loadValues(from: list)
 
-        let generatedKey = self.databaseRef.child(rootNode).childByAutoId().key
-        self.databaseRef.child(rootNode).child(generatedKey).setValue(values)
+        let generatedKey = self.databaseRef.childByAutoId().key
+        self.databaseRef.child(generatedKey).setValue(values)
         
         return generatedKey
     }
@@ -42,6 +38,6 @@ class GroceryListsDB {
     }
     
     func deleteList(id: String) {
-        self.databaseRef.child(rootNode).child(id).removeValue()
+        self.databaseRef.child(id).removeValue()
     }
 }
