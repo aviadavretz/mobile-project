@@ -19,7 +19,7 @@ class UserGroupsDB {
 
     func observeUserGroupsAddition(whenGroupAdded: @escaping (_: Int) -> Void) {
         databaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            GroupFirebaseDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: {(group) in
+            GroupsDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: {(group) in
                 guard let foundGroup = group else { return }
 
                 self.groups.append(foundGroup)
@@ -68,7 +68,7 @@ class UserGroupsDB {
     func findFirstGroup(whenFound: @escaping (_: Group?) -> Void) {
         databaseRef.queryLimited(toFirst: 1).observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
                     if !(snapshot.value is NSNull) {
-                        GroupFirebaseDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: { (group) in
+                        GroupsDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: { (group) in
                             whenFound(group)
                         })
                     }

@@ -67,7 +67,7 @@ class GroceryListTableViewController: UITableViewController {
         cell.titleLabel.text = "\(list.title)"
         cell.dateLabel.text = "\(dateString)"
         
-        GroupFirebaseDB.sharedInstance.findGroupByKey(key: list.groupKey as String, whenFinished: { (group) in
+        GroupsDB.sharedInstance.findGroupByKey(key: list.groupKey as String, whenFinished: { (group) in
             cell.dateLabel.text = "\(cell.dateLabel!.text!), \"\(group!.title!)\""
         })
         
@@ -89,7 +89,7 @@ class GroceryListTableViewController: UITableViewController {
         let list = db!.getGroceryList(row: row)!
         
         GroceryListsDB.sharedInstance.deleteList(id: list.id as String)
-        GroupFirebaseDB.sharedInstance.removeList(fromGroupKey: list.groupKey, listKey: list.id)
+        GroupsDB.sharedInstance.removeList(fromGroupKey: list.groupKey, listKey: list.id)
     }
     
     @IBAction func backFromNewListController(seque:UIStoryboardSegue) {

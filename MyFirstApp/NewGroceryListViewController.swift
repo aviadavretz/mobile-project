@@ -52,7 +52,7 @@ class NewGroceryListViewController: UIViewController {
             
             let list:GroceryList = GroceryList(title: title, groupKey: groupId);
             let generatedKey = GroceryListsDB.sharedInstance.addList(list: list)
-            GroupFirebaseDB.sharedInstance.addList(toGroupKey: groupId, listKey: generatedKey as NSString)
+            GroupsDB.sharedInstance.addList(toGroupKey: groupId, listKey: generatedKey as NSString)
         }
     }
 

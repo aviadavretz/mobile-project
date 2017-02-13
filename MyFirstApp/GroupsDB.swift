@@ -9,8 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
-class GroupFirebaseDB {
-    static let sharedInstance: GroupFirebaseDB = { GroupFirebaseDB() } ()
+class GroupsDB {
+    static let sharedInstance: GroupsDB = { GroupsDB() } ()
 
     let rootNode = "groups"
     let listsNode = "lists"
