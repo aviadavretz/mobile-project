@@ -59,7 +59,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func loadUserData() {
-        let userId = CurrentUserUtilities.sharedInstance.getId()!
+        let userId = AuthenticationUtilities.sharedInstance.getId()!
 
         UsersDB.sharedInstance.findUserByKey(key: userId,
                 whenFinished: refreshUserNotificationReceived)
@@ -128,7 +128,7 @@ class MainController: UIViewController, LoginButtonDelegate {
                 loginButtonView.isHidden = true
                 showSpinner()
                 
-                CurrentUserUtilities.sharedInstance.signIn(
+                AuthenticationUtilities.sharedInstance.signIn(
                         facebookAuthenticationToken: accessToken.authenticationToken,
                         whenFinished: tryFindingUserInDB)
                 FacebookAccessTokenCache.sharedInstance.store(accessToken)
@@ -146,7 +146,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     private func tryFindingUserInDB() {
-        UsersDB.sharedInstance.findUserByKey(key: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: {(existingUser) in
+        UsersDB.sharedInstance.findUserByKey(key: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
                 self.greetingPrefix = "Welcome back"
                 
@@ -170,15 +170,15 @@ class MainController: UIViewController, LoginButtonDelegate {
         // If there's no profile pic, the default user.png pic will be loaded.
         if let profilePic = image {
             refreshImage(image: profilePic)
-            ImageDB.sharedInstance.storeImage(image: profilePic, userId: CurrentUserUtilities.sharedInstance.getId()!, whenFinished: loadUserData)
+            ImageDB.sharedInstance.storeImage(image: profilePic, userId: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: loadUserData)
         }
     }
 
     private func createUser() {
-        let facebookId = CurrentUserUtilities.sharedInstance.getFacebookUser()!.uid as NSString
+        let facebookId = AuthenticationUtilities.sharedInstance.getFacebookUser()!.uid as NSString
         
-        let newUser = User(key: CurrentUserUtilities.sharedInstance.getId()! as NSString,
-                           name: CurrentUserUtilities.sharedInstance.getFacebookUser()!.displayName! as NSString,
+        let newUser = User(key: AuthenticationUtilities.sharedInstance.getId()! as NSString,
+                           name: AuthenticationUtilities.sharedInstance.getFacebookUser()!.displayName! as NSString,
                            facebookId: facebookId)
 
         // When finished: downloadAndSaveFacebookProfilePic
@@ -186,7 +186,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
 
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        CurrentUserUtilities.sharedInstance.signOut()
+        AuthenticationUtilities.sharedInstance.signOut()
         FacebookAccessTokenCache.sharedInstance.clear()
 
         elapseScreenAfterLogout()

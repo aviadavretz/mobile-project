@@ -28,7 +28,7 @@ class NewGroceryListViewController: UIViewController {
     }
     
     private func chooseFirstGroup() {
-        UserGroupsDB(userKey: CurrentUserUtilities.sharedInstance.getId()! as NSString).findFirstGroup(whenFound: refreshGroup)
+        UserGroupsDB(userKey: AuthenticationUtilities.sharedInstance.getId()! as NSString).findFirstGroup(whenFound: refreshGroup)
     }
     
     public func refreshGroup(group: Group?) {

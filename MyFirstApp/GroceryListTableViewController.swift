@@ -25,7 +25,7 @@ class GroceryListTableViewController: UITableViewController {
     }
     
     private func initializeModel() {
-        db = UserGroceryListsDB(userKey: CurrentUserUtilities.sharedInstance.getId()! as NSString)
+        db = UserGroceryListsDB(userKey: AuthenticationUtilities.sharedInstance.getId()! as NSString)
         db!.observeLists(whenListAdded: listAdded, whenListDeleted: listDeleted)
     }
     

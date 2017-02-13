@@ -30,7 +30,7 @@ class NewGroupViewController: UIViewController {
         if (segue.identifier == "UnwindNewGroup") {
             let title = titleTextView.text! as NSString
             
-            GroupFirebaseDB.sharedInstance.addGroup(groupTitle: title, forUserKey: CurrentUserUtilities.sharedInstance.getId()! as NSString)
+            GroupFirebaseDB.sharedInstance.addGroup(groupTitle: title, forUserKey: AuthenticationUtilities.sharedInstance.getId()! as NSString)
         }
     }
     

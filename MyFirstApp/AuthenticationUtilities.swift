@@ -6,8 +6,8 @@
 import Foundation
 import Firebase
 
-class CurrentUserUtilities {
-    static let sharedInstance: CurrentUserUtilities = { CurrentUserUtilities() } ()
+class AuthenticationUtilities {
+    static let sharedInstance: AuthenticationUtilities = { AuthenticationUtilities() } ()
 
     private init() {}
 
