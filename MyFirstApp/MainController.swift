@@ -10,7 +10,6 @@ import UIKit
 import Darwin
 import FacebookLogin
 import FacebookCore
-import Firebase
 
 class MainController: UIViewController, LoginButtonDelegate {
     let defaultGreeting = "Hello"
