@@ -553,7 +553,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQc-NI-XFI" customClass="CircleButton" customModule="MyFirstApp" customModuleProvider="target">
-                                <frame key="frameInset" minX="223" minY="106.5" width="40" height="40"/>
+                                <frame key="frameInset" minX="213" minY="106" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.903746698943662" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="camera"/>
