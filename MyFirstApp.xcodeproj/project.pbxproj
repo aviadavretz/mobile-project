@@ -13,7 +13,7 @@
 		58603047ABB24474B15E4158 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586032AEE0ABD05C6DE6BD9D /* GroupMemberCell.swift */; };
 		586030D85202DEB25E7A92C6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		586031DACECFC6C146570294 /* RoundedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586031E8571A2490CC0AB71C /* RoundedDialog.swift */; };
-		5860322BF676324442171BD8 /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentFirebaseUser.swift */; };
+		5860322BF676324442171BD8 /* CurrentUserUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentUserUtilities.swift */; };
 		586032637C25E4EB06F78BBD /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603604EDF8E2D84F294D9C /* CircleButton.swift */; };
 		5860328EDBF105BC9D258263 /* GroceryListsByGroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603BA4E7D942AE28F65A7A /* GroceryListsByGroupDB.swift */; };
 		586032AB8DCC3ADD7EB00590 /* GroceryListsByGroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603BA4E7D942AE28F65A7A /* GroceryListsByGroupDB.swift */; };
@@ -26,7 +26,7 @@
 		586034BF77C2CDC31B846A10 /* UserGroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DF2F6E0D0ED5BFAE9F7 /* UserGroupsDB.swift */; };
 		586035954C69C534AA6A65FF /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
 		586035BE7AFD0AFD6B3BB379 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DAFD0DD09CD63A780F7 /* RoundedImageView.swift */; };
-		586035C5D98084F0095B6229 /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentFirebaseUser.swift */; };
+		586035C5D98084F0095B6229 /* CurrentUserUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentUserUtilities.swift */; };
 		5860365BA56B466615834EE9 /* GroupMembersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603679F80BE0A5D095490B /* GroupMembersDB.swift */; };
 		5860367DC0C9DFE00FC3A945 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */; };
 		586036854D4518E54FFD3EC0 /* TimeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */; };
@@ -34,7 +34,7 @@
 		586036B8B7151158D43083EE /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
 		5860370ECE6449C2AEBB6228 /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */; };
 		586037259799CA5745578277 /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
-		5860376D0D997CA2415579F4 /* CurrentFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentFirebaseUser.swift */; };
+		5860376D0D997CA2415579F4 /* CurrentUserUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* CurrentUserUtilities.swift */; };
 		586037E04E8AE96DA1F95784 /* UserGroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603893230D3EA6E2592E41 /* UserGroceryListsDB.swift */; };
 		586037E2F73286F84EDADC26 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */; };
 		58603806E53DCB8376B16F7C /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
@@ -173,7 +173,7 @@
 		5860386F94559A7E2FED8E77 /* GroceryRequestsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestsDB.swift; sourceTree = "<group>"; };
 		58603893230D3EA6E2592E41 /* UserGroceryListsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroceryListsDB.swift; sourceTree = "<group>"; };
 		586039C7E66EECE7B83F4A67 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
-		58603A7F6EE1ED8ED2962BF2 /* CurrentFirebaseUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentFirebaseUser.swift; sourceTree = "<group>"; };
+		58603A7F6EE1ED8ED2962BF2 /* CurrentUserUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserUtilities.swift; sourceTree = "<group>"; };
 		58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtilities.swift; sourceTree = "<group>"; };
 		58603BA4E7D942AE28F65A7A /* GroceryListsByGroupDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListsByGroupDB.swift; sourceTree = "<group>"; };
 		58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		5860306E684534296BD07666 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				58603A7F6EE1ED8ED2962BF2 /* CurrentFirebaseUser.swift */,
+				58603A7F6EE1ED8ED2962BF2 /* CurrentUserUtilities.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -818,7 +818,7 @@
 				58603D0758A0E45ED506B859 /* RoundedButton.swift in Sources */,
 				58603D5AFAB4EA38B6173E97 /* CircleButton.swift in Sources */,
 				58603321A19508C43132BD34 /* ImageTableViewCell.swift in Sources */,
-				5860376D0D997CA2415579F4 /* CurrentFirebaseUser.swift in Sources */,
+				5860376D0D997CA2415579F4 /* CurrentUserUtilities.swift in Sources */,
 				5860367DC0C9DFE00FC3A945 /* FacebookAccessTokenCache.swift in Sources */,
 				5860345725F3B034E6CEFB90 /* FacebookFriendsFinder.swift in Sources */,
 				586033107062802FF3EFD1B0 /* FacebookImageManager.swift in Sources */,
@@ -865,7 +865,7 @@
 				58603376A4EDFD251D32F370 /* RoundedButton.swift in Sources */,
 				58603E01363A5139EFBEDE21 /* CircleButton.swift in Sources */,
 				586030D85202DEB25E7A92C6 /* ImageTableViewCell.swift in Sources */,
-				586035C5D98084F0095B6229 /* CurrentFirebaseUser.swift in Sources */,
+				586035C5D98084F0095B6229 /* CurrentUserUtilities.swift in Sources */,
 				58603A31141401F0D2C32240 /* FacebookAccessTokenCache.swift in Sources */,
 				58603CDC4D24EBF8DBCEF0D5 /* FacebookFriendsFinder.swift in Sources */,
 				586036B8B7151158D43083EE /* FacebookImageManager.swift in Sources */,
@@ -912,7 +912,7 @@
 				58603BE947D3197F04A7481A /* RoundedButton.swift in Sources */,
 				586032637C25E4EB06F78BBD /* CircleButton.swift in Sources */,
 				58603806E53DCB8376B16F7C /* ImageTableViewCell.swift in Sources */,
-				5860322BF676324442171BD8 /* CurrentFirebaseUser.swift in Sources */,
+				5860322BF676324442171BD8 /* CurrentUserUtilities.swift in Sources */,
 				586037E2F73286F84EDADC26 /* FacebookAccessTokenCache.swift in Sources */,
 				58603FF2E5CEE56AC285A680 /* FacebookFriendsFinder.swift in Sources */,
 				586037259799CA5745578277 /* FacebookImageManager.swift in Sources */,
