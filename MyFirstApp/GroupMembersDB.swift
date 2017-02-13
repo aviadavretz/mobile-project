@@ -12,8 +12,10 @@ class GroupMembersDB {
 
     var databaseRef: FIRDatabaseReference!
     var members: Array<User> = []
+    var groupKey: NSString
 
     init(groupKey: NSString) {
+        self.groupKey = groupKey
         databaseRef = FIRDatabase.database().reference(withPath: "\(groupsNode)/\(groupKey)/\(membersNode)")
     }
 
@@ -28,12 +30,31 @@ class GroupMembersDB {
         })
     }
 
+    func findGroupMembersCount(whenFound: @escaping (_: Int) -> Void) {
+        databaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                    if (!snapshot.exists()) {
+                        whenFound(0)
+                    }
+                    else {
+                        whenFound(Int(snapshot.childrenCount))
+                    }
+                })
+    }
+
     func addMember(userKey: NSString) {
         databaseRef.updateChildValues([userKey : true])
     }
     
     func removeMember(userKey: String) {
-        databaseRef.child(userKey).removeValue()
+        databaseRef.child(userKey).removeValue(completionBlock: { (_,_) in self.deleteGroupIfEmpty()})
+    }
+
+    private func deleteGroupIfEmpty() {
+        self.findGroupMembersCount(whenFound: { (count) in
+            if (count == 0) {
+                GroupsDB.sharedInstance.deleteGroup(key: self.groupKey)
+            }
+        })
     }
 
     func removeObservers() {

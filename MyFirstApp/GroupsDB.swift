@@ -33,6 +33,10 @@ class GroupsDB {
 
         UserGroupsDB(userKey: forUserKey).addGroupToUser(groupKey: generatedKey as NSString)
     }
+
+    func deleteGroup(key: NSString) {
+        databaseRef.child(key as String).removeValue()
+    }
     
     func findGroupByKey(key: String, whenFinished: @escaping (_: Group?) -> Void) {
         if (self.groupCache[key as NSString] == nil) {
