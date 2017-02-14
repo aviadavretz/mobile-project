@@ -19,8 +19,6 @@ class MainController: UIViewController, LoginButtonDelegate {
     
     // MARK: Properties
     @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var loginButtonView: UIView!
     @IBOutlet weak var pleaseWait: UIActivityIndicatorView!
@@ -28,9 +26,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     // MARK: Other functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        createButton.isHidden = false
-        createButton.isEnabled = false
+
         pleaseWait.isHidden = true
 
         greetingPrefix = defaultGreeting
@@ -49,7 +45,6 @@ class MainController: UIViewController, LoginButtonDelegate {
 
         if (accessToken != nil && accessToken!.expirationDate.timeIntervalSince(Date()) > 0) {
             self.greetingPrefix = "Welcome back"
-            
             self.newUser = false
             
             AccessToken.current = accessToken
@@ -62,13 +57,8 @@ class MainController: UIViewController, LoginButtonDelegate {
 
         UsersDB.sharedInstance.findUserByKey(key: userId,
                 whenFinished: refreshUserNotificationReceived)
-
-        ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: refreshImage)
-
-        createButton.isEnabled = true
     }
     private func showSpinner() {
-        createButton.isHidden = true
         pleaseWait.isHidden = false
         pleaseWait.startAnimating()
     }
@@ -76,7 +66,6 @@ class MainController: UIViewController, LoginButtonDelegate {
     private func hideSpinner() {
         pleaseWait.stopAnimating()
         pleaseWait.isHidden = true
-        createButton.isHidden = false
     }
 
     func refreshUserNotificationReceived(userFromDB : User?) {
@@ -105,10 +94,6 @@ class MainController: UIViewController, LoginButtonDelegate {
         }
 
         greetingLabel.text = finalString
-    }
-
-    private func refreshImage(image:UIImage?) {
-        userImage.image = image
     }
 
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
@@ -168,7 +153,6 @@ class MainController: UIViewController, LoginButtonDelegate {
     private func gotFacebookProfilePic(image:UIImage?) {
         // If there's no profile pic, the default user.png pic will be loaded.
         if let profilePic = image {
-            refreshImage(image: profilePic)
             ImageDB.sharedInstance.storeImage(image: profilePic, userId: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: loadUserData)
         }
     }
@@ -193,7 +177,6 @@ class MainController: UIViewController, LoginButtonDelegate {
 
     private func elapseScreenData() {
         greetingLabel.text = "\(defaultGreeting)!"
-        userImage.image = UIImage(named: "user")
     }
 
     // MARK: Actions
@@ -212,7 +195,6 @@ class MainController: UIViewController, LoginButtonDelegate {
     
     func elapseScreenAfterLogout() {
         loginButtonView.isHidden = false
-        createButton.isEnabled = false
         elapseScreenData()
     }
     
