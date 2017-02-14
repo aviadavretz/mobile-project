@@ -48,11 +48,9 @@ class ProfileViewController: UIViewController, LoginButtonDelegate
         loginButton.delegate = self
         loginButtonView.addSubview(loginButton)
     }
-    
+
     public func refreshImage(image:UIImage?) {
         imagePicked.image = image
-        
-        saveImage()
     }
     
     @IBAction func showChooseImageDialog(sender: AnyObject) {
@@ -63,9 +61,11 @@ class ProfileViewController: UIViewController, LoginButtonDelegate
         chooseImageDialog.isHidden = true
     }
     
-    func saveImage() {
+    func saveImage(image:UIImage?) {
         // Save the image to db
-        ImageDB.sharedInstance.storeImage(image: imagePicked.image!, userId: AuthenticationUtilities.sharedInstance.getId()!)
+        ImageDB.sharedInstance.storeImage(image: image!, userId: AuthenticationUtilities.sharedInstance.getId()!)
+
+        refreshImage(image: image)
     }
     
     public func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {}

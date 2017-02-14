@@ -40,7 +40,6 @@ class ChooseImageDialogViewController: UIViewController, UIImagePickerController
         image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         self.dismiss(animated: true, completion: nil);
-        
         self.closeDialog()
     }
     
@@ -56,7 +55,7 @@ class ChooseImageDialogViewController: UIViewController, UIImagePickerController
                 // Get a reference to the destination view controller
                 let destinationVC:ProfileViewController = segue.destination as! ProfileViewController
             
-                destinationVC.refreshImage(image: image)
+                destinationVC.saveImage(image: image)
             }
         }
     }
