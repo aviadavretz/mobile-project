@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FacebookLogin
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LoginButtonDelegate
+class ProfileViewController: UIViewController, LoginButtonDelegate
 {
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var loginButtonView: UIButton!
