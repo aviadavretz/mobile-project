@@ -57,7 +57,9 @@ class MainController: UIViewController, LoginButtonDelegate {
 
         UsersDB.sharedInstance.findUserByKey(key: userId,
                 whenFinished: refreshUserNotificationReceived)
+        ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: {(_) in })
     }
+
     private func showSpinner() {
         pleaseWait.isHidden = false
         pleaseWait.startAnimating()
@@ -71,9 +73,7 @@ class MainController: UIViewController, LoginButtonDelegate {
     func refreshUserNotificationReceived(userFromDB : User?) {
         if (userFromDB != nil) {
             user = userFromDB
-
             refreshLabels()
-            
             hideSpinner()
 
             // Continue
@@ -133,14 +133,11 @@ class MainController: UIViewController, LoginButtonDelegate {
         UsersDB.sharedInstance.findUserByKey(key: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: {(existingUser) in
             if (existingUser != nil) {
                 self.greetingPrefix = "Welcome back"
-                
                 self.newUser = false
-                
                 self.loadUserData()
             }
             else {
                 self.greetingPrefix = "Welcome"
-                
                 self.createUser()
             }
         })
@@ -151,7 +148,6 @@ class MainController: UIViewController, LoginButtonDelegate {
     }
     
     private func gotFacebookProfilePic(image:UIImage?) {
-        // If there's no profile pic, the default user.png pic will be loaded.
         if let profilePic = image {
             ImageDB.sharedInstance.storeImage(image: profilePic, userId: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: loadUserData)
         }
@@ -168,22 +164,13 @@ class MainController: UIViewController, LoginButtonDelegate {
         UsersDB.sharedInstance.addUser(user: newUser, whenFinished: {(_, _) in self.downloadAndSaveFacebookProfilePic(facebookId: facebookId)})
     }
 
-    func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        AuthenticationUtilities.sharedInstance.signOut()
-        FacebookAccessTokenCache.sharedInstance.clear()
-
-        elapseScreenAfterLogout()
-    }
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {}
 
     private func elapseScreenData() {
         greetingLabel.text = "\(defaultGreeting)!"
     }
 
     // MARK: Actions
-    @IBAction func SelectAllText(sender: UITextField) {
-        sender.selectAll(sender)
-    }
-
     @IBAction func Exit(sender: AnyObject) {
         // Exit the application
         exit(0)
