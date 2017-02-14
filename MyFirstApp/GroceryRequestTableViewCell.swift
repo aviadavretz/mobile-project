@@ -23,10 +23,6 @@ class GroceryRequestTableViewCell: ImageTableViewCell {
         stopEditing()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     public func startEditing(whenFinishedEditing: @escaping ((String) -> Void)) {
         vButton.isHidden = false
         itemLabel.isHidden = true

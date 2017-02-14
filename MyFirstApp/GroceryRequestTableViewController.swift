@@ -43,13 +43,9 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         table.reloadRows(at: [IndexPath(row: requestIndex, section: 0)],
                         with: UITableViewRowAnimation.automatic)
     }
+
     deinit {
         db!.removeObservers()
-        unregisterObservers()
-    }
-
-    private func unregisterObservers() {
-        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK:  UITextFieldDelegate Methods
@@ -64,7 +60,6 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
-        
         manageCell(cell: cell, row: indexPath.row)
         
         return cell
@@ -72,8 +67,8 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     
     private func manageCell(cell: GroceryRequestTableViewCell, row: Int) {
         cell.showSpinner()
-        
-        // Fetches the appropriate item for the data source layout.
+
+        // Fetches the appropriate item
         let item = db!.getGroceryRequest(row: row)
         let userId = item?.userId as! String
         
@@ -142,7 +137,6 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
                     if (request.userId.isEqual(to: AuthenticationUtilities.sharedInstance.getId()!)) {
                         // Table view cells are reused and should be dequeued using a cell identifier.
                         let cell = table.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
-                        
                         manageCell(cell: cell, row: indexPath.row)
                         
                         cell.startEditing(whenFinishedEditing: { (newItemName) in
