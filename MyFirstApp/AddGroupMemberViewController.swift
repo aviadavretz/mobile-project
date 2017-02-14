@@ -38,10 +38,6 @@ class AddGroupMemberViewController : UIViewController, UITableViewDataSource, UI
         }
     }
     
-    private func memberAdded(memberIndex: Int) {
-        table.insertRows(at: [IndexPath(row: memberIndex, section: 0)], with: UITableViewRowAnimation.automatic)
-    }
-    
     // MARK:  UITextFieldDelegate Methods
     private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -58,20 +54,18 @@ class AddGroupMemberViewController : UIViewController, UITableViewDataSource, UI
         
         cell.showSpinner()
         
-        // Fetche the appropriate item for the data source layout.
+        // Fetch the appropriate item
         let user = friendsToAdd[indexPath.row]
         
         // Update the views
-        updateUserDetailsInCell(cell: cell, userId: user.key as String)
+        updateUserDetailsInCell(cell: cell, user: user)
         updateUserImageInCell(cell: cell, userId: user.key as String)
         
         return cell
     }
     
-    func updateUserDetailsInCell(cell: GroupMemberCell, userId:String) {
-        UsersDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
-            cell.nameLabel.text = "\(user!.name!)"
-        })
+    func updateUserDetailsInCell(cell: GroupMemberCell, user:User) {
+        cell.nameLabel.text = "\(user.name!)"
     }
     
     func updateUserImageInCell(cell: GroupMemberCell, userId: String) {

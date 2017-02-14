@@ -57,16 +57,14 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
         let user = db!.getMember(row: indexPath.row)!
         
         // Update the views
-        updateUserDetailsInCell(cell: cell, userId: user.key as String)
+        updateUserDetailsInCell(cell: cell, user: user)
         updateUserImageInCell(cell: cell, userId: user.key as String)
-        
+
         return cell
     }
     
-    func updateUserDetailsInCell(cell: GroupMemberCell, userId:String) {
-        UsersDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
-            cell.nameLabel.text = "\(user!.name!)"
-        })
+    func updateUserDetailsInCell(cell: GroupMemberCell, user:User) {
+        cell.nameLabel.text = "\(user.name!)"
     }
     
     func updateUserImageInCell(cell: GroupMemberCell, userId: String) {

@@ -18,10 +18,6 @@ class NewGroupMemberCell: GroupMemberCell {
         doneButton.isHidden = true
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     func toggleDone() {
         doneButton.isHidden = !doneButton.isHidden
     }
