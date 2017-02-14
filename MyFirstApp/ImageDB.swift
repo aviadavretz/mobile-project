@@ -34,18 +34,17 @@ class ImageDB {
         if (!(ImageDB.defaultImage!.isEqual(image))) {
             let imageData = UIImageJPEGRepresentation(image, 0.5)
             let imagePath = "\(userId).jpg"
+
             let metadata = FIRStorageMetadata()
-                metadata.contentType = "image/jpeg"
-            self.storageRef?.child(imagePath)
-            .put(imageData!, metadata: metadata) {(metadata, error) in
-                
+            metadata.contentType = "image/jpeg"
+
+            self.storageRef?.child(imagePath).put(imageData!, metadata: metadata) {(metadata, error) in
                 if let error = error {
                     print("Error uploading: \(error)")
                     return
                 }
                 
                 self.imagesCache[userId] = image
-                
                 whenFinished()
             }
         }
