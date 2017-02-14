@@ -57,8 +57,7 @@ class GroceryListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GroceryListTableViewCell
         
         cell.tag = indexPath.row
-        
-        // Fetches the appropriate item for the data source layout.
+
         let list = db!.getGroceryList(row: indexPath.row)!
         
         let dateString = TimeUtilities.getStringFromDate(date: list.date as Date, timeZone: TimeZone(secondsFromGMT: 0)!)
@@ -113,7 +112,7 @@ class GroceryListTableViewController: UITableViewController {
     
     override func shouldPerformSegue(withIdentifier: String, sender: Any?) -> Bool {
         // Check if the user has any groups
-        if (!(db?.doesUserHaveGroup())!) {
+        if ((withIdentifier == "New List") && (!(db?.doesUserHaveGroup())!)) {
             // Stop the segue and display an alert
             let alert = UIAlertController(title: "Sorry!", message: "You can't create a grocery list because you don't have any groups yet.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
