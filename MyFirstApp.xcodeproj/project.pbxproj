@@ -80,6 +80,9 @@
 		72AAACC51DD3496700A78ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72AAACC31DD3496700A78ED4 /* LaunchScreen.storyboard */; };
 		72AAACD01DD3496700A78ED4 /* MyFirstAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AAACCF1DD3496700A78ED4 /* MyFirstAppTests.swift */; };
 		72AAACDB1DD3496700A78ED4 /* MyFirstAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AAACDA1DD3496700A78ED4 /* MyFirstAppUITests.swift */; };
+		84075C061E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075C051E71CA7800C89BA4 /* LocalImageStorage.swift */; };
+		84075C071E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075C051E71CA7800C89BA4 /* LocalImageStorage.swift */; };
+		84075C081E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075C051E71CA7800C89BA4 /* LocalImageStorage.swift */; };
 		840FF7921E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
 		840FF7931E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
 		840FF7941E127D03000F4FC9 /* AddGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */; };
@@ -198,6 +201,7 @@
 		72AAACD61DD3496700A78ED4 /* MyFirstAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFirstAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AAACDA1DD3496700A78ED4 /* MyFirstAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstAppUITests.swift; sourceTree = "<group>"; };
 		72AAACDC1DD3496700A78ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84075C051E71CA7800C89BA4 /* LocalImageStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalImageStorage.swift; sourceTree = "<group>"; };
 		840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupMemberViewController.swift; sourceTree = "<group>"; };
 		8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		842D16BE1DF046750024794F /* NewGroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryListViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +435,7 @@
 				842DC0E61E13C95B00185F5F /* Entities */,
 				84FDDE1A1E0D5A8200C63138 /* Database */,
 				586039C8B3F78407E1200C8D /* Utils */,
+				84075C051E71CA7800C89BA4 /* LocalImageStorage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -820,6 +825,7 @@
 				843A5F021E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */,
 				8434704F1DFB246F00378CA0 /* User.swift in Sources */,
 				84FA51641E044C14005943AC /* ImageDB.swift in Sources */,
+				84075C061E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84FA51601E044724005943AC /* ProfileViewController.swift in Sources */,
 				8416B2451E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
@@ -867,6 +873,7 @@
 				843470501DFB246F00378CA0 /* User.swift in Sources */,
 				847BEFB41E1028EF0007A26A /* NewGroupViewController.swift in Sources */,
 				84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
+				84075C071E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				843A5F031E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */,
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
 				8479F7EB1E1138F400E9185B /* ChooseGroupDialogViewController.swift in Sources */,
@@ -914,6 +921,7 @@
 				842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				847BEFB51E1028EF0007A26A /* NewGroupViewController.swift in Sources */,
 				84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
+				84075C081E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				843A5F041E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */,
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
 				8479F7EC1E1138F400E9185B /* ChooseGroupDialogViewController.swift in Sources */,

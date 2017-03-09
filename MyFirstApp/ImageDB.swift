@@ -14,7 +14,6 @@ class ImageDB {
     
     static let sharedInstance: ImageDB = { ImageDB() } ()
     var storageRef: FIRStorageReference?
-    var imagesCache:Dictionary<String, UIImage> = Dictionary<String, UIImage>()
     
     private init() {
         configureStorage()
@@ -44,7 +43,9 @@ class ImageDB {
                     return
                 }
                 
-                self.imagesCache[userId] = image
+                // Save the image to local storage
+                LocalImageStorage.sharedInstance.saveImageToFile(image: image, name: imagePath);
+                
                 whenFinished()
             }
         }
@@ -52,29 +53,36 @@ class ImageDB {
     
     func downloadImage(userId: String, whenFinished: @escaping (UIImage?)  -> Void) {
         var image:UIImage?
+        let imagePath = "\(userId).jpg"
         
-        if (imagesCache[userId] == nil) {
-            let imagePath = "\(userId).jpg"
-
-            self.storageRef?.child(imagePath).data(withMaxSize: INT64_MAX){ (data, error) in
-                    if let error = error {
-                        print("Error downloading: \(error)")
-                        
-                        // We don't want it to try loading every time when an image is missing
-                        self.imagesCache[userId] = ImageDB.defaultImage
-                        
-                        whenFinished(self.imagesCache[userId])
-                        return
-                    }
-
-                    image = UIImage.init(data: data!)!
-                    self.imagesCache[userId] = image
+        // Try to get the image from local storage
+        let url = URL(string: imagePath)
+        let localImageName = url!.lastPathComponent
+        
+        // If image exists in local storage
+        if let image = LocalImageStorage.sharedInstance.getImageFromFile(name: localImageName) {
+            print ("Got Image \(imagePath) from local storage.")
             
-                    whenFinished(image)
-            }
+            whenFinished(image)
         }
         else {
-            whenFinished(self.imagesCache[userId])
+            self.storageRef?.child(imagePath).data(withMaxSize: INT64_MAX) { (data, error) in
+                if let error = error {
+                    print("Error downloading: \(error)")
+                        
+                    // Return the default image
+                    whenFinished(ImageDB.defaultImage)
+                    return
+                }
+
+                image = UIImage.init(data: data!)!
+                
+                // Save the image to local storage
+                LocalImageStorage.sharedInstance.saveImageToFile(image: image!, name: imagePath);
+            
+                whenFinished(image)
+            
+            }
         }
     }
 }
