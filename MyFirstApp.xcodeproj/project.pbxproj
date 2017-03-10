@@ -10,6 +10,8 @@
 		4AB597FCCA38D8717F2EA2E3 /* Pods_MyFirstApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */; };
 		58603007C4B806D8214B29CD /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */; };
 		58603015823D7F4F23CAB78C /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586032AEE0ABD05C6DE6BD9D /* GroupMemberCell.swift */; };
+		58603023E87AF7DEFA5ADBC4 /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */; };
+		58603031ECC7D6A32DC940D3 /* FirebaseDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */; };
 		58603047ABB24474B15E4158 /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586032AEE0ABD05C6DE6BD9D /* GroupMemberCell.swift */; };
 		586030D85202DEB25E7A92C6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		5860313A4706B8A2348BEA7F /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586031E5F5EC7ACCB004C787 /* GroceryRequestsDB.swift */; };
@@ -26,25 +28,31 @@
 		58603321A19508C43132BD34 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		58603376A4EDFD251D32F370 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033342B730BD0100D6680 /* RoundedButton.swift */; };
 		5860345725F3B034E6CEFB90 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D3031A7E87E1E53A5C5 /* FacebookFriendsFinder.swift */; };
+		5860352DFF96CB35F2FB4EEA /* FirebaseDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */; };
 		586035954C69C534AA6A65FF /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
 		586035BE7AFD0AFD6B3BB379 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DAFD0DD09CD63A780F7 /* RoundedImageView.swift */; };
 		586035C5D98084F0095B6229 /* AuthenticationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* AuthenticationUtilities.swift */; };
+		586035D22AD49541F1F18A77 /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */; };
 		5860360B44349D2A9312569C /* GroceryRequestsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586031E5F5EC7ACCB004C787 /* GroceryRequestsDB.swift */; };
 		5860361371CB109B1B2B06BF /* UserGroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860398FEDE8E8BDDE3A7D76 /* UserGroupsDB.swift */; };
 		5860365B8CC41056207B7D19 /* GroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603332D0B878C7361F0811 /* GroceryListsDB.swift */; };
 		586036727E88861AA2C4058D /* UserGroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860398FEDE8E8BDDE3A7D76 /* UserGroupsDB.swift */; };
 		5860367DC0C9DFE00FC3A945 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */; };
 		586036854D4518E54FFD3EC0 /* TimeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */; };
+		5860368766B0178B7B7ACAF1 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603005E7BC33DA32941C16 /* LocalDB.swift */; };
 		5860369AA5A2ADA022B07594 /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
 		586036B8B7151158D43083EE /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
 		586037259799CA5745578277 /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
 		5860376D0D997CA2415579F4 /* AuthenticationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* AuthenticationUtilities.swift */; };
 		58603782588FB0996D9F29A6 /* GroupMembersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */; };
+		586037D2D756BDAFC2AA88D6 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
 		586037E2F73286F84EDADC26 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */; };
 		58603806E53DCB8376B16F7C /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		58603816C3422026C796ABEA /* GroupMembersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */; };
 		5860382AF33812286860F6CA /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
+		5860382BEA11C43148E86BA8 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
 		586038661C2372F160F94A9A /* UserGroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860384884659827182AA75F /* UserGroceryListsDB.swift */; };
+		586038ACDB2E1EBEAE5F413B /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */; };
 		586038E80A8E5FBAE2FF120E /* UserGroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860384884659827182AA75F /* UserGroceryListsDB.swift */; };
 		586038EEB0A8F4C192C30C6B /* UsersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033D62BC039C2B1A2422A /* UsersDB.swift */; };
 		58603906089A486E1A53CCA8 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586039C7E66EECE7B83F4A67 /* GroupTableViewCell.swift */; };
@@ -57,6 +65,8 @@
 		58603A8E7BC63567C991BBF0 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586039C7E66EECE7B83F4A67 /* GroupTableViewCell.swift */; };
 		58603AFB18D50E92DE72ADD7 /* TimeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */; };
 		58603B1B90CC1EE1E468ACBB /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */; };
+		58603B2C946DEC00CB626BB3 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
+		58603BB18F00BA4F8A3504A9 /* FirebaseDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */; };
 		58603BE947D3197F04A7481A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033342B730BD0100D6680 /* RoundedButton.swift */; };
 		58603BF6B5033CC7657D92D8 /* GroceryListsByGroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A9DF2863363769A4E22 /* GroceryListsByGroupDB.swift */; };
 		58603C6A46A65745E4E0471B /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603DAFD0DD09CD63A780F7 /* RoundedImageView.swift */; };
@@ -64,8 +74,10 @@
 		58603CDC4D24EBF8DBCEF0D5 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D3031A7E87E1E53A5C5 /* FacebookFriendsFinder.swift */; };
 		58603CEC4B5969070141E847 /* GroceryListsByGroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A9DF2863363769A4E22 /* GroceryListsByGroupDB.swift */; };
 		58603D0758A0E45ED506B859 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033342B730BD0100D6680 /* RoundedButton.swift */; };
+		58603D0B4EBDCEDCB5F8FEC0 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603005E7BC33DA32941C16 /* LocalDB.swift */; };
 		58603D5AFAB4EA38B6173E97 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603604EDF8E2D84F294D9C /* CircleButton.swift */; };
 		58603D9E44F85B580C9E13D7 /* UsersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033D62BC039C2B1A2422A /* UsersDB.swift */; };
+		58603DAB4B277B2A8BE69DB6 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603005E7BC33DA32941C16 /* LocalDB.swift */; };
 		58603DF95FA1507173D6E006 /* RoundedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586031E8571A2490CC0AB71C /* RoundedDialog.swift */; };
 		58603E01363A5139EFBEDE21 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603604EDF8E2D84F294D9C /* CircleButton.swift */; };
 		58603E4A95B812402C1E91F3 /* UserGroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860398FEDE8E8BDDE3A7D76 /* UserGroupsDB.swift */; };
@@ -101,6 +113,7 @@
 		8434705B1DFB25A000378CA0 /* GroceryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434705A1DFB25A000378CA0 /* GroceryRequest.swift */; };
 		8434705C1DFB25A000378CA0 /* GroceryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434705A1DFB25A000378CA0 /* GroceryRequest.swift */; };
 		8434705D1DFB25A000378CA0 /* GroceryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434705A1DFB25A000378CA0 /* GroceryRequest.swift */; };
+		843901031E72C05A003981F5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 843901021E72C05A003981F5 /* libsqlite3.0.tbd */; };
 		843A5F021E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5F011E0F1F9A00AB288A /* GroupsTableViewController.swift */; };
 		843A5F031E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5F011E0F1F9A00AB288A /* GroupsTableViewController.swift */; };
 		843A5F041E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5F011E0F1F9A00AB288A /* GroupsTableViewController.swift */; };
@@ -165,6 +178,7 @@
 		0E5E5F1A15064DD7BD1B84EB /* Pods-MyFirstAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAppTests/Pods-MyFirstAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58603005E7BC33DA32941C16 /* LocalDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
 		5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenCache.swift; sourceTree = "<group>"; };
 		5860310FE7BF241271AC111B /* FacebookImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookImageManager.swift; sourceTree = "<group>"; };
 		586031E5F5EC7ACCB004C787 /* GroceryRequestsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestsDB.swift; sourceTree = "<group>"; };
@@ -173,6 +187,7 @@
 		58603332D0B878C7361F0811 /* GroceryListsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListsDB.swift; sourceTree = "<group>"; };
 		586033342B730BD0100D6680 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		586033D62BC039C2B1A2422A /* UsersDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDB.swift; sourceTree = "<group>"; };
+		586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSqlExtension.swift; sourceTree = "<group>"; };
 		58603604EDF8E2D84F294D9C /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersDB.swift; sourceTree = "<group>"; };
@@ -183,9 +198,11 @@
 		58603A7F6EE1ED8ED2962BF2 /* AuthenticationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUtilities.swift; sourceTree = "<group>"; };
 		58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtilities.swift; sourceTree = "<group>"; };
 		58603A9DF2863363769A4E22 /* GroceryListsByGroupDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListsByGroupDB.swift; sourceTree = "<group>"; };
+		58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDateExtension.swift; sourceTree = "<group>"; };
 		58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		58603D3031A7E87E1E53A5C5 /* FacebookFriendsFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookFriendsFinder.swift; sourceTree = "<group>"; };
 		58603DAFD0DD09CD63A780F7 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastUpdateTable.swift; sourceTree = "<group>"; };
 		58603F4380AEBB337E27A482 /* GroceryRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequestTableViewCell.swift; sourceTree = "<group>"; };
 		58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupMemberCell.swift; sourceTree = "<group>"; };
 		5D50D210E2973DB1F964E039 /* Pods-MyFirstApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstApp/Pods-MyFirstApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +225,8 @@
 		8434704E1DFB246F00378CA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		843470561DFB258C00378CA0 /* GroceryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		8434705A1DFB25A000378CA0 /* GroceryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequest.swift; sourceTree = "<group>"; };
+		843901021E72C05A003981F5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		843901041E72C0E9003981F5 /* MyFirstApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyFirstApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		843A5F011E0F1F9A00AB288A /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		844358661DFB392000B14DB9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8479F7E91E1138F400E9185B /* ChooseGroupDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseGroupDialogViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843901031E72C05A003981F5 /* libsqlite3.0.tbd in Frameworks */,
 				4AB597FCCA38D8717F2EA2E3 /* Pods_MyFirstApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +287,16 @@
 				FBAFB374C7930BAABD352F18 /* Pods-MyFirstAppUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		58603053220E08D48A333B43 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */,
+				58603005E7BC33DA32941C16 /* LocalDB.swift */,
+				58603CD4FD571066605F3840 /* TablesSql */,
+			);
+			name = Local;
 			sourceTree = "<group>";
 		};
 		5860306E684534296BD07666 /* Authentication */ = {
@@ -355,9 +385,19 @@
 			name = Grocery;
 			sourceTree = "<group>";
 		};
+		58603CD4FD571066605F3840 /* TablesSql */ = {
+			isa = PBXGroup;
+			children = (
+				586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */,
+				58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */,
+			);
+			name = TablesSql;
+			sourceTree = "<group>";
+		};
 		6B3A9AE5642E3E855C23BDDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				843901021E72C05A003981F5 /* libsqlite3.0.tbd */,
 				3DEF3F02622E27CA40E81BD5 /* Pods_MyFirstApp.framework */,
 				537B805AEDA546C0D3A2E0B6 /* Pods_MyFirstAppTests.framework */,
 				C5BC0C9EE0FC27C2A30EC68E /* Pods_MyFirstAppUITests.framework */,
@@ -399,6 +439,7 @@
 				72AAACC11DD3496700A78ED4 /* Assets.xcassets */,
 				72AAACC31DD3496700A78ED4 /* LaunchScreen.storyboard */,
 				72AAACC61DD3496700A78ED4 /* Info.plist */,
+				843901041E72C0E9003981F5 /* MyFirstApp-Bridging-Header.h */,
 			);
 			path = MyFirstApp;
 			sourceTree = "<group>";
@@ -530,6 +571,7 @@
 				586031417722FDB3F7258058 /* User */,
 				58603720C1BF506249E753F8 /* Grocery */,
 				586033E122D94ACDF103CA2D /* Group */,
+				58603053220E08D48A333B43 /* Local */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -852,6 +894,10 @@
 				5860313A4706B8A2348BEA7F /* GroceryRequestsDB.swift in Sources */,
 				58603A3B6CA2FEDE8E3CB2B3 /* GroupsDB.swift in Sources */,
 				58603816C3422026C796ABEA /* GroupMembersDB.swift in Sources */,
+				58603031ECC7D6A32DC940D3 /* FirebaseDateExtension.swift in Sources */,
+				5860368766B0178B7B7ACAF1 /* LocalDB.swift in Sources */,
+				5860382BEA11C43148E86BA8 /* UserSqlExtension.swift in Sources */,
+				58603023E87AF7DEFA5ADBC4 /* LastUpdateTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +946,10 @@
 				586032C4D5D413B4E04E335B /* GroceryRequestsDB.swift in Sources */,
 				58603EEFE234A5435B9AFFCD /* GroupsDB.swift in Sources */,
 				586032D5136985E71610BE62 /* GroupMembersDB.swift in Sources */,
+				5860352DFF96CB35F2FB4EEA /* FirebaseDateExtension.swift in Sources */,
+				58603DAB4B277B2A8BE69DB6 /* LocalDB.swift in Sources */,
+				58603B2C946DEC00CB626BB3 /* UserSqlExtension.swift in Sources */,
+				586038ACDB2E1EBEAE5F413B /* LastUpdateTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +998,10 @@
 				5860360B44349D2A9312569C /* GroceryRequestsDB.swift in Sources */,
 				586031C07F311481EC95D52B /* GroupsDB.swift in Sources */,
 				58603782588FB0996D9F29A6 /* GroupMembersDB.swift in Sources */,
+				58603BB18F00BA4F8A3504A9 /* FirebaseDateExtension.swift in Sources */,
+				58603D0B4EBDCEDCB5F8FEC0 /* LocalDB.swift in Sources */,
+				586037D2D756BDAFC2AA88D6 /* UserSqlExtension.swift in Sources */,
+				586035D22AD49541F1F18A77 /* LastUpdateTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1086,6 +1140,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.default.MyFirstApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyFirstApp/MyFirstApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1105,6 +1160,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.default.MyFirstApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyFirstApp/MyFirstApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

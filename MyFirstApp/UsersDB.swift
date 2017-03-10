@@ -13,10 +13,12 @@ class UsersDB {
     static let sharedInstance: UsersDB = { UsersDB() } ()
     let rootNode = "users"
     var databaseRef: FIRDatabaseReference!
+    var localDb: LocalDb!
     var userCache:Dictionary<String, User> = Dictionary<String, User>()
-    
+
     init() {
         databaseRef = FIRDatabase.database().reference()
+        localDb = LocalDb()!
     }
     
     deinit {
@@ -54,7 +56,13 @@ class UsersDB {
     }
     
     private func extractUser(key: NSString, values: Dictionary<String, Any>) -> User {
-        return User(key: key, name: values["name"] as? NSString, facebookId: values["facebookId"] as? NSString)
+        return User(
+                key: key,
+                name: values["name"] as? NSString,
+                facebookId: values["facebookId"] as? NSString,
+                lastUpdate: TimeUtilities.getDateFromString(
+                        date: values["lastUpdated"]! as! String,
+                        timeZone: TimeZone(secondsFromGMT: 0 - TimeUtilities.getCurrentTimeZoneSecondsFromGMT())!) as NSDate)
     }
     
     func addUser(user:User, whenFinished: @escaping (Error?, FIRDatabaseReference) -> Void) {
@@ -63,10 +71,11 @@ class UsersDB {
         self.userCache[user.key as String] = user
     }
     
-    private func loadValues(from: User) -> Dictionary<String, String> {
-        var values = Dictionary<String, String>()
+    private func loadValues(from: User) -> Dictionary<String, Any> {
+        var values = Dictionary<String, Any>()
         values["name"] = from.name as? String
         values["facebookId"] = from.facebookId as? String
+        values["lastUpdated"] = FIRServerValue.timestamp()
         
         return values
     }
