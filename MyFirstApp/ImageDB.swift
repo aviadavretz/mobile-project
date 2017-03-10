@@ -51,67 +51,61 @@ class ImageDB {
         }
     }
     
-    func downloadImage(userId: String, whenFinished: @escaping (UIImage?)  -> Void) {
-        var image:UIImage?
+    func downloadImage(userId: String, whenFinished: @escaping (UIImage?) -> Void) {
         let imagePath = "\(userId).jpg"
         
-        // Try to get the image from local storage
-        let url = URL(string: imagePath)
-        let localImageName = url!.lastPathComponent
+        // Make sure the image is up to date
+        manageRefreshImage(imagePath: imagePath, whenFinished: whenFinished)
         
-        // Check if the image is up to date.
-        let needToUpdate = remoteImageWasUpdated(imagePath: imagePath)
-        
-        // If image exists in local storage and it's up to date
-        if !needToUpdate, let image = LocalImageStorage.sharedInstance.getImageFromFile(name: localImageName) {
-            
+        // If there was no need to refresh
+        // If image exists in local storage
+        if let image = LocalImageStorage.sharedInstance.getImageFromFile(name: imagePath) {
             print ("Got Image \(imagePath) from local storage.")
             whenFinished(image)
         }
         else {
-            self.storageRef?.child(imagePath).data(withMaxSize: INT64_MAX) { (data, error) in
-                if let error = error {
-                    print("Error downloading: \(error)")
-                        
-                    // Return the default image
-                    whenFinished(ImageDB.defaultImage)
-                    return
-                }
-                
-                image = UIImage.init(data: data!)!
-                
-                // Save the image to local storage
-                LocalImageStorage.sharedInstance.saveImageToFile(image: image!, name: imagePath);
-            
-                whenFinished(image)
-            
-            }
+            getImageFromRemote(imagePath: imagePath, whenFinished: whenFinished)
         }
     }
     
-    private func remoteImageWasUpdated(imagePath: String) -> Bool {
-        let remoteUpdateTime = getUpdateTime(imagePath: imagePath)
+    private func getImageFromRemote(imagePath: String, whenFinished: @escaping (UIImage?)  -> Void) {
+        var image:UIImage?
+
+        self.storageRef?.child(imagePath).data(withMaxSize: INT64_MAX) { (data, error) in
+            if let error = error {
+                print("Error downloading: \(error)")
+                        
+                // Return the default image
+                whenFinished(ImageDB.defaultImage)
+                return
+            }
+                
+            image = UIImage.init(data: data!)!
+                
+            // Save the image to local storage
+            LocalImageStorage.sharedInstance.saveImageToFile(image: image!, name: imagePath);
+            
+            whenFinished(image)
+        }
+    }
+    
+    private func compareUpdateTimes(imagePath: String, remoteUpdateTime: Date?, whenFinished: @escaping (UIImage?) -> Void) {
         let localUpdateTime = LocalImageStorage.sharedInstance.getUpdateTime(path: imagePath)
-        
-        print ("Remote update time: \(remoteUpdateTime)")
-        print ("Local update time: \(localUpdateTime)")
         
         // Check if the remote image was updated
         if (remoteUpdateTime != nil &&
             (localUpdateTime == nil || localUpdateTime?.compare(remoteUpdateTime!) == .orderedAscending)) {
             // Download the new remote image
-            print("Need to download the new \(imagePath)")
-            return true
+            print("Need to refresh \(imagePath)")
+            getImageFromRemote(imagePath: imagePath, whenFinished: whenFinished)
         }
         else {
             print("\(imagePath) is up to date.")
-            return false
+            return
         }
     }
     
-    private func getUpdateTime(imagePath: String) -> Date? {
-        var updateTime: Date?
-        
+    private func manageRefreshImage(imagePath: String, whenFinished: @escaping (UIImage?) -> Void) {
         // Create reference to the file whose metadata we want to retrieve
         let imageRef = self.storageRef?.child(imagePath)
         
@@ -124,10 +118,8 @@ class ImageDB {
             }
             else {
                 // Metadata now contains the metadata for the image
-                updateTime = metadata?.updated
+                self.compareUpdateTimes(imagePath: imagePath, remoteUpdateTime: metadata?.updated, whenFinished: whenFinished)
             }
         }
-        
-        return updateTime
     }
 }
