@@ -26,6 +26,14 @@ class LocalImageStorage {
         }
     }
     
+    public func getImageFromFile(name:String)->UIImage? {
+        // Get the filename
+        let filename = getDocumentsDirectory().appendingPathComponent(name)
+        
+        // Get the UIImage from the file
+        return UIImage(contentsOfFile:filename.path)
+    }
+    
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -33,11 +41,20 @@ class LocalImageStorage {
         return documentsDirectory
     }
     
-    public func getImageFromFile(name:String)->UIImage? {
-        // Get the filename
-        let filename = getDocumentsDirectory().appendingPathComponent(name)
+    func getUpdateTime(path: String) -> NSDate? {
+        // Get the file url
+        let fileUrl = getDocumentsDirectory().appendingPathComponent(path) as NSURL
+//        let fileNSUrl = NSURL(fileURLWithPath: fileUrl.absoluteString)
+        var modified: AnyObject?
         
-        // Get the UIImage from the file
-        return UIImage(contentsOfFile:filename.path)
+        do {
+            // Return the date modified
+            try fileUrl.getResourceValue(&modified, forKey: URLResourceKey.contentModificationDateKey)
+            return modified as? NSDate
+        }
+        catch let error as NSError {
+            print("\(#function) Error: \(error)")
+            return nil
+        }
     }
 }

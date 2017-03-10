@@ -59,10 +59,13 @@ class ImageDB {
         let url = URL(string: imagePath)
         let localImageName = url!.lastPathComponent
         
-        // If image exists in local storage
-        if let image = LocalImageStorage.sharedInstance.getImageFromFile(name: localImageName) {
-            print ("Got Image \(imagePath) from local storage.")
+        // Check if the image is up to date.
+        let needToUpdate = remoteImageWasUpdated(imagePath: imagePath)
+        
+        // If image exists in local storage and it's up to date
+        if !needToUpdate, let image = LocalImageStorage.sharedInstance.getImageFromFile(name: localImageName) {
             
+            print ("Got Image \(imagePath) from local storage.")
             whenFinished(image)
         }
         else {
@@ -74,7 +77,7 @@ class ImageDB {
                     whenFinished(ImageDB.defaultImage)
                     return
                 }
-
+                
                 image = UIImage.init(data: data!)!
                 
                 // Save the image to local storage
@@ -84,5 +87,47 @@ class ImageDB {
             
             }
         }
+    }
+    
+    private func remoteImageWasUpdated(imagePath: String) -> Bool {
+        let remoteUpdateTime = getUpdateTime(imagePath: imagePath)
+        let localUpdateTime = LocalImageStorage.sharedInstance.getUpdateTime(path: imagePath)
+        
+        print ("Remote update time: \(remoteUpdateTime)")
+        print ("Local update time: \(localUpdateTime)")
+        
+        // Check if the remote image was updated
+        if (remoteUpdateTime != nil &&
+            (localUpdateTime == nil || localUpdateTime?.compare(remoteUpdateTime!) == .orderedAscending)) {
+            // Download the new remote image
+            print("Need to download the new \(imagePath)")
+            return true
+        }
+        else {
+            print("\(imagePath) is up to date.")
+            return false
+        }
+    }
+    
+    private func getUpdateTime(imagePath: String) -> Date? {
+        var updateTime: Date?
+        
+        // Create reference to the file whose metadata we want to retrieve
+        let imageRef = self.storageRef?.child(imagePath)
+        
+        // Get metadata properties
+        imageRef?.metadata { metadata, error in
+            if let error = error {
+                // An error occurred!
+                print ("Error getting update time: \(error)")
+                return
+            }
+            else {
+                // Metadata now contains the metadata for the image
+                updateTime = metadata?.updated
+            }
+        }
+        
+        return updateTime
     }
 }
