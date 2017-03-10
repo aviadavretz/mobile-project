@@ -29,7 +29,7 @@ extension User {
         return true
     }
 
-    func addUserToLocalDb(database:OpaquePointer?){
+    func addUserToLocalDb(database:OpaquePointer?) {
         var sqlite3_stmt: OpaquePointer? = nil
 
         let insertOrReplaceUserSql = "INSERT OR REPLACE INTO " + User.USERS_TABLE + "("
@@ -55,14 +55,14 @@ extension User {
 
             sqlite3_bind_double(sqlite3_stmt, 4, lastUpdate!.toFirebase());
 
-            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
+            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE) {
                 print("new row added succefully")
             }
         }
         sqlite3_finalize(sqlite3_stmt)
     }
 
-    static func getUserByKeyFromLocalDB(database:OpaquePointer?, key:String)->User?{
+    static func getUserByKeyFromLocalDB(database:OpaquePointer?, key:String)->User? {
         var sqlite3_stmt: OpaquePointer? = nil
         let getUserByKeySql = "SELECT * from " + User.USERS_TABLE + " Where " + User.USER_ID + "=?;"
 
