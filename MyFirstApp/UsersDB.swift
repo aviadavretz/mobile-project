@@ -24,17 +24,67 @@ class UsersDB {
         databaseRef.removeAllObservers()
     }
     
+//    private func manageRefresh() {
+//        // Get the local update time
+//        var localUpdateTime = LastUpdateTable.getLastUpdateDate(database: localDb.database, table: "Users")
+//        
+//        if (localUpdateTime == nil) {
+//            // Init the date with the oldest date
+//            localUpdateTime = Date.init(timeIntervalSince1970: 0)
+//        }
+//        
+//        // Add time interval so that we don't select the same objects
+//        localUpdateTime = localUpdateTime?.addingTimeInterval(1)
+//        
+//        // TODO: Query not working correctly..
+////        findNewUsersFromRemote(localUpdateTime: localUpdateTime!)
+//    }
+    
+//    private func findNewUsersFromRemote(localUpdateTime: Date) {
+//        let nsDate = localUpdateTime as NSDate
+//        databaseRef.child(rootNode).queryOrdered(byChild: "lastUpdated").queryStarting(atValue: nsDate.timeIntervalSince1970).observeSingleEvent(
+//            of: FIRDataEventType.value, with: {(snapshot) in
+//
+//                if !(snapshot.value is NSNull) {
+//                    var latestDate = localUpdateTime
+//                    
+//                    let users = snapshot.value as! Dictionary<NSString, Dictionary<String, Any>>
+//                    
+//                    for child in users.keys {
+//
+//                        let user = self.extractUser(key: child as NSString, values: users[child]! as Dictionary<String, Any>)
+//                        let currentUserDate = user.lastUpdate
+//                        
+//                        // Save in local db
+//                        user.addUserToLocalDb(database: self.localDb.database)
+//                        
+//                        // Save the latest date
+//                        if (currentUserDate?.compare(latestDate) == .orderedDescending) {
+//                            latestDate = currentUserDate as! Date
+//                        }
+//                    }
+//
+//                    print("Updating User LastUpdate to \(latestDate)")
+//                    
+//                    // Update the last update date
+//                    LastUpdateTable.setLastUpdate(database: self.localDb.database, table: "Users", lastUpdate: latestDate)
+//                }
+//        })
+//    }
+    
     func findUserByKey(key: String, whenFinished: @escaping (_: User?) -> Void) {
-        // Fetch the user from local db
-        let userFromLocal = User.getUserByKeyFromLocalDB(database: localDb.database, key: key)
+//        manageRefresh()
         
-        if (userFromLocal == nil) {
+        // Fetch the user from local db
+//        let userFromLocal = User.getUserByKeyFromLocalDB(database: localDb.database, key: key)
+        
+//        if (userFromLocal == nil) {
             findUserFromRemote(key: key, whenFinished: whenFinished)
-        }
-        else {
-            whenFinished(userFromLocal)
-            print("Got user from local.")
-        }
+//        }
+//        else {
+//            whenFinished(userFromLocal)
+//            print("Got user from local.")
+//        }
     }
     
     private func findUserFromRemote(key: String, whenFinished: @escaping (_: User?) -> Void) {
