@@ -19,9 +19,11 @@ extension String {
 
 
 class LocalDb {
-    var database: OpaquePointer? = nil
+    static let sharedInstance: LocalDb? = { LocalDb() } ()
 
-    init?(){
+    private var database: OpaquePointer? = nil
+
+    private init?(){
         let dbFileName = "MyFirstAppDatabase.db"
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
             let path = dir.appendingPathComponent(dbFileName)
@@ -35,11 +37,6 @@ class LocalDb {
 
         // Creating the last update table (if it doesn't already exists)
         if LastUpdateTable.createTable(database: database) == false {
-            return nil
-        }
-
-        // Creating the users table (if it doesn't already exists)
-        if User.createTable(database: database) == false {
             return nil
         }
     }

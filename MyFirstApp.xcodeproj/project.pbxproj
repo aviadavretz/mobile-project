@@ -27,6 +27,7 @@
 		586033107062802FF3EFD1B0 /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
 		58603321A19508C43132BD34 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		58603376A4EDFD251D32F370 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033342B730BD0100D6680 /* RoundedButton.swift */; };
+		58603390C93E013AC8AF32C1 /* UserGroupsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */; };
 		5860345725F3B034E6CEFB90 /* FacebookFriendsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D3031A7E87E1E53A5C5 /* FacebookFriendsFinder.swift */; };
 		5860352DFF96CB35F2FB4EEA /* FirebaseDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */; };
 		586035954C69C534AA6A65FF /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
@@ -42,15 +43,15 @@
 		5860368766B0178B7B7ACAF1 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603005E7BC33DA32941C16 /* LocalDB.swift */; };
 		5860369AA5A2ADA022B07594 /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
 		586036B8B7151158D43083EE /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
+		5860370D288F1F2ED04E494B /* UserGroupsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */; };
 		586037259799CA5745578277 /* FacebookImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310FE7BF241271AC111B /* FacebookImageManager.swift */; };
 		5860376D0D997CA2415579F4 /* AuthenticationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A7F6EE1ED8ED2962BF2 /* AuthenticationUtilities.swift */; };
 		58603782588FB0996D9F29A6 /* GroupMembersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */; };
-		586037D2D756BDAFC2AA88D6 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
 		586037E2F73286F84EDADC26 /* FacebookAccessTokenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860310CB88FCAC551BA124B /* FacebookAccessTokenCache.swift */; };
 		58603806E53DCB8376B16F7C /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */; };
 		58603816C3422026C796ABEA /* GroupMembersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */; };
 		5860382AF33812286860F6CA /* NewGroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603FC80B2D4CF40D47DB0A /* NewGroupMemberCell.swift */; };
-		5860382BEA11C43148E86BA8 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
+		58603864BCA26F858EC48CB9 /* UserGroupsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */; };
 		586038661C2372F160F94A9A /* UserGroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860384884659827182AA75F /* UserGroceryListsDB.swift */; };
 		586038ACDB2E1EBEAE5F413B /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */; };
 		586038E80A8E5FBAE2FF120E /* UserGroceryListsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860384884659827182AA75F /* UserGroceryListsDB.swift */; };
@@ -65,7 +66,6 @@
 		58603A8E7BC63567C991BBF0 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586039C7E66EECE7B83F4A67 /* GroupTableViewCell.swift */; };
 		58603AFB18D50E92DE72ADD7 /* TimeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */; };
 		58603B1B90CC1EE1E468ACBB /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */; };
-		58603B2C946DEC00CB626BB3 /* UserSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */; };
 		58603BB18F00BA4F8A3504A9 /* FirebaseDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */; };
 		58603BE947D3197F04A7481A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586033342B730BD0100D6680 /* RoundedButton.swift */; };
 		58603BF6B5033CC7657D92D8 /* GroceryListsByGroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603A9DF2863363769A4E22 /* GroceryListsByGroupDB.swift */; };
@@ -190,7 +190,6 @@
 		58603332D0B878C7361F0811 /* GroceryListsDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListsDB.swift; sourceTree = "<group>"; };
 		586033342B730BD0100D6680 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		586033D62BC039C2B1A2422A /* UsersDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDB.swift; sourceTree = "<group>"; };
-		586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSqlExtension.swift; sourceTree = "<group>"; };
 		58603604EDF8E2D84F294D9C /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		586036C1F4FFE7E553B9A03F /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		5860376AAAE31C1B4FDE9299 /* GroupMembersDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersDB.swift; sourceTree = "<group>"; };
@@ -202,6 +201,7 @@
 		58603A8DCC71F07E0FCE7A9B /* TimeUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtilities.swift; sourceTree = "<group>"; };
 		58603A9DF2863363769A4E22 /* GroceryListsByGroupDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListsByGroupDB.swift; sourceTree = "<group>"; };
 		58603AE8CC689FA6080202FE /* FirebaseDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDateExtension.swift; sourceTree = "<group>"; };
+		58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsTable.swift; sourceTree = "<group>"; };
 		58603D0B3BE440F36A06D66E /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
 		58603D3031A7E87E1E53A5C5 /* FacebookFriendsFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookFriendsFinder.swift; sourceTree = "<group>"; };
 		58603DAFD0DD09CD63A780F7 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
@@ -392,9 +392,9 @@
 		58603CD4FD571066605F3840 /* TablesSql */ = {
 			isa = PBXGroup;
 			children = (
-				586035FAAFDEFF6C4AAF78F3 /* UserSqlExtension.swift */,
 				58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */,
 				842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */,
+				58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */,
 			);
 			name = TablesSql;
 			sourceTree = "<group>";
@@ -902,8 +902,8 @@
 				58603816C3422026C796ABEA /* GroupMembersDB.swift in Sources */,
 				58603031ECC7D6A32DC940D3 /* FirebaseDateExtension.swift in Sources */,
 				5860368766B0178B7B7ACAF1 /* LocalDB.swift in Sources */,
-				5860382BEA11C43148E86BA8 /* UserSqlExtension.swift in Sources */,
 				58603023E87AF7DEFA5ADBC4 /* LastUpdateTable.swift in Sources */,
+				58603390C93E013AC8AF32C1 /* UserGroupsTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,8 +955,8 @@
 				586032D5136985E71610BE62 /* GroupMembersDB.swift in Sources */,
 				5860352DFF96CB35F2FB4EEA /* FirebaseDateExtension.swift in Sources */,
 				58603DAB4B277B2A8BE69DB6 /* LocalDB.swift in Sources */,
-				58603B2C946DEC00CB626BB3 /* UserSqlExtension.swift in Sources */,
 				586038ACDB2E1EBEAE5F413B /* LastUpdateTable.swift in Sources */,
+				58603864BCA26F858EC48CB9 /* UserGroupsTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,8 +1008,8 @@
 				58603782588FB0996D9F29A6 /* GroupMembersDB.swift in Sources */,
 				58603BB18F00BA4F8A3504A9 /* FirebaseDateExtension.swift in Sources */,
 				58603D0B4EBDCEDCB5F8FEC0 /* LocalDB.swift in Sources */,
-				586037D2D756BDAFC2AA88D6 /* UserSqlExtension.swift in Sources */,
 				586035D22AD49541F1F18A77 /* LastUpdateTable.swift in Sources */,
+				5860370D288F1F2ED04E494B /* UserGroupsTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
