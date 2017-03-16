@@ -60,7 +60,7 @@ class ImageDB {
         // If there was no need to refresh
         // If image exists in local storage
         if let image = LocalImageStorage.sharedInstance.getImageFromFile(name: imagePath) {
-            print ("Got Image \(imagePath) from local storage.")
+
             whenFinished(image)
         }
         else {
@@ -100,7 +100,6 @@ class ImageDB {
             getImageFromRemote(imagePath: imagePath, whenFinished: whenFinished)
         }
         else {
-            print("\(imagePath) is up to date.")
             return
         }
     }

@@ -36,8 +36,10 @@ class LocalDb {
             }
         }
 
-        // Creating the last update table (if it doesn't already exists)
-        if LastUpdateTable.createTable(database: database) == false {
+        // Creating the tables (if they don't already exists)
+        if LastUpdateTable.createTable(database: database) == false ||
+           UserGroupsTable.createTable(database: database) == false ||
+           ListRequestsTable.createTable(database: database) == false {
             return nil
         }
     }

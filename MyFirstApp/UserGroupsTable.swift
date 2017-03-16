@@ -32,7 +32,7 @@ class UserGroupsTable {
             sqlite3_bind_text(sqlite3_stmt, 2, groupKey.cString(using: .utf8),-1,nil);
 
             if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE) {
-                print("new row added succefully")
+                print("\(TABLE): New row added: userKey = \(userKey), groupKey = \(groupKey)")
             }
         }
 

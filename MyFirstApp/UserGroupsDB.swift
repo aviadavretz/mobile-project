@@ -35,18 +35,7 @@ class UserGroupsDB {
             fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
                 self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
                 
-                // Add the updated record to the local database
-                UserGroupsTable.addGroupKeyForUser(database: LocalDb.sharedInstance?.database, userKey: self.userKey as String, groupKey: snapshot.key)
-                
-                // TODO: What about users that left groups? No update time for that
-                
-                // Update the local update time
-                LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
-                                              table: UserGroupsTable.TABLE,
-                                              
-                                              // TODO: What is supposed to be here?
-                                              key: UserGroupsTable.USER_KEY,
-                                              lastUpdate: Date())
+                self.addGroupToLocal(groupKey: snapshot.key)
             })
             
             // TODO: This is supposed to happen in a different thread?
@@ -64,8 +53,25 @@ class UserGroupsDB {
             // Observe all records from remote
             databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
                 self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
+                
+                self.addGroupToLocal(groupKey: snapshot.key)
             })
         }
+    }
+    
+    private func addGroupToLocal(groupKey: String) {
+        // Add the updated record to the local database
+        UserGroupsTable.addGroupKeyForUser(database: LocalDb.sharedInstance?.database, userKey: self.userKey as String, groupKey: groupKey)
+        
+        // TODO: What about users that left groups? No update time for that
+        
+        // Update the local update time
+        LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
+                                      table: UserGroupsTable.TABLE,
+                                      
+                                      // TODO: What is supposed to be here?
+                                      key: UserGroupsTable.USER_KEY,
+                                      lastUpdate: Date())
     }
     
     private func handleUserGroupAddition(groupKey: String, whenGroupAdded: @escaping (Int) -> Void) {

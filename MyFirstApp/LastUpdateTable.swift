@@ -33,8 +33,9 @@ class LastUpdateTable {
             sqlite3_bind_text(sqlite3_stmt, 1, tableName,-1,nil);
             sqlite3_bind_text(sqlite3_stmt, 2, key,-1,nil);
             sqlite3_bind_double(sqlite3_stmt, 3, (lastUpdate as NSDate).toFirebase());
-            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
-                print("new row added succefully")
+            
+            if (sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
+                print("\(TABLE): New row added: table = \(tableName), key = \(key), lastUpdate = \((lastUpdate as NSDate).toFirebase())")
             }
         }
         sqlite3_finalize(sqlite3_stmt)

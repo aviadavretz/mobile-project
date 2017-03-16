@@ -129,6 +129,9 @@
 		847BEFB31E1028EF0007A26A /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BEFB21E1028EF0007A26A /* NewGroupViewController.swift */; };
 		847BEFB41E1028EF0007A26A /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BEFB21E1028EF0007A26A /* NewGroupViewController.swift */; };
 		847BEFB51E1028EF0007A26A /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BEFB21E1028EF0007A26A /* NewGroupViewController.swift */; };
+		84AFFD531E7AE39500835723 /* ListRequestsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFFD521E7AE39500835723 /* ListRequestsTable.swift */; };
+		84AFFD541E7AE39500835723 /* ListRequestsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFFD521E7AE39500835723 /* ListRequestsTable.swift */; };
+		84AFFD551E7AE39500835723 /* ListRequestsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFFD521E7AE39500835723 /* ListRequestsTable.swift */; };
 		84B5C39C1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
 		84B5C39D1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
 		84B5C39E1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */; };
@@ -236,6 +239,7 @@
 		8479F7E91E1138F400E9185B /* ChooseGroupDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseGroupDialogViewController.swift; sourceTree = "<group>"; };
 		847BEFB21E1028EF0007A26A /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		849279D21E0370950095671E /* MyFirstApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyFirstApp.entitlements; sourceTree = "<group>"; };
+		84AFFD521E7AE39500835723 /* ListRequestsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRequestsTable.swift; sourceTree = "<group>"; };
 		84B5C39B1E105C7B00C2C7E9 /* ChooseImageDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageDialogViewController.swift; sourceTree = "<group>"; };
 		84BF51241E0D4D8600A4E480 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
 		84DCC3C91DFB44F20092586E /* NewGroceryRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryRequestViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 				58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */,
 				842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */,
 				58603D09457E26A3F12E1E24 /* UserGroupsTable.swift */,
+				84AFFD521E7AE39500835723 /* ListRequestsTable.swift */,
 			);
 			name = TablesSql;
 			sourceTree = "<group>";
@@ -875,6 +880,7 @@
 				84075C061E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */,
 				84FA51601E044724005943AC /* ProfileViewController.swift in Sources */,
+				84AFFD531E7AE39500835723 /* ListRequestsTable.swift in Sources */,
 				8416B2451E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
 				5860394A3E10DA85BDEED805 /* TimeUtilities.swift in Sources */,
 				58603015823D7F4F23CAB78C /* GroupMemberCell.swift in Sources */,
@@ -927,6 +933,7 @@
 				84DCC3CB1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84075C071E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				843A5F031E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */,
+				84AFFD541E7AE39500835723 /* ListRequestsTable.swift in Sources */,
 				84DCC3DB1DFB57720092586E /* MainController.swift in Sources */,
 				8479F7EB1E1138F400E9185B /* ChooseGroupDialogViewController.swift in Sources */,
 				8416B2461E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,
@@ -980,6 +987,7 @@
 				84DCC3CC1DFB44F20092586E /* NewGroceryRequestViewController.swift in Sources */,
 				84075C081E71CA7800C89BA4 /* LocalImageStorage.swift in Sources */,
 				843A5F041E0F1F9A00AB288A /* GroupsTableViewController.swift in Sources */,
+				84AFFD551E7AE39500835723 /* ListRequestsTable.swift in Sources */,
 				84DCC3DC1DFB57720092586E /* MainController.swift in Sources */,
 				8479F7EC1E1138F400E9185B /* ChooseGroupDialogViewController.swift in Sources */,
 				8416B2471E1A41A100EEF3EC /* GroceryListTableViewController.swift in Sources */,

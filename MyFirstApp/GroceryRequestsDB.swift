@@ -12,18 +12,76 @@ class GroceryRequestsDB {
 
     var databaseRef: FIRDatabaseReference!
     var groceryRequests: Array<GroceryRequest> = []
-
+    var listKey: NSString
+    
     init(listKey: NSString) {
+        self.listKey = listKey
         databaseRef = FIRDatabase.database().reference(withPath: "\(rootNode)/\(listKey)/\(requestsNode)")
     }
 
-    func observeRequestAddition(whenRequestAdded: @escaping (_: Int) -> Void) {
-        databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
-            let addedRequest = self.getGroceryRequestFromSnapshot(snapshot as FIRDataSnapshot)!
+    func observeRequestAddition(whenRequestAdded: @escaping (Int) -> Void) {
+        // Get the last-update time in the local db
+        let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
+                                                                table: ListRequestsTable.TABLE,
+                                                                
+                                                                // TODO: What is supposed to be here?
+                                                                key: ListRequestsTable.LIST_KEY)
+        
+        if (localUpdateTime != nil) {
+            let nsUpdateTime = localUpdateTime as NSDate?
+            
+            // Get the relevant records from the remote
+            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
+            fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+                let newRequest = self.getGroceryRequestFromSnapshot(snapshot)
+                
+                self.handleRequestAddition(request: newRequest!, whenRequestAdded: whenRequestAdded)
+                self.addRequestToLocal(request: newRequest!)
+            })
+            
+            // TODO: This is supposed to happen in a different thread?
+            
+            // Get the up-to-date records from the local
+            let localRequests = ListRequestsTable.getRequestsByListKey(database: LocalDb.sharedInstance?.database,
+                                                                       listKey: self.listKey as String)
+            
+            // Handle each local record
+            for request in localRequests {
+                self.handleRequestAddition(request: request, whenRequestAdded: whenRequestAdded)
+            }
+        }
+        else {
+            // Observe all records from remote
+            databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+                let newRequest = self.getGroceryRequestFromSnapshot(snapshot)
+                
+                self.handleRequestAddition(request: newRequest!, whenRequestAdded: whenRequestAdded)
+                self.addRequestToLocal(request: newRequest!)
+            })
+        }
+    }
+    
+    private func addRequestToLocal(request:GroceryRequest) {
+        // Add the updated record to the local database
+        ListRequestsTable.addRequest(database: LocalDb.sharedInstance?.database, request: request, listKey: self.listKey as String)
+        
+        // TODO: What about users that left groups? No update time for that
+        
+        // Update the local update time
+        LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
+                                      table: ListRequestsTable.TABLE,
+                                      
+                                      // TODO: What is supposed to be here?
+                                      key: ListRequestsTable.LIST_KEY,
+                                      lastUpdate: Date())
+    }
+    
+    private func handleRequestAddition(request:GroceryRequest, whenRequestAdded: @escaping (Int) -> Void) {
+        self.groceryRequests.append(request)
 
-            self.groceryRequests.append(addedRequest)
-            whenRequestAdded(self.groceryRequests.count - 1)
-        })
+        // Checking index explicitly - For multithreading safety
+        let newRequestIndex = self.groceryRequests.index(where: { $0.id == request.id })
+        whenRequestAdded(newRequestIndex!)
     }
 
     func observeRequestModification(whenRequestModified: @escaping (_: Int) -> Void) {
