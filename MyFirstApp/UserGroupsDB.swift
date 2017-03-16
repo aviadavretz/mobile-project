@@ -12,19 +12,72 @@ class UserGroupsDB {
 
     var databaseRef: FIRDatabaseReference!
     var groups: Array<Group> = []
+    var userKey: NSString
 
     init(userKey: NSString) {
+        self.userKey = userKey
         databaseRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)/\(groupsNode)")
     }
 
-    func observeUserGroupsAddition(whenGroupAdded: @escaping (_: Int) -> Void) {
-        databaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            GroupsDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: {(group) in
-                guard let foundGroup = group else { return }
-
-                self.groups.append(foundGroup)
-                whenGroupAdded(self.groups.count - 1)
+    func observeUserGroupsAddition(whenGroupAdded: @escaping (Int) -> Void) {
+        // Get the last-update time in the local db
+        let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
+                                                                table: UserGroupsTable.TABLE,
+                                                                
+                                                                // TODO: What is supposed to be here?
+                                                                key: UserGroupsTable.USER_KEY)
+        
+        if (localUpdateTime != nil) {
+            let nsUpdateTime = localUpdateTime as NSDate?
+            
+            // Get the relevant records from the remote
+            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
+            fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+                self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
+                
+                // Add the updated record to the local database
+                UserGroupsTable.addGroupKeyForUser(database: LocalDb.sharedInstance?.database, userKey: self.userKey as String, groupKey: snapshot.key)
+                
+                // TODO: What about users that left groups? No update time for that
+                
+                // Update the local update time
+                LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
+                                              table: UserGroupsTable.TABLE,
+                                              
+                                              // TODO: What is supposed to be here?
+                                              key: UserGroupsTable.USER_KEY,
+                                              lastUpdate: Date())
             })
+            
+            // TODO: This is supposed to happen in a different thread?
+            
+            // Get the up-to-date records from the local
+            let localGroupsKeys = UserGroupsTable.getGroupKeysByUserKey(database: LocalDb.sharedInstance?.database,
+                                                                        userKey: userKey as String)
+            
+            // Handle each local record
+            for groupKey in localGroupsKeys {
+                self.handleUserGroupAddition(groupKey: groupKey, whenGroupAdded: whenGroupAdded)
+            }
+        }
+        else {
+            // Observe all records from remote
+            databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+                self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
+            })
+        }
+    }
+    
+    private func handleUserGroupAddition(groupKey: String, whenGroupAdded: @escaping (Int) -> Void) {
+        // Retrieve the group object
+        GroupsDB.sharedInstance.findGroupByKey(key: groupKey, whenFinished: {(group) in
+            guard let foundGroup = group else { return }
+            
+            self.groups.append(foundGroup)
+            
+            // Checking index explicitly - For multithreading safety
+            let newGroupIndex = self.groups.index(where: { $0.key == foundGroup.key })
+            whenGroupAdded(newGroupIndex!)
         })
     }
 
