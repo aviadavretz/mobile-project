@@ -26,7 +26,7 @@ class GroceryRequestsDB {
                                                                 
                                                                 // TODO: What is supposed to be here?
                                                                 key: ListRequestsTable.LIST_KEY)
-        
+
         if (localUpdateTime != nil) {
             let nsUpdateTime = localUpdateTime as NSDate?
             
@@ -118,9 +118,7 @@ class GroceryRequestsDB {
                 itemName: values["itemName"]! as! NSString,
                 purchased: Bool(values["purchased"]! as! String)!,
                 userId: values["userId"]! as! NSString,
-                lastUpdated: TimeUtilities.getDateFromString(
-                                             date: values["lastUpdated"]! as! String,
-                                             timeZone: TimeZone(secondsFromGMT: 0 - TimeUtilities.getCurrentTimeZoneSecondsFromGMT())!) as NSDate)
+                lastUpdated: NSDate.fromFirebase(String(values["lastUpdated"] as! Double)))
     }
 
     func getGroceryRequest(row:Int) -> GroceryRequest? {
@@ -139,18 +137,18 @@ class GroceryRequestsDB {
         let request = ["itemName" : itemName,
                        "purchased" : "false",
                        "userId" : userId,
-                       "lastUpdated" : FIRServerValue.timestamp()] as [String : Any]
+                       "lastUpdated" : NSDate().toFirebase()] as [String : Any]
         
         databaseRef.childByAutoId().setValue(request)
     }
 
     func toggleRequestPurchased(request: GroceryRequest) {
         databaseRef.child(request.id as String).updateChildValues(["purchased" : (!request.purchased).description])
-        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : FIRServerValue.timestamp()])
+        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
     }
     
     func updateRequestItemName(request: GroceryRequest) {
         databaseRef.child(request.id as String).updateChildValues(["itemName" : request.itemName])
-        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : FIRServerValue.timestamp()])
+        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
     }
 }
