@@ -12,14 +12,10 @@ extension NSDate {
     }
 
     static func fromFirebase(_ interval:String)->NSDate{
-        return NSDate(timeIntervalSince1970: Double(interval)!)
+        return fromFirebasee(Double(interval)!)
     }
 
     static func fromFirebasee(_ interval:Double)->NSDate{
-        if (interval>9999999999){
-            return NSDate(timeIntervalSince1970: interval/1000)
-        }else{
-            return NSDate(timeIntervalSince1970: interval)
-        }
+        return NSDate(timeIntervalSince1970: interval/1000)
     }
 }

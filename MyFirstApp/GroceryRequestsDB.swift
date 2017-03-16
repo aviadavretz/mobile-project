@@ -26,7 +26,7 @@ class GroceryRequestsDB {
                                                                 
                                                                 // TODO: What is supposed to be here?
                                                                 key: ListRequestsTable.LIST_KEY)
-
+        
         if (localUpdateTime != nil) {
             let nsUpdateTime = localUpdateTime as NSDate?
             
