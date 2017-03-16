@@ -13,11 +13,21 @@ class GroceryRequest {
     var itemName:NSString
     var purchased:Bool
     var userId:NSString
+    var lastUpdated:NSDate
     
     init(id: NSString, itemName: NSString, purchased: Bool, userId: NSString) {
         self.id = id
         self.itemName = itemName
         self.purchased = purchased
         self.userId = userId
+        lastUpdated = NSDate()
+    }
+    
+    init(id: NSString, itemName: NSString, purchased: Bool, userId: NSString, lastUpdated: NSDate) {
+        self.id = id
+        self.itemName = itemName
+        self.purchased = purchased
+        self.userId = userId
+        self.lastUpdated = lastUpdated
     }
 }

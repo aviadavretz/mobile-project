@@ -143,7 +143,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
                             request.itemName = newItemName as NSString
                             
                             // Save the new item name
-                            self.db!.updateRequestItemName(request: request, index: indexPath.row)
+                            self.db!.updateRequestItemName(request: request)
                         })
                     }
                 }

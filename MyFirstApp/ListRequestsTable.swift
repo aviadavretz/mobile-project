@@ -50,7 +50,7 @@ class ListRequestsTable {
         var requests = Array<GroceryRequest>()
         
         var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "SELECT \(REQUEST_KEY), \(ITEM_NAME), \(PURCHASED), \(USER_KEY) FROM \(TABLE) WHERE \(LIST_KEY) = ?;"
+        let sql = "SELECT * FROM \(TABLE) WHERE \(LIST_KEY) = ?;"
         
         if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK) {
             // Bind the variables to the query
@@ -58,9 +58,9 @@ class ListRequestsTable {
             
             while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
                 let requestKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,0))
-                let itemName = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,1))
-                let purchased = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,2))?.lowercased() == "true"
-                let userKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,3))
+                let itemName = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,2))
+                let purchased = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,3))?.lowercased() == "true"
+                let userKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,4))
                 
                 let request = GroceryRequest(id: requestKey! as NSString, itemName: itemName! as NSString, purchased: purchased, userId: userKey! as NSString)
                 

@@ -90,6 +90,9 @@ class GroceryRequestsDB {
             let updatedIndex = self.findRequestIndex(id: updatedRequest.id)!
 
             self.groceryRequests[updatedIndex] = updatedRequest
+            
+            // TODO: Save to local
+            
             whenRequestModified(updatedIndex)
         })
     }
@@ -104,17 +107,20 @@ class GroceryRequestsDB {
 
     private func getGroceryRequestFromSnapshot(_ snapshot: FIRDataSnapshot) -> GroceryRequest? {
         let requestKey = snapshot.key as NSString
-        let requestValues = snapshot.value as! Dictionary<String, String>
+        let requestValues = snapshot.value as! Dictionary<String, Any>
 
         return extractGroceryRequest(key: requestKey, values: requestValues)
     }
 
-    private func extractGroceryRequest(key: NSString, values: Dictionary<String, String>) -> GroceryRequest? {
+    private func extractGroceryRequest(key: NSString, values: Dictionary<String, Any>) -> GroceryRequest? {
         return GroceryRequest(
                 id: key,
-                itemName: values["itemName"]! as NSString,
-                purchased: Bool(values["purchased"]!)!,
-                userId: values["userId"]! as NSString)
+                itemName: values["itemName"]! as! NSString,
+                purchased: Bool(values["purchased"]! as! String)!,
+                userId: values["userId"]! as! NSString,
+                lastUpdated: TimeUtilities.getDateFromString(
+                                             date: values["lastUpdated"]! as! String,
+                                             timeZone: TimeZone(secondsFromGMT: 0 - TimeUtilities.getCurrentTimeZoneSecondsFromGMT())!) as NSDate)
     }
 
     func getGroceryRequest(row:Int) -> GroceryRequest? {
@@ -132,16 +138,19 @@ class GroceryRequestsDB {
     func addRequest(itemName: String, userId: String) {
         let request = ["itemName" : itemName,
                        "purchased" : "false",
-                       "userId" : userId]
-
+                       "userId" : userId,
+                       "lastUpdated" : FIRServerValue.timestamp()] as [String : Any]
+        
         databaseRef.childByAutoId().setValue(request)
     }
 
     func toggleRequestPurchased(request: GroceryRequest) {
         databaseRef.child(request.id as String).updateChildValues(["purchased" : (!request.purchased).description])
+        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : FIRServerValue.timestamp()])
     }
     
-    func updateRequestItemName(request: GroceryRequest, index: Int) {
+    func updateRequestItemName(request: GroceryRequest) {
         databaseRef.child(request.id as String).updateChildValues(["itemName" : request.itemName])
+        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : FIRServerValue.timestamp()])
     }
 }
