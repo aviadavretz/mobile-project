@@ -20,64 +20,10 @@ class UserGroupsDB {
     }
 
     func observeUserGroupsAddition(whenGroupAdded: @escaping (Int) -> Void) {
-        // TODO: REVERT.
         // Observe all records from remote
         databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
             self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
         })
-        
-//        // Get the last-update time in the local db
-//        let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
-//                                                                table: UserGroupsTable.TABLE,
-//                                                                
-//                                                                // TODO: What is supposed to be here?
-//                                                                key: UserGroupsTable.USER_KEY)
-//        
-//        if (localUpdateTime != nil) {
-//            let nsUpdateTime = localUpdateTime as NSDate?
-//            
-//            // Get the relevant records from the remote
-//            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
-//            fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
-//                self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
-//                
-//                self.addGroupToLocal(groupKey: snapshot.key)
-//            })
-//            
-//            // TODO: This is supposed to happen in a different thread?
-//            
-//            // Get the up-to-date records from the local
-//            let localGroupsKeys = UserGroupsTable.getGroupKeysByUserKey(database: LocalDb.sharedInstance?.database,
-//                                                                        userKey: userKey as String)
-//            
-//            // Handle each local record
-//            for groupKey in localGroupsKeys {
-//                self.handleUserGroupAddition(groupKey: groupKey, whenGroupAdded: whenGroupAdded)
-//            }
-//        }
-//        else {
-//            // Observe all records from remote
-//            databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
-//                self.handleUserGroupAddition(groupKey: snapshot.key, whenGroupAdded: whenGroupAdded)
-//                
-//                self.addGroupToLocal(groupKey: snapshot.key)
-//            })
-//        }
-    }
-    
-    private func addGroupToLocal(groupKey: String) {
-        // Add the updated record to the local database
-        UserGroupsTable.addGroupKeyForUser(database: LocalDb.sharedInstance?.database, userKey: self.userKey as String, groupKey: groupKey)
-        
-        // TODO: What about users that left groups? No update time for that
-        
-        // Update the local update time
-        LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
-                                      table: UserGroupsTable.TABLE,
-                                      
-                                      // TODO: What is supposed to be here?
-                                      key: UserGroupsTable.USER_KEY,
-                                      lastUpdate: Date())
     }
     
     private func handleUserGroupAddition(groupKey: String, whenGroupAdded: @escaping (Int) -> Void) {

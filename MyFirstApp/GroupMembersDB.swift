@@ -12,20 +12,18 @@ class GroupMembersDB {
 
     var databaseRef: FIRDatabaseReference!
     var members: Array<User> = []
-    var groupKey: NSString
+    var group: Group
 
-    init(groupKey: NSString) {
-        self.groupKey = groupKey
-        databaseRef = FIRDatabase.database().reference(withPath: "\(groupsNode)/\(groupKey)/\(membersNode)")
+    init(group: Group) {
+        self.group = group
+        databaseRef = FIRDatabase.database().reference(withPath: "\(groupsNode)/\(group.key)/\(membersNode)")
     }
 
     func observeGroupMembersAddition(whenMemberAdded: @escaping (Int) -> Void) {
         // Get the last-update time in the local db
         let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
-                                                                table: UserGroupsTable.TABLE,
-                                                                
-                                                                // TODO: What is supposed to be here?
-                                                                key: UserGroupsTable.GROUP_KEY)
+                                                                table: GroupMembersTable.TABLE,
+                                                                key: group.key as String)
         
         if (localUpdateTime != nil) {
             let nsUpdateTime = localUpdateTime as NSDate?
@@ -41,8 +39,8 @@ class GroupMembersDB {
             // TODO: This is supposed to happen in a different thread?
             
             // Get the up-to-date records from the local
-            let localUsersKeys = UserGroupsTable.getUserKeysByGroupKey(database: LocalDb.sharedInstance?.database,
-                                                                       groupKey: groupKey as String)
+            let localUsersKeys = GroupMembersTable.getUserKeysByGroupKey(database: LocalDb.sharedInstance?.database,
+                                                                       groupKey: group.key as String)
             
             // Handle each local record
             for userKey in localUsersKeys {
@@ -61,16 +59,17 @@ class GroupMembersDB {
     
     private func addUserToLocal(userKey: String) {
         // Add the updated record to the local database
-        UserGroupsTable.addGroupKeyForUser(database: LocalDb.sharedInstance?.database, userKey: userKey, groupKey: self.groupKey as String)
+        GroupMembersTable.addUserToGroup(
+                database: LocalDb.sharedInstance?.database, userKey: userKey, groupKey: self.group.key as String)
         
         // TODO: What about users that left groups? No update time for that
         
         // Update the local update time
         LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
-                                      table: UserGroupsTable.TABLE,
+                                      table: GroupMembersTable.TABLE,
                                       
                                       // TODO: What is supposed to be here?
-                                      key: UserGroupsTable.GROUP_KEY,
+                                      key: GroupMembersTable.GROUP_KEY,
                                       lastUpdate: Date())
     }
     
@@ -99,17 +98,18 @@ class GroupMembersDB {
     }
 
     func addMember(userKey: NSString) {
-        databaseRef.updateChildValues([userKey : true])
+        databaseRef.updateChildValues([userKey : true, "lastUpdateDate": FIRServerValue.timestamp()])
     }
     
     func removeMember(userKey: String) {
+        databaseRef.updateChildValues(["lastUpdateDate": FIRServerValue.timestamp()])
         databaseRef.child(userKey).removeValue(completionBlock: { (_,_) in self.deleteGroupIfEmpty()})
     }
 
     private func deleteGroupIfEmpty() {
         self.findGroupMembersCount(whenFound: { (count) in
             if (count == 0) {
-                GroupsDB.sharedInstance.deleteGroup(key: self.groupKey)
+                GroupsDB.sharedInstance.deleteGroup(key: self.group.key)
             }
         })
     }

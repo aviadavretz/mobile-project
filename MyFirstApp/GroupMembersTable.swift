@@ -5,8 +5,8 @@
 
 import Foundation
 
-class UserGroupsTable {
-    static let TABLE = "USER_GROUPS"
+class GroupMembersTable {
+    static let TABLE = "GROUP_MEMBERS"
     static let USER_KEY = "USER_KEY"
     static let GROUP_KEY = "GROUP_KEY"
 
@@ -23,7 +23,7 @@ class UserGroupsTable {
         return true
     }
 
-    static func addGroupKeyForUser(database:OpaquePointer?, userKey:String, groupKey:String) {
+    static func addUserToGroup(database:OpaquePointer?, userKey:String, groupKey:String) {
         var sqlite3_stmt: OpaquePointer? = nil
         let sql = "INSERT OR REPLACE INTO \(TABLE) (\(USER_KEY),\(GROUP_KEY)) VALUES (?,?);"
 
@@ -37,26 +37,6 @@ class UserGroupsTable {
         }
 
         sqlite3_finalize(sqlite3_stmt)
-    }
-
-    static func getGroupKeysByUserKey(database:OpaquePointer?, userKey:String) -> Array<String> {
-        var groupKeys = Array<String>()
-
-        var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "SELECT * FROM \(TABLE) WHERE \(USER_KEY) = ?;"
-
-        if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK) {
-            sqlite3_bind_text(sqlite3_stmt, 1, userKey.cString(using: .utf8),-1,nil);
-
-            while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
-                let groupKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,0))
-                groupKeys.append(groupKey!)
-            }
-        }
-
-        sqlite3_finalize(sqlite3_stmt)
-
-        return groupKeys;
     }
     
     static func getUserKeysByGroupKey(database:OpaquePointer?, groupKey: String) -> Array<String> {

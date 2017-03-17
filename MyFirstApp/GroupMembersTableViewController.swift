@@ -26,7 +26,7 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
     }
 
     private func initializeModel() {
-        db = GroupMembersDB(groupKey: group!.key)
+        db = GroupMembersDB(group: group!)
         db!.observeGroupMembersAddition(whenMemberAdded: memberAdded)
         
         ImageDB.observeImageModification(whenImageModified: imageModified)
