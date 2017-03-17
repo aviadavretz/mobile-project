@@ -23,43 +23,86 @@ class LastUpdateTable {
 
         return true
     }
-
+    
+//    // TODO: REMOVE THIS
+//    static func dropTable(database:OpaquePointer?)->Bool{
+//        var errormsg: UnsafeMutablePointer<Int8>? = nil
+//        //        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(NAME) TEXT PRIMARY KEY, \(KEY) TEXT, \(DATE) DOUBLE)"
+//        let sql = "DROP TABLE \(TABLE)"
+//        
+//        let res = sqlite3_exec(database, sql, nil, nil, &errormsg);
+//        if(res != 0) {
+//            print("error dropping table");
+//            return false
+//        }
+//        
+//        return true
+//    }
+    
     static func setLastUpdate(database:OpaquePointer?, table:String, key:String, lastUpdate:Date){
         var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(NAME),\(KEY),\(DATE)) VALUES (?,?,?);"
-
+        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(NAME),\(KEY),\(DATE)) VALUES ('\(table)', '\(key)', \((lastUpdate as NSDate).toFirebase()));"
+        
         if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK){
-            let tableName = table.cString(using: .utf8)
-            sqlite3_bind_text(sqlite3_stmt, 1, tableName,-1,nil);
-            sqlite3_bind_text(sqlite3_stmt, 2, key,-1,nil);
-            sqlite3_bind_double(sqlite3_stmt, 3, (lastUpdate as NSDate).toFirebase());
-            
             if (sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
-                print("\(TABLE): New row added: table = \(tableName), key = \(key), lastUpdate = \((lastUpdate as NSDate).toFirebase())")
+                print("\(TABLE): New row added: table = \(table), key = \(key), lastUpdate = \((lastUpdate as NSDate).toFirebase())")
             }
         }
         sqlite3_finalize(sqlite3_stmt)
     }
-
+    
     static func getLastUpdateDate(database:OpaquePointer?, table:String, key:String)->Date?{
         var uDate:Date?
         var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "SELECT * from \(TABLE) where \(NAME) = ? AND \(KEY) = ?;"
-
+        let sql = "SELECT \(DATE) FROM \(TABLE) WHERE \(NAME) = '\(table)' AND \(KEY) = '\(key)';"
+        
         if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK){
-            let tableName = table.cString(using: .utf8)
-            let keyValue = key.cString(using: .utf8)
-
-            sqlite3_bind_text(sqlite3_stmt, 1, tableName,-1,nil);
-            sqlite3_bind_text(sqlite3_stmt, 2, keyValue,-1,nil);
-
             if(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
-                let date = Double(sqlite3_column_double(sqlite3_stmt, 1))
+                let date = Double(sqlite3_column_double(sqlite3_stmt, 0))
                 uDate = NSDate.fromFirebasee(date) as Date
             }
         }
-
+        
         sqlite3_finalize(sqlite3_stmt)
         return uDate
     }
+
+//    static func setLastUpdate(database:OpaquePointer?, table:String, key:String, lastUpdate:Date){
+//        var sqlite3_stmt: OpaquePointer? = nil
+//        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(NAME),\(KEY),\(DATE)) VALUES (?,?,?);"
+//        
+//        if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK){
+//            let tableName = table.cString(using: .utf8)
+//            sqlite3_bind_text(sqlite3_stmt, 1, tableName,-1,nil);
+//            sqlite3_bind_text(sqlite3_stmt, 2, key.cString(using: .utf8) ,-1,nil);
+//            sqlite3_bind_double(sqlite3_stmt, 3, (lastUpdate as NSDate).toFirebase());
+//            
+//            if (sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
+//                print("\(TABLE): New row added: table = \(table), key = \(key), lastUpdate = \((lastUpdate as NSDate).toFirebase())")
+//            }
+//        }
+//        sqlite3_finalize(sqlite3_stmt)
+//    }
+//
+//    static func getLastUpdateDate(database:OpaquePointer?, table:String, key:String)->Date?{
+//        var uDate:Date?
+//        var sqlite3_stmt: OpaquePointer? = nil
+//        let sql = "SELECT \(DATE) from \(TABLE) where \(NAME) = ? AND \(KEY) = ?;"
+//
+//        if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK){
+//            let tableName = table.cString(using: .utf8)
+//            let keyValue = key.cString(using: .utf8)
+//
+//            sqlite3_bind_text(sqlite3_stmt, 1, tableName,-1,nil);
+//            sqlite3_bind_text(sqlite3_stmt, 2, keyValue,-1,nil);
+//
+//            if(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
+//                let date = Double(sqlite3_column_double(sqlite3_stmt, 0))
+//                uDate = NSDate.fromFirebasee(date) as Date
+//            }
+//        }
+//
+//        sqlite3_finalize(sqlite3_stmt)
+//        return uDate
+//    }
 }

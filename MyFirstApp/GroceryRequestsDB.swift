@@ -23,9 +23,7 @@ class GroceryRequestsDB {
         // Get the last-update time in the local db
         let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
                                                                 table: ListRequestsTable.TABLE,
-                                                                
-                                                                // TODO: What is supposed to be here?
-                                                                key: ListRequestsTable.LIST_KEY)
+                                                                key: self.listKey as String)
         
         if (localUpdateTime != nil) {
             let nsUpdateTime = localUpdateTime as NSDate?
@@ -64,24 +62,23 @@ class GroceryRequestsDB {
     private func addRequestToLocal(request:GroceryRequest) {
         // Add the updated record to the local database
         ListRequestsTable.addRequest(database: LocalDb.sharedInstance?.database, request: request, listKey: self.listKey as String)
-        
-        // TODO: What about users that left groups? No update time for that
-        
+
         // Update the local update time
         LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
                                       table: ListRequestsTable.TABLE,
-                                      
-                                      // TODO: What is supposed to be here?
-                                      key: ListRequestsTable.LIST_KEY,
+                                      key: self.listKey as String,
                                       lastUpdate: Date())
     }
     
     private func handleRequestAddition(request:GroceryRequest, whenRequestAdded: @escaping (Int) -> Void) {
-        self.groceryRequests.append(request)
-
-        // Checking index explicitly - For multithreading safety
-        let newRequestIndex = self.groceryRequests.index(where: { $0.id == request.id })
-        whenRequestAdded(newRequestIndex!)
+        // Don't append the same request twice
+        if (findRequestIndex(id: request.id) == nil) {
+            self.groceryRequests.append(request)
+            
+            // Checking index explicitly - For multithreading safety
+            let newRequestIndex = findRequestIndex(id: request.id)
+            whenRequestAdded(newRequestIndex!)
+        }
     }
 
     func observeRequestModification(whenRequestModified: @escaping (_: Int) -> Void) {
@@ -91,7 +88,8 @@ class GroceryRequestsDB {
 
             self.groceryRequests[updatedIndex] = updatedRequest
             
-            // TODO: Save to local
+            // Save to local
+            self.addRequestToLocal(request: updatedRequest)
             
             whenRequestModified(updatedIndex)
         })
