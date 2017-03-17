@@ -28,11 +28,14 @@ class UserGroceryListsDB {
     private func groupAdded(groupIndex: Int) {
         let group = groupsDb!.getGroup(row: groupIndex)
 
-        let db = GroceryListsByGroupDB(groupKey: group!.key)
-        listsDb.append(db)
+        // Make sure we didn't already add this group's grocery lists (Could happen when UserGroupsDB resets).
+        if (listsDb.index(where: {$0.groupKey == group!.key}) == nil) {
+            let db = GroceryListsByGroupDB(groupKey: group!.key)
+            listsDb.append(db)
 
-        db.observeListsAddition(whenAdded: listAdded)
-        db.observeListsDeletion(whenDeleted: listDeleted)
+            db.observeListsAddition(whenAdded: listAdded)
+            db.observeListsDeletion(whenDeleted: listDeleted)
+        }
     }
 
     private func listAdded(addedList: GroceryList) {

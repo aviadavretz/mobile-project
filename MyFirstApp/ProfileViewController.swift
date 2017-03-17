@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, LoginButtonDelegate
         hideChooseImageDialog()
         
         // Get the User & Image (this will fetch only from cache, because the user was already fetched from DB)
-        UsersDB.sharedInstance.findUserByKey( key: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: refreshLabels)
+        UsersDB.sharedInstance.findUserByKey(key: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: refreshLabels)
         ImageDB.sharedInstance.downloadImage(userId: AuthenticationUtilities.sharedInstance.getId()!, whenFinished: refreshImage)
         
         initializeFacebookLoginButton()
@@ -71,9 +71,13 @@ class ProfileViewController: UIViewController, LoginButtonDelegate
     public func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {}
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        // Truncate the user-groups table (In case we will login to another user)
+        LastUpdateTable.deleteLastUpdate(database: LocalDb.sharedInstance?.database, table: UserGroupsTable.TABLE, key: AuthenticationUtilities.sharedInstance.getId()!)
+        UserGroupsTable.truncateTable(database: LocalDb.sharedInstance?.database)
+        
         AuthenticationUtilities.sharedInstance.signOut()
         FacebookAccessTokenCache.sharedInstance.clear()
-        
+
         // Unwind back to MainController
         self.performSegue(withIdentifier: "UnwindLogOut", sender: self)
     }

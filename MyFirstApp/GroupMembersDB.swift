@@ -108,7 +108,8 @@ class GroupMembersDB {
 
     private func deleteGroupIfEmpty() {
         self.findGroupMembersCount(whenFound: { (count) in
-            if (count == 0) {
+            // TODO: Aviad, this should be 1? (because of the "lastUpdated")
+            if (count == 1) {
                 GroupsDB.sharedInstance.deleteGroup(key: self.group.key)
             }
         })

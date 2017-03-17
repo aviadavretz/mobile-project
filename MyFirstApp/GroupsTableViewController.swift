@@ -39,6 +39,9 @@ class GroupsTableViewController : UITableViewController {
     private func groupDeleted(groupIndex: Int, _: Group) {
         table.deleteRows(at: [IndexPath(row: groupIndex, section: 0)],
                 with: UITableViewRowAnimation.automatic)
+        
+        // Reload data and refresh the tags
+        table.reloadData()
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,8 +64,6 @@ class GroupsTableViewController : UITableViewController {
     
     @IBAction func leftGroup(seque:UIStoryboardSegue) {
         print("Left group")
-        
-        table.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

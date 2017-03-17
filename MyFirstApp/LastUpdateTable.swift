@@ -24,20 +24,17 @@ class LastUpdateTable {
         return true
     }
     
-//    // TODO: REMOVE THIS
-//    static func dropTable(database:OpaquePointer?)->Bool{
-//        var errormsg: UnsafeMutablePointer<Int8>? = nil
-//        //        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(NAME) TEXT PRIMARY KEY, \(KEY) TEXT, \(DATE) DOUBLE)"
-//        let sql = "DROP TABLE \(TABLE)"
-//        
-//        let res = sqlite3_exec(database, sql, nil, nil, &errormsg);
-//        if(res != 0) {
-//            print("error dropping table");
-//            return false
-//        }
-//        
-//        return true
-//    }
+    static func deleteLastUpdate(database:OpaquePointer?, table:String, key:String){
+        var sqlite3_stmt: OpaquePointer? = nil
+        let sql = "DELETE FROM \(TABLE) WHERE \(NAME) = '\(table)' AND \(KEY) = '\(key)';"
+        
+        if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK){
+            if (sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
+                print("\(TABLE): Row deleted: table = \(table), key = \(key))")
+            }
+        }
+        sqlite3_finalize(sqlite3_stmt)
+    }
     
     static func setLastUpdate(database:OpaquePointer?, table:String, key:String, lastUpdate:Date){
         var sqlite3_stmt: OpaquePointer? = nil
