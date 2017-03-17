@@ -141,12 +141,10 @@ class GroceryRequestsDB {
     }
 
     func toggleRequestPurchased(request: GroceryRequest) {
-        databaseRef.child(request.id as String).updateChildValues(["purchased" : (!request.purchased).description])
-        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
+        databaseRef.child(request.id as String).updateChildValues(["purchased" : (!request.purchased).description, "lastUpdated" : NSDate().toFirebase()])
     }
     
     func updateRequestItemName(request: GroceryRequest) {
-        databaseRef.child(request.id as String).updateChildValues(["itemName" : request.itemName])
-        databaseRef.child(request.id as String).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
+        databaseRef.child(request.id as String).updateChildValues(["itemName" : request.itemName, "lastUpdated" : NSDate().toFirebase()])
     }
 }
