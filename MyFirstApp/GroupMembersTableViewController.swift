@@ -28,6 +28,14 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
     private func initializeModel() {
         db = GroupMembersDB(groupKey: group!.key)
         db!.observeGroupMembersAddition(whenMemberAdded: memberAdded)
+        
+        ImageDB.observeImageModification(whenImageModified: imageModified)
+    }
+    
+    private func imageModified() {
+        if (table != nil) {
+            table.reloadData()
+        }
     }
 
     private func memberAdded(memberIndex: Int) {

@@ -14,15 +14,13 @@ class LocalImageStorage {
     
     public func saveImageToFile(image:UIImage, name:String) {
         // Create the data for the image
-        if let data = UIImageJPEGRepresentation(image, 0.8) {
+        if let data = UIImageJPEGRepresentation(image, 1) {
             
             // Get the filename
             let filename = getDocumentsDirectory().appendingPathComponent(name)
             
             // Write the data to the file
             try? data.write(to: filename)
-            
-            print("Saved Image to local storage: \(name)")
         }
     }
     
@@ -44,7 +42,6 @@ class LocalImageStorage {
     func getUpdateTime(path: String) -> NSDate? {
         // Get the file url
         let fileUrl = getDocumentsDirectory().appendingPathComponent(path) as NSURL
-//        let fileNSUrl = NSURL(fileURLWithPath: fileUrl.absoluteString)
         var modified: AnyObject?
         
         do {

@@ -32,6 +32,14 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         db = GroceryRequestsDB(listKey: list!.id)
         db!.observeRequestAddition(whenRequestAdded: requestAdded)
         db!.observeRequestModification(whenRequestModified: requestModified)
+        
+        ImageDB.observeImageModification(whenImageModified: imageModified)
+    }
+    
+    private func imageModified() {
+        if (table != nil) {
+            table.reloadData()
+        }
     }
     
     private func requestAdded(requestIndex: Int) {
@@ -151,7 +159,5 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         }
     }
 
-    @IBAction func backFromNewRequestController(seque:UIStoryboardSegue) {
-//        table.reloadData()
-    }
+    @IBAction func backFromNewRequestController(seque:UIStoryboardSegue) {}
 }

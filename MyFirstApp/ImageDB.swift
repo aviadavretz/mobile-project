@@ -15,6 +15,9 @@ class ImageDB {
     static let sharedInstance: ImageDB = { ImageDB() } ()
     var storageRef: FIRStorageReference?
     
+    // Array of callback functions. Observers insert their functions here, and are notified when the user changes his image.
+    static var callbacks: Array<()->()> = []
+    
     private init() {
         configureStorage()
     }
@@ -24,8 +27,21 @@ class ImageDB {
         storageRef = FIRStorage.storage().reference(forURL: "gs://" + storageUrl!)
     }
     
+    static func observeImageModification(whenImageModified: @escaping () -> ()) {
+        callbacks.append(whenImageModified)
+    }
+    
+    static func executeCallbacks() {
+        for callback in callbacks {
+            callback()
+        }
+    }
+    
     func storeImage(image: UIImage, userId: String) {
-        storeImage(image: image, userId: userId, whenFinished: {})
+        storeImage(image: image, userId: userId, whenFinished: {
+            // Notify the observers
+            ImageDB.executeCallbacks()
+        })
     }
     
     func storeImage(image: UIImage, userId: String, whenFinished: @escaping ()->()) {
@@ -45,7 +61,7 @@ class ImageDB {
                 
                 // Save the image to local storage
                 LocalImageStorage.sharedInstance.saveImageToFile(image: image, name: imagePath);
-                
+ 
                 whenFinished()
             }
         }
@@ -60,7 +76,6 @@ class ImageDB {
         // If there was no need to refresh
         // If image exists in local storage
         if let image = LocalImageStorage.sharedInstance.getImageFromFile(name: imagePath) {
-
             whenFinished(image)
         }
         else {
@@ -89,21 +104,6 @@ class ImageDB {
         }
     }
     
-    private func compareUpdateTimes(imagePath: String, remoteUpdateTime: Date?, whenFinished: @escaping (UIImage?) -> Void) {
-        let localUpdateTime = LocalImageStorage.sharedInstance.getUpdateTime(path: imagePath)
-        
-        // Check if the remote image was updated
-        if (remoteUpdateTime != nil &&
-            (localUpdateTime == nil || localUpdateTime?.compare(remoteUpdateTime!) == .orderedAscending)) {
-            // Download the new remote image
-            print("Need to refresh \(imagePath)")
-            getImageFromRemote(imagePath: imagePath, whenFinished: whenFinished)
-        }
-        else {
-            return
-        }
-    }
-    
     private func manageRefreshImage(imagePath: String, whenFinished: @escaping (UIImage?) -> Void) {
         // Create reference to the file whose metadata we want to retrieve
         let imageRef = self.storageRef?.child(imagePath)
@@ -119,6 +119,20 @@ class ImageDB {
                 // Metadata now contains the metadata for the image
                 self.compareUpdateTimes(imagePath: imagePath, remoteUpdateTime: metadata?.updated, whenFinished: whenFinished)
             }
+        }
+    }
+    
+    private func compareUpdateTimes(imagePath: String, remoteUpdateTime: Date?, whenFinished: @escaping (UIImage?) -> Void) {
+        let localUpdateTime = LocalImageStorage.sharedInstance.getUpdateTime(path: imagePath)
+        
+        // Check if the remote image was updated
+        if (remoteUpdateTime != nil &&
+            (localUpdateTime == nil || localUpdateTime?.compare(remoteUpdateTime!) == .orderedAscending)) {
+            // Download the new remote image
+            getImageFromRemote(imagePath: imagePath, whenFinished: whenFinished)
+        }
+        else {
+            return
         }
     }
 }
