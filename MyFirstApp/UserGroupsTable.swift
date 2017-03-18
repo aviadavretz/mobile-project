@@ -38,14 +38,28 @@ class UserGroupsTable {
         }
     }
 
+//    private static func addGroupKey(database:OpaquePointer?, groupKey:String) {
+//        var sqlite3_stmt: OpaquePointer? = nil
+//        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(GROUP_KEY)) VALUES ('\(groupKey)');"
+//        
+//        if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK) {
+//            // Execute the statement
+//            sqlite3_step(sqlite3_stmt)
+//        }
+//        
+//        sqlite3_finalize(sqlite3_stmt)
+//    }
+    
     private static func addGroupKey(database:OpaquePointer?, groupKey:String) {
         var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(GROUP_KEY)) VALUES ('\(groupKey)');"
+        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(GROUP_KEY)) VALUES (?);"
         
         if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK) {
-            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE) {
-                print("\(TABLE): New row added: groupKey = \(groupKey)")
-            }
+            // Bind the variable to the query
+            sqlite3_bind_text(sqlite3_stmt, 1, groupKey.cString(using: .utf8),-1,nil);
+            
+            // Execute the statement
+            sqlite3_step(sqlite3_stmt)
         }
         
         sqlite3_finalize(sqlite3_stmt)
@@ -58,8 +72,9 @@ class UserGroupsTable {
         let sql = "SELECT DISTINCT \(GROUP_KEY) FROM \(TABLE);"
         
         if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK) {
-            
+            // Execute the statement
             while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+                // Get the group key from the row that has been selected
                 let groupKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,0))
                 
                 if (groupKey != nil) {

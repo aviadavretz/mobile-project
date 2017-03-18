@@ -136,11 +136,6 @@ class UserGroupsDB {
 
     func addGroupToUser(groupKey: NSString) {
         userRef.child(groupsNode).updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
-        
-        // TODO: Remove this
-//        var groupKeys : Array<String> = []
-//        groupKeys.append(groupKey as String)
-//        UserGroupsTable.addGroupKeys(database: LocalDb.sharedInstance?.database, groupKeys: groupKeys)
     }
     
     func removeGroupFromUser(groupKey: String) {
