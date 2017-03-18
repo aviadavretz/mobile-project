@@ -11,12 +11,15 @@ class UserGroupsDB {
     let groupsNode = "groups"
 
     var userRef: FIRDatabaseReference!
+    var userGroupsRef: FIRDatabaseReference!
+    
     var groups: Array<Group> = []
     var userKey: NSString
 
     init(userKey: NSString) {
         self.userKey = userKey
         userRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)")
+        userGroupsRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)/\(groupsNode)")
     }
     
     func observeUserGroupsAddition(whenGroupAdded: @escaping (Int) -> Void) {
@@ -83,7 +86,7 @@ class UserGroupsDB {
         }
         else {
             // Observe all group records from remote group node
-            userRef.child(groupsNode).observe(FIRDataEventType.value, with: handler)
+            userGroupsRef.observe(FIRDataEventType.value, with: handler)
         }
     }
     
@@ -122,7 +125,7 @@ class UserGroupsDB {
     }
 
     func observeUserGroupsDeletion(whenGroupDeleted: @escaping (_: Int, _: Group) -> Void) {
-        userRef.child(groupsNode).observe(FIRDataEventType.childRemoved, with: {(snapshot) in
+        userGroupsRef.observe(FIRDataEventType.childRemoved, with: {(snapshot) in
             guard let groupIndex = self.findGroupIndexByKey(groupKey: snapshot.key as NSString) else { return }
 
             let removedGroup = self.groups.remove(at: groupIndex)
@@ -135,12 +138,12 @@ class UserGroupsDB {
     }
 
     func addGroupToUser(groupKey: NSString) {
-        userRef.child(groupsNode).updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
+        userGroupsRef.updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
     }
     
     func removeGroupFromUser(groupKey: String) {
-        userRef.child(groupsNode).child(groupKey).removeValue()
-        userRef.child(groupsNode).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
+        userGroupsRef.child(groupKey).removeValue()
+        userGroupsRef.updateChildValues(["lastUpdated" : NSDate().toFirebase()])
     }
 
     func removeObservers() {
@@ -160,7 +163,7 @@ class UserGroupsDB {
     }
 
     func findFirstGroup(whenFound: @escaping (_: Group?) -> Void) {
-        userRef.child(groupsNode).queryLimited(toFirst: 1).observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        userGroupsRef.queryLimited(toFirst: 1).observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
                     if !(snapshot.value is NSNull) {
                         GroupsDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: { (group) in
                             whenFound(group)
