@@ -6,14 +6,14 @@
 import Foundation
 
 class LastUpdateTable {
-    static let TABLE = "LAST_UPDATE"
+    static let TABLE = "LAST_UPDATE_TIMES"
     static let NAME = "NAME"
     static let KEY = "KEY"
     static let DATE = "DATE"
 
     static func createTable(database:OpaquePointer?)->Bool{
         var errormsg: UnsafeMutablePointer<Int8>? = nil
-        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(NAME) TEXT PRIMARY KEY, \(KEY) TEXT, \(DATE) DOUBLE)"
+        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(NAME) TEXT, \(KEY) TEXT, \(DATE) DOUBLE, PRIMARY KEY (\(NAME), \(KEY)))"
 
         let res = sqlite3_exec(database, sql, nil, nil, &errormsg);
         if(res != 0) {

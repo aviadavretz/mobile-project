@@ -20,7 +20,6 @@ extension String {
 class LocalDb {
     static let sharedInstance: LocalDb? = { LocalDb() } ()
 
-    // TODO: Aviad you meant for this to be private
     var database: OpaquePointer? = nil
 
     private init?(){

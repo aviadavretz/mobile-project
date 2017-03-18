@@ -29,7 +29,7 @@ class GroupsDB {
     }
 
     func addGroup(groupTitle: NSString, forUserKey: NSString) {
-        let values = ["title": groupTitle, "members": [forUserKey: true]] as [String : Any]
+        let values = ["title": groupTitle, "members": [forUserKey: true], "lastUpdateDate": NSDate().toFirebase()] as [String : Any]
         
         // Add the group to the remote
         let generatedKey = self.databaseRef.childByAutoId().key

@@ -9,107 +9,151 @@ import FirebaseDatabase
 class GroupMembersDB {
     let groupsNode = "groups"
     let membersNode = "members"
+    let lastUpdateDateNode = "lastUpdateDate"
 
     var databaseRef: FIRDatabaseReference!
+    var lastUpdateDateRef: FIRDatabaseReference!
     var members: Array<User> = []
     var group: Group
 
     init(group: Group) {
         self.group = group
+
+        // This database reference will be used to fetch the members
         databaseRef = FIRDatabase.database().reference(withPath: "\(groupsNode)/\(group.key)/\(membersNode)")
+
+        // This database reference will be used to fetch and observe the last update date
+        lastUpdateDateRef = FIRDatabase.database().reference(withPath: "\(groupsNode)/\(group.key)/\(lastUpdateDateNode)")
     }
 
-    func observeGroupMembersAddition(whenMemberAdded: @escaping (Int) -> Void) {
-        // Get the last-update time in the local db
-        let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
-                                                                table: GroupMembersTable.TABLE,
-                                                                key: group.key as String)
-        
-        if (localUpdateTime != nil) {
-            let nsUpdateTime = localUpdateTime as NSDate?
-            
-            // Get the relevant records from the remote
-            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
-            fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
-                self.handleGroupMemberAddition(userKey: snapshot.key, whenMemberAdded: whenMemberAdded)
-                
-                self.addUserToLocal(userKey: snapshot.key)
-            })
-            
-            // TODO: This is supposed to happen in a different thread?
-            
-            // Get the up-to-date records from the local
-            let localUsersKeys = GroupMembersTable.getUserKeysByGroupKey(database: LocalDb.sharedInstance?.database,
-                                                                       groupKey: group.key as String)
-            
-            // Handle each local record
-            for userKey in localUsersKeys {
-                handleGroupMemberAddition(userKey: userKey, whenMemberAdded: whenMemberAdded)
+    func observeGroupMembers(whenModelChanged: @escaping () -> Void) {
+        // Observe the remote last update time and act upon that value :
+        // If our local last update time isn't before the remote one we can safely fetch the members locally.
+        // Otherwise, we will have to fetch them from the remote db (and updating the local db of course).
+        observeRemoteLastUpdateTime(whenUpdateTimeFound: { (remoteLastUpdateTime) in
+            // First we will clear the members array as we are about to append data to it
+            self.members.removeAll()
+
+            if (self.isLocalDatabaseUpToDate(remoteLastUpdateDate: remoteLastUpdateTime)) {
+                self.fetchGroupMembersFromLocalDB(whenModelChanged: whenModelChanged)
             }
-        }
-        else {
-            // Observe all records from remote
-            databaseRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
-                self.handleGroupMemberAddition(userKey: snapshot.key, whenMemberAdded: whenMemberAdded)
-                
-                self.addUserToLocal(userKey: snapshot.key)
-            })
+            else {
+                self.fetchGroupMembersFromRemoteDB(whenModelChanged: whenModelChanged)
+            }
+        })
+    }
+
+    private func fetchGroupMembersFromLocalDB(whenModelChanged: @escaping () -> Void) {
+        // Get the up-to-date records from the local
+        let localUsersKeys = GroupMembersTable.getUserKeysByGroupKey(database: LocalDb.sharedInstance?.database,
+                groupKey: self.group.key as String)
+
+        // Handle each local record
+        for userKey in localUsersKeys {
+            self.handleGroupMemberAddition(userKey: userKey, whenModelChanged: whenModelChanged)
         }
     }
-    
-    private func addUserToLocal(userKey: String) {
-        // Add the updated record to the local database
-        GroupMembersTable.addUserToGroup(
-                database: LocalDb.sharedInstance?.database, userKey: userKey, groupKey: self.group.key as String)
-        
-        // TODO: What about users that left groups? No update time for that
-        
+
+    private func fetchGroupMembersFromRemoteDB(whenModelChanged: @escaping () -> Void) {
+        // Fetch the group members
+        self.databaseRef.observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            if (snapshot.exists()) {
+                var userKeys = Array<String>()
+
+                // Extract group member user keys and append them to our user keys array
+                for child in snapshot.children.allObjects {
+                    if let childData = child as? FIRDataSnapshot {
+                        userKeys.append(childData.key)
+                    }
+                }
+
+                // Handle each member fetched independently
+                userKeys.forEach({ self.handleGroupMemberAddition(userKey: $0, whenModelChanged: whenModelChanged) })
+
+                // Update local db with the fetched user keys
+                self.updateLocalDB(userKeys: userKeys)
+            }
+        })
+    }
+
+    private func observeRemoteLastUpdateTime(whenUpdateTimeFound: @escaping (NSDate) -> Void) {
+        // Use the last update date database reference to fetch the last update date
+        lastUpdateDateRef.observe(FIRDataEventType.value, with: {(snapshot) in
+            if (snapshot.exists()) {
+                whenUpdateTimeFound(NSDate.fromFirebasee(snapshot.value as! Double))
+            }
+        })
+    }
+
+    private func isLocalDatabaseUpToDate(remoteLastUpdateDate: NSDate) -> Bool {
+        // If there is no local last update time, the local db is obviously not up to date.
+        guard let localUpdateTime = getLocalUpdateTime() else { return false }
+
+        // Check if the local last update time is before the remote last update time
+        return localUpdateTime.compare(remoteLastUpdateDate as Date) != ComparisonResult.orderedAscending
+    }
+
+    private func getLocalUpdateTime() -> Date? {
+        // Get the last-update time in the local db
+        return LastUpdateTable.getLastUpdateDate(
+                database: LocalDb.sharedInstance?.database,
+                table: GroupMembersTable.TABLE,
+                key: group.key as String)
+    }
+
+    private func updateLocalDB(userKeys: Array<String>) {
+        GroupMembersTable.updateUserKeys(
+                database: LocalDb.sharedInstance?.database, userKeys: userKeys, groupKey: group.key as String)
+
         // Update the local update time
         LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
-                                      table: GroupMembersTable.TABLE,
-                                      
-                                      // TODO: What is supposed to be here?
-                                      key: GroupMembersTable.GROUP_KEY,
-                                      lastUpdate: Date())
+                table: GroupMembersTable.TABLE,
+                key: self.group.key as String,
+                lastUpdate: Date())
     }
     
-    private func handleGroupMemberAddition(userKey: String, whenMemberAdded: @escaping (Int) -> Void) {
+    private func handleGroupMemberAddition(userKey: String, whenModelChanged: @escaping () -> Void) {
         // Retrieve the user object
         UsersDB.sharedInstance.findUserByKey(key: userKey, whenFinished: {(user) in
             guard let foundUser = user else { return }
             
             self.members.append(foundUser)
-            
-            // Checking index explicitly - For multithreading safety
-            let newUserIndex = self.members.index(where: { $0.key == foundUser.key })
-            whenMemberAdded(newUserIndex!)
+
+            whenModelChanged()
         })
     }
 
     func findGroupMembersCount(whenFound: @escaping (_: Int) -> Void) {
         databaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
-                    if (!snapshot.exists()) {
-                        whenFound(0)
-                    }
-                    else {
-                        whenFound(Int(snapshot.childrenCount))
-                    }
-                })
+            if (!snapshot.exists()) {
+                whenFound(0)
+            }
+            else {
+                whenFound(Int(snapshot.childrenCount))
+            }
+        })
     }
 
     func addMember(userKey: NSString) {
-        databaseRef.updateChildValues([userKey : true, "lastUpdateDate": FIRServerValue.timestamp()])
+        databaseRef.updateChildValues([userKey : true], withCompletionBlock: { (_,_) in
+            self.updateLastUpdateTime()
+        })
     }
     
     func removeMember(userKey: String) {
-        databaseRef.updateChildValues(["lastUpdateDate": FIRServerValue.timestamp()])
-        databaseRef.child(userKey).removeValue(completionBlock: { (_,_) in self.deleteGroupIfEmpty()})
+        databaseRef.child(userKey).removeValue(completionBlock: { (_,_) in
+            self.updateLastUpdateTime()
+            self.deleteGroupIfEmpty()
+        })
+    }
+
+    private func updateLastUpdateTime() {
+        self.lastUpdateDateRef.setValue(NSDate().toFirebase())
     }
 
     private func deleteGroupIfEmpty() {
         self.findGroupMembersCount(whenFound: { (count) in
-            // TODO: Aviad, this should be 1? (because of the "lastUpdated")
-            if (count == 1) {
+            if (count == 0) {
                 GroupsDB.sharedInstance.deleteGroup(key: self.group.key)
             }
         })
@@ -117,6 +161,7 @@ class GroupMembersDB {
 
     func removeObservers() {
         databaseRef.removeAllObservers()
+        lastUpdateDateRef.removeAllObservers()
     }
 
     func getMembersCount() -> Int {

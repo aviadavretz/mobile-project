@@ -27,7 +27,7 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
 
     private func initializeModel() {
         db = GroupMembersDB(group: group!)
-        db!.observeGroupMembersAddition(whenMemberAdded: memberAdded)
+        db!.observeGroupMembers(whenModelChanged: modelChanged)
         
         ImageDB.observeImageModification(whenImageModified: imageModified)
     }
@@ -38,8 +38,8 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
         }
     }
 
-    private func memberAdded(memberIndex: Int) {
-        table.insertRows(at: [IndexPath(row: memberIndex, section: 0)], with: UITableViewRowAnimation.automatic)
+    private func modelChanged() {
+        table.reloadData()
     }
 
     deinit {
