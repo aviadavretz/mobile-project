@@ -97,7 +97,10 @@ class GroceryRequestsDB {
 
     func removeObservers() {
         databaseRef.removeAllObservers()
-        fbQueryRef.removeAllObservers()
+        
+        if (fbQueryRef != nil) {
+            fbQueryRef.removeAllObservers()
+        }
     }
 
     private func findRequestIndex(id: NSString) -> Int? {
