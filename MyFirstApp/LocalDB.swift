@@ -34,6 +34,12 @@ class LocalDb {
             }
         }
  
+        // TODO: DELETE THIS SHIT!
+//        dropTable(LastUpdateTable.TABLE)
+//        dropTable(UserGroupsTable.TABLE)
+//        dropTable(GroupMembersTable.TABLE)
+//        dropTable(ListRequestsTable.TABLE)
+        
         // Creating the tables (if they don't already exists)
         if LastUpdateTable.createTable(database: database) == false ||
            UserGroupsTable.createTable(database: database) == false ||
@@ -41,5 +47,19 @@ class LocalDb {
            ListRequestsTable.createTable(database: database) == false {
             return nil
         }
+    }
+    
+    
+    func dropTable(_ table: String)->Bool{
+        var errormsg: UnsafeMutablePointer<Int8>? = nil
+        let sql = "DROP TABLE \(table)"
+        
+        let res = sqlite3_exec(database, sql, nil, nil, &errormsg);
+        if(res != 0) {
+            print("error creating table");
+            return false
+        }
+        
+        return true
     }
 }
