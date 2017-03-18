@@ -33,14 +33,12 @@ class GroupsTableViewController : UITableViewController {
     }
 
     private func groupAdded(groupIndex: Int) {
-        table.insertRows(at: [IndexPath(row: groupIndex, section: 0)], with: UITableViewRowAnimation.automatic)
+        // Reload groups and refresh the row-tags
+        table.reloadData()
     }
 
     private func groupDeleted(groupIndex: Int, _: Group) {
-        table.deleteRows(at: [IndexPath(row: groupIndex, section: 0)],
-                with: UITableViewRowAnimation.automatic)
-        
-        // Reload data and refresh the tags
+        // Reload groups and refresh the row-tags
         table.reloadData()
     }
 

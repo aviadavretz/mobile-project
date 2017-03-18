@@ -11,24 +11,29 @@ class UserGroupsDB {
     let groupsNode = "groups"
 
     var databaseRef: FIRDatabaseReference!
+    var userRef: FIRDatabaseReference!
     var groups: Array<Group> = []
     var userKey: NSString
 
     init(userKey: NSString) {
         self.userKey = userKey
         databaseRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)/\(groupsNode)")
+        userRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)")
     }
-
+    
     func observeUserGroupsAddition(whenGroupAdded: @escaping (Int) -> Void) {
         // Get the last-update time in the local db
         let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
                                                                 table: UserGroupsTable.TABLE,
                                                                 key: self.userKey as String)
 
+        // -------------------------------
+        // Handler for regular observation
+        // -------------------------------
         let handler = { (snapshot:FIRDataSnapshot) in
             // Reset the array of groups. We've got a new array.
             self.groups.removeAll()
-            
+
             // If we need to refresh and we got the groups
             if (!(snapshot.value is NSNull)) {
                 var groupKeys = Array((snapshot.value as! Dictionary<String, Bool>).keys)
@@ -41,7 +46,31 @@ class UserGroupsDB {
                 self.handleUserGroups(groupKeys: groupKeys,
                                       whenGroupAdded: whenGroupAdded)
             }
-            // Local DB is up to date - get groups from local.
+        }
+        
+        // -----------------------------
+        // Handler for query observation
+        // -----------------------------
+        let queryHandler = { (snapshot:FIRDataSnapshot) in
+            // Reset the array of groups. We've got a new array.
+            self.groups.removeAll()
+            
+            // If we need to refresh and we got the groups
+            if (!(snapshot.value is NSNull)) {
+                let groupsNodeValue = (snapshot.value as! Dictionary<String, Any>).values
+                var groupKeys: Array<String> = []
+                
+                groupKeys = Array((groupsNodeValue.first as! Dictionary<String, Any>).keys)
+
+                if let lastUpdatedStringIndex = groupKeys.index(of: "lastUpdated") {
+                    // Remove the "lastUpdated" key
+                    groupKeys.remove(at: lastUpdatedStringIndex)
+                }
+
+                self.handleUserGroups(groupKeys: groupKeys,
+                                      whenGroupAdded: whenGroupAdded)
+            }
+                // Local DB is up to date - get groups from local.
             else {
                 self.getGroupsFromLocal(whenGroupAdded: whenGroupAdded)
             }
@@ -51,8 +80,8 @@ class UserGroupsDB {
             let nsUpdateTime = localUpdateTime as NSDate?
             
             // Observe only if the remote update-time is after the the local
-            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
-            fbQuery.observe(FIRDataEventType.value, with: handler)
+            let fbQuery = userRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
+            fbQuery.observe(FIRDataEventType.value, with: queryHandler)
         }
         else {
             // Observe all records from remote
@@ -69,12 +98,11 @@ class UserGroupsDB {
     }
     
     private func handleUserGroups(groupKeys: Array<String>, whenGroupAdded: @escaping (Int) -> Void) {
-        UserGroupsTable.truncateTable(database: LocalDb.sharedInstance?.database)
-        
         for groupKey in groupKeys {
             self.handleUserGroupAddition(groupKey: groupKey, whenGroupAdded: whenGroupAdded)
         }
         
+        UserGroupsTable.truncateTable(database: LocalDb.sharedInstance?.database)
         UserGroupsTable.addGroupKeys(database: LocalDb.sharedInstance?.database, groupKeys: groupKeys)
         LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
                                       table: UserGroupsTable.TABLE,
@@ -110,6 +138,11 @@ class UserGroupsDB {
 
     func addGroupToUser(groupKey: NSString) {
         databaseRef.updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
+        
+        // TODO: Remove this
+//        var groupKeys : Array<String> = []
+//        groupKeys.append(groupKey as String)
+//        UserGroupsTable.addGroupKeys(database: LocalDb.sharedInstance?.database, groupKeys: groupKeys)
     }
     
     func removeGroupFromUser(groupKey: String) {
