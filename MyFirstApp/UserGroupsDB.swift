@@ -52,6 +52,27 @@ class UserGroupsDB {
                 self.getGroupsFromLocal(whenGroupAdded: whenGroupAdded)
             }
         }
+        
+        // -------------------------------
+        // Handler for regular observation
+        // -------------------------------
+        let handler = { (snapshot:FIRDataSnapshot) in
+            // Reset the array of groups. We've got a new array.
+            self.groups.removeAll()
+                
+            // If we need to refresh and we got the groups
+            if (!(snapshot.value is NSNull)) {
+                var groupKeys = Array((snapshot.value as! Dictionary<String, Bool>).keys)
+                
+                if let lastUpdatedStringIndex = groupKeys.index(of: "lastUpdated") {
+                    // Remove the "lastUpdated" key
+                    groupKeys.remove(at: lastUpdatedStringIndex)
+                }
+                            
+                self.handleUserGroups(groupKeys: groupKeys,
+                                      whenGroupAdded: whenGroupAdded)
+            }
+        }
 
         if (localUpdateTime != nil) {
             let nsUpdateTime = localUpdateTime as NSDate?
@@ -61,8 +82,8 @@ class UserGroupsDB {
             fbQuery.observe(FIRDataEventType.value, with: queryHandler)
         }
         else {
-            // Observe all records from remote
-            userRef.observe(FIRDataEventType.value, with: queryHandler)
+            // Observe all group records from remote group node
+            userRef.child(groupsNode).observe(FIRDataEventType.value, with: handler)
         }
     }
     
