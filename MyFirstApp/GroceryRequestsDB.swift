@@ -11,6 +11,8 @@ class GroceryRequestsDB {
     let requestsNode = "requests"
 
     var databaseRef: FIRDatabaseReference!
+    var fbQueryRef: FIRDatabaseReference!
+    
     var groceryRequests: Array<GroceryRequest> = []
     var listKey: NSString
     
@@ -29,8 +31,8 @@ class GroceryRequestsDB {
             let nsUpdateTime = localUpdateTime as NSDate?
             
             // Get the relevant records from the remote
-            let fbQuery = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
-            fbQuery.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+            fbQueryRef = databaseRef.queryOrdered(byChild:"lastUpdated").queryStarting(atValue: nsUpdateTime!.toFirebase())
+            fbQueryRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
                 let newRequest = self.getGroceryRequestFromSnapshot(snapshot)
                 
                 self.handleRequestAddition(request: newRequest!, whenRequestAdded: whenRequestAdded)
@@ -95,6 +97,7 @@ class GroceryRequestsDB {
 
     func removeObservers() {
         databaseRef.removeAllObservers()
+        fbQueryRef.removeAllObservers()
     }
 
     private func findRequestIndex(id: NSString) -> Int? {
