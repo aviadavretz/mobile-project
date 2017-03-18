@@ -58,7 +58,9 @@ class UserGroceryListsDB {
     private func removeGroupObserver(groupKey: NSString) {
         guard let dbIndex = listsDb.index(where: { $0.groupKey == groupKey }) else { return }
 
+        // Remove the observers and remove the db of the deleted group.
         listsDb[dbIndex].removeObservers()
+        listsDb.remove(at: dbIndex)
     }
 
     private func removeGroupLists(groupKey: NSString) {
