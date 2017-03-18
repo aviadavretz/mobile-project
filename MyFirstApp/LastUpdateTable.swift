@@ -26,7 +26,7 @@ class LastUpdateTable {
 
     static func deleteLastUpdate(database:OpaquePointer?, table:String, key:String){
         var sqlite3_stmt: OpaquePointer? = nil
-        let sql = "DELETE FROM \(TABLE) WHERE \(NAME) = '\(table)' AND \(KEY) = ?;"
+        let sql = "DELETE FROM \(TABLE) WHERE \(NAME) = ? AND \(KEY) = ?;"
         
         if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK){
             // Bind the variables to the query
