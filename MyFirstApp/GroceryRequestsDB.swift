@@ -36,9 +36,7 @@ class GroceryRequestsDB {
                 self.handleRequestAddition(request: newRequest!, whenRequestAdded: whenRequestAdded)
                 self.addRequestToLocal(request: newRequest!)
             })
-            
-            // TODO: This is supposed to happen in a different thread?
-            
+
             // Get the up-to-date records from the local
             let localRequests = ListRequestsTable.getRequestsByListKey(database: LocalDb.sharedInstance?.database,
                                                                        listKey: self.listKey as String)
