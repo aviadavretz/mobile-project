@@ -104,9 +104,6 @@
 		842D16BF1DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C01DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
 		842D16C11DF046750024794F /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D16BE1DF046750024794F /* NewGroceryListViewController.swift */; };
-		842EBDED1E7321000016C370 /* GroupSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */; };
-		842EBDEE1E7321000016C370 /* GroupSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */; };
-		842EBDEF1E7321000016C370 /* GroupSqlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */; };
 		8434704F1DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
 		843470501DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
 		843470511DFB246F00378CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434704E1DFB246F00378CA0 /* User.swift */; };
@@ -231,7 +228,6 @@
 		840FF7911E127D02000F4FC9 /* AddGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupMemberViewController.swift; sourceTree = "<group>"; };
 		8416B2441E1A41A100EEF3EC /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		842D16BE1DF046750024794F /* NewGroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryListViewController.swift; sourceTree = "<group>"; };
-		842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSqlExtension.swift; sourceTree = "<group>"; };
 		8434704E1DFB246F00378CA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		843470561DFB258C00378CA0 /* GroceryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		8434705A1DFB25A000378CA0 /* GroceryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryRequest.swift; sourceTree = "<group>"; };
@@ -401,7 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				58603EB351FB7C723967AAF3 /* LastUpdateTable.swift */,
-				842EBDEC1E7321000016C370 /* GroupSqlExtension.swift */,
 				58603D09457E26A3F12E1E24 /* GroupMembersTable.swift */,
 				84AFFD521E7AE39500835723 /* ListRequestsTable.swift */,
 				84F41C5E1E7C599500E96066 /* UserGroupsTable.swift */,
@@ -907,7 +902,6 @@
 				586038EEB0A8F4C192C30C6B /* UsersDB.swift in Sources */,
 				586038E80A8E5FBAE2FF120E /* UserGroceryListsDB.swift in Sources */,
 				58603BF6B5033CC7657D92D8 /* GroceryListsByGroupDB.swift in Sources */,
-				842EBDED1E7321000016C370 /* GroupSqlExtension.swift in Sources */,
 				586032B41F46161A83034708 /* GroceryListsDB.swift in Sources */,
 				5860313A4706B8A2348BEA7F /* GroceryRequestsDB.swift in Sources */,
 				58603A3B6CA2FEDE8E3CB2B3 /* GroupsDB.swift in Sources */,
@@ -963,7 +957,6 @@
 				586038661C2372F160F94A9A /* UserGroceryListsDB.swift in Sources */,
 				586032FFE5F679C1452F912E /* GroceryListsByGroupDB.swift in Sources */,
 				58603A1F592FFA076DFD2AB8 /* GroceryListsDB.swift in Sources */,
-				842EBDEE1E7321000016C370 /* GroupSqlExtension.swift in Sources */,
 				586032C4D5D413B4E04E335B /* GroceryRequestsDB.swift in Sources */,
 				58603EEFE234A5435B9AFFCD /* GroupsDB.swift in Sources */,
 				586032D5136985E71610BE62 /* GroupMembersDB.swift in Sources */,
@@ -1018,7 +1011,6 @@
 				58603F15CE2CE29429B99DB9 /* UserGroceryListsDB.swift in Sources */,
 				58603CEC4B5969070141E847 /* GroceryListsByGroupDB.swift in Sources */,
 				5860365B8CC41056207B7D19 /* GroceryListsDB.swift in Sources */,
-				842EBDEF1E7321000016C370 /* GroupSqlExtension.swift in Sources */,
 				5860360B44349D2A9312569C /* GroceryRequestsDB.swift in Sources */,
 				586031C07F311481EC95D52B /* GroupsDB.swift in Sources */,
 				58603782588FB0996D9F29A6 /* GroupMembersDB.swift in Sources */,
