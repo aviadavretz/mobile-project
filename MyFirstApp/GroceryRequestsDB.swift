@@ -11,7 +11,7 @@ class GroceryRequestsDB {
     let requestsNode = "requests"
 
     var databaseRef: FIRDatabaseReference!
-    var fbQueryRef: FIRDatabaseReference!
+    var fbQueryRef: FIRDatabaseQuery!
     
     var groceryRequests: Array<GroceryRequest> = []
     var listKey: NSString
