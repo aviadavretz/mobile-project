@@ -10,14 +10,12 @@ class UserGroupsDB {
     let usersNode = "users"
     let groupsNode = "groups"
 
-    var databaseRef: FIRDatabaseReference!
     var userRef: FIRDatabaseReference!
     var groups: Array<Group> = []
     var userKey: NSString
 
     init(userKey: NSString) {
         self.userKey = userKey
-        databaseRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)/\(groupsNode)")
         userRef = FIRDatabase.database().reference(withPath: "\(usersNode)/\(userKey)")
     }
     
@@ -26,27 +24,6 @@ class UserGroupsDB {
         let localUpdateTime = LastUpdateTable.getLastUpdateDate(database: LocalDb.sharedInstance?.database,
                                                                 table: UserGroupsTable.TABLE,
                                                                 key: self.userKey as String)
-
-        // -------------------------------
-        // Handler for regular observation
-        // -------------------------------
-        let handler = { (snapshot:FIRDataSnapshot) in
-            // Reset the array of groups. We've got a new array.
-            self.groups.removeAll()
-
-            // If we need to refresh and we got the groups
-            if (!(snapshot.value is NSNull)) {
-                var groupKeys = Array((snapshot.value as! Dictionary<String, Bool>).keys)
-                
-                if let lastUpdatedStringIndex = groupKeys.index(of: "lastUpdated") {
-                    // Remove the "lastUpdated" key
-                    groupKeys.remove(at: lastUpdatedStringIndex)
-                }
-                
-                self.handleUserGroups(groupKeys: groupKeys,
-                                      whenGroupAdded: whenGroupAdded)
-            }
-        }
         
         // -----------------------------
         // Handler for query observation
@@ -85,7 +62,7 @@ class UserGroupsDB {
         }
         else {
             // Observe all records from remote
-            databaseRef.observe(FIRDataEventType.value, with: handler)
+            userRef.observe(FIRDataEventType.value, with: queryHandler)
         }
     }
     
@@ -124,7 +101,7 @@ class UserGroupsDB {
     }
 
     func observeUserGroupsDeletion(whenGroupDeleted: @escaping (_: Int, _: Group) -> Void) {
-        databaseRef.observe(FIRDataEventType.childRemoved, with: {(snapshot) in
+        userRef.child(groupsNode).observe(FIRDataEventType.childRemoved, with: {(snapshot) in
             guard let groupIndex = self.findGroupIndexByKey(groupKey: snapshot.key as NSString) else { return }
 
             let removedGroup = self.groups.remove(at: groupIndex)
@@ -137,7 +114,7 @@ class UserGroupsDB {
     }
 
     func addGroupToUser(groupKey: NSString) {
-        databaseRef.updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
+        userRef.child(groupsNode).updateChildValues([groupKey : true, "lastUpdated" : NSDate().toFirebase()])
         
         // TODO: Remove this
 //        var groupKeys : Array<String> = []
@@ -146,12 +123,12 @@ class UserGroupsDB {
     }
     
     func removeGroupFromUser(groupKey: String) {
-        databaseRef.child(groupKey).removeValue()
-        databaseRef.updateChildValues(["lastUpdated" : NSDate().toFirebase()])
+        userRef.child(groupsNode).child(groupKey).removeValue()
+        userRef.child(groupsNode).updateChildValues(["lastUpdated" : NSDate().toFirebase()])
     }
 
     func removeObservers() {
-        databaseRef.removeAllObservers()
+        userRef.removeAllObservers()
     }
 
     func getGroupsCount() -> Int {
@@ -167,7 +144,7 @@ class UserGroupsDB {
     }
 
     func findFirstGroup(whenFound: @escaping (_: Group?) -> Void) {
-        databaseRef.queryLimited(toFirst: 1).observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        userRef.child(groupsNode).queryLimited(toFirst: 1).observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
                     if !(snapshot.value is NSNull) {
                         GroupsDB.sharedInstance.findGroupByKey(key: snapshot.key, whenFinished: { (group) in
                             whenFound(group)
