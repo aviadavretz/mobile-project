@@ -16,12 +16,9 @@ class GroupsDB {
 
     var databaseRef: FIRDatabaseReference!
     var groupCache: Dictionary<NSString, Group> = Dictionary<NSString, Group>()
-    // TODO: For some reason this shit causes an exception
-//    var localDb: LocalDb!
     
     private init() {
         databaseRef = FIRDatabase.database().reference().child(rootNode)
-//        localDb = LocalDb()!
     }
     
     deinit {
@@ -36,9 +33,6 @@ class GroupsDB {
         self.databaseRef.child(generatedKey).setValue(values)
 
         UserGroupsDB(userKey: forUserKey).addGroupToUser(groupKey: generatedKey as NSString)
-        
-        // TODO: Add group to local
-        // TODO: Add group to user groups in local
     }
 
     func deleteGroup(key: NSString) {

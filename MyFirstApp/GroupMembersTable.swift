@@ -30,7 +30,6 @@ class GroupMembersTable {
         let sql = "SELECT * FROM \(TABLE) WHERE \(GROUP_KEY) = '\(groupKey)';"
         
         if (sqlite3_prepare_v2(database, sql, -1,&sqlite3_stmt,nil) == SQLITE_OK) {
-//            sqlite3_bind_text(sqlite3_stmt, 1, groupKey.cString(using: .utf8),-1,nil);
             
             while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
                 let userKey = String(validatingUTF8:sqlite3_column_text(sqlite3_stmt,0))
@@ -54,11 +53,8 @@ class GroupMembersTable {
         let sql = "DELETE FROM \(TABLE) WHERE \(GROUP_KEY) = '\(groupKey)';"
 
         if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK) {
-//            sqlite3_bind_text(sqlite3_stmt, 1, groupKey.cString(using: .utf8),-1,nil)
-
-            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE) {
-                print("\(TABLE): All rows deleted for groupKey = \(groupKey)")
-            }
+            // Execute the statement
+            sqlite3_step(sqlite3_stmt)
         }
 
         sqlite3_finalize(sqlite3_stmt)
@@ -69,12 +65,8 @@ class GroupMembersTable {
         let sql = "INSERT OR REPLACE INTO \(TABLE) (\(USER_KEY),\(GROUP_KEY)) VALUES ('\(userKey)','\(groupKey)');"
 
         if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK) {
-//            sqlite3_bind_text(sqlite3_stmt, 1, userKey.cString(using: .utf8),-1,nil);
-//            sqlite3_bind_text(sqlite3_stmt, 2, groupKey.cString(using: .utf8),-1,nil);
-
-            if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE) {
-                print("\(TABLE): New row added: userKey = \(userKey), groupKey = \(groupKey)")
-            }
+            // Execute the statement
+            sqlite3_step(sqlite3_stmt)
         }
 
         sqlite3_finalize(sqlite3_stmt)

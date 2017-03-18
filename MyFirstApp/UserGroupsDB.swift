@@ -148,6 +148,7 @@ class UserGroupsDB {
 
     func removeObservers() {
         userRef.removeAllObservers()
+        userGroupsRef.removeAllObservers()
     }
 
     func getGroupsCount() -> Int {
