@@ -38,18 +38,6 @@ class UserGroupsTable {
         }
     }
 
-//    private static func addGroupKey(database:OpaquePointer?, groupKey:String) {
-//        var sqlite3_stmt: OpaquePointer? = nil
-//        let sql = "INSERT OR REPLACE INTO \(TABLE) (\(GROUP_KEY)) VALUES ('\(groupKey)');"
-//        
-//        if (sqlite3_prepare_v2(database, sql,-1, &sqlite3_stmt,nil) == SQLITE_OK) {
-//            // Execute the statement
-//            sqlite3_step(sqlite3_stmt)
-//        }
-//        
-//        sqlite3_finalize(sqlite3_stmt)
-//    }
-    
     private static func addGroupKey(database:OpaquePointer?, groupKey:String) {
         var sqlite3_stmt: OpaquePointer? = nil
         let sql = "INSERT OR REPLACE INTO \(TABLE) (\(GROUP_KEY)) VALUES (?);"
@@ -64,7 +52,7 @@ class UserGroupsTable {
         
         sqlite3_finalize(sqlite3_stmt)
     }
-    
+
     static func getUserGroupKeys(database:OpaquePointer?) -> Array<String> {
         var groupKeys = Array<String>()
         

@@ -12,7 +12,7 @@ class GroupMembersTable {
 
     static func createTable(database:OpaquePointer?)->Bool{
         var errormsg: UnsafeMutablePointer<Int8>? = nil
-        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(USER_KEY) TEXT, \(GROUP_KEY) TEXT)"
+        let sql = "CREATE TABLE IF NOT EXISTS \(TABLE) (\(USER_KEY) TEXT, \(GROUP_KEY) TEXT, PRIMARY KEY (\(USER_KEY), \(GROUP_KEY)))"
 
         let res = sqlite3_exec(database, sql, nil, nil, &errormsg);
         if(res != 0) {
