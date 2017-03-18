@@ -148,7 +148,7 @@ class GroupMembersDB {
     }
 
     private func updateLastUpdateTime() {
-        self.lastUpdateDateRef.setValue(NSDate().toFirebase())
+        self.lastUpdateDateRef.setValue(FIRServerValue.timestamp())
     }
 
     private func deleteGroupIfEmpty() {
