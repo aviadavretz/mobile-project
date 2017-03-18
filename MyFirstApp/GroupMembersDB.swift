@@ -38,7 +38,8 @@ class GroupMembersDB {
                 self.fetchGroupMembersFromLocalDB(whenModelChanged: whenModelChanged)
             }
             else {
-                self.fetchGroupMembersFromRemoteDB(whenModelChanged: whenModelChanged)
+                self.fetchGroupMembersFromRemoteDBAndUpdateLocalDB(whenModelChanged: whenModelChanged,
+                        remoteLastUpdateTime: remoteLastUpdateTime)
             }
         })
     }
@@ -54,7 +55,7 @@ class GroupMembersDB {
         }
     }
 
-    private func fetchGroupMembersFromRemoteDB(whenModelChanged: @escaping () -> Void) {
+    private func fetchGroupMembersFromRemoteDBAndUpdateLocalDB(whenModelChanged: @escaping () -> Void, remoteLastUpdateTime: NSDate) {
         // Fetch the group members
         self.databaseRef.observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             if (snapshot.exists()) {
@@ -71,7 +72,7 @@ class GroupMembersDB {
                 userKeys.forEach({ self.handleGroupMemberAddition(userKey: $0, whenModelChanged: whenModelChanged) })
 
                 // Update local db with the fetched user keys
-                self.updateLocalDB(userKeys: userKeys)
+                self.updateLocalDB(userKeys: userKeys, remoteLastUpdateTime: remoteLastUpdateTime)
             }
         })
     }
@@ -101,7 +102,7 @@ class GroupMembersDB {
                 key: group.key as String)
     }
 
-    private func updateLocalDB(userKeys: Array<String>) {
+    private func updateLocalDB(userKeys: Array<String>, remoteLastUpdateTime: NSDate) {
         GroupMembersTable.updateUserKeys(
                 database: LocalDb.sharedInstance?.database, userKeys: userKeys, groupKey: group.key as String)
 
@@ -109,7 +110,7 @@ class GroupMembersDB {
         LastUpdateTable.setLastUpdate(database: LocalDb.sharedInstance?.database,
                 table: GroupMembersTable.TABLE,
                 key: self.group.key as String,
-                lastUpdate: Date())
+                lastUpdate: remoteLastUpdateTime as Date)
     }
     
     private func handleGroupMemberAddition(userKey: String, whenModelChanged: @escaping () -> Void) {
