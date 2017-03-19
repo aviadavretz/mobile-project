@@ -31,7 +31,7 @@ class ImageDB {
         callbacks.append(whenImageModified)
     }
     
-    static func executeCallbacks() {
+    private static func executeCallbacks() {
         for callback in callbacks {
             callback()
         }
