@@ -53,14 +53,17 @@ class ChooseGroupDialogViewController: UIViewController, UIPickerViewDataSource,
     }
     
     // MARK: Delegates
+    // This function determines what title will be presented for each group
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return db!.getGroup(row: row)!.title as String?
     }
 
+    // This function is called when user selects row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedGroup = db!.getGroup(row: row)!
     }
 
+    // Attributes for title
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = db!.getGroup(row: row)!.title
         let myTitle = NSAttributedString(string: titleData as! String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.black])

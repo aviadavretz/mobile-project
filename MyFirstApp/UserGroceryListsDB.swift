@@ -30,9 +30,11 @@ class UserGroceryListsDB {
 
         // Make sure we didn't already add this group's grocery lists (Could happen when UserGroupsDB resets).
         if (listsDb.index(where: {$0.groupKey == group!.key}) == nil) {
+            // Create a db that manages the added group's lists
             let db = GroceryListsByGroupDB(groupKey: group!.key)
             listsDb.append(db)
 
+            // When the new db observes a new list, add it to our array of lists.
             db.observeListsAddition(whenAdded: listAdded)
             db.observeListsDeletion(whenDeleted: listDeleted)
         }

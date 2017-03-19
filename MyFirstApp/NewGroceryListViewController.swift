@@ -24,10 +24,13 @@ class NewGroceryListViewController: UIViewController {
         super.viewDidLoad()
         
         hideChooseGroupDialog()
+        
+        // Select an arbitrary group at first
         chooseFirstGroup()
     }
     
     private func chooseFirstGroup() {
+        // Get the first group in the db, and choose it.
         UserGroupsDB(userKey: AuthenticationUtilities.sharedInstance.getId()! as NSString).findFirstGroup(whenFound: refreshGroup)
     }
     

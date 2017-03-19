@@ -61,10 +61,12 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         return 1
     }
     
+    // Num of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return db!.getListCount()
     }
     
+    // Cell creation
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
@@ -87,6 +89,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     func updateUserDetailsInCell(cell: GroceryRequestTableViewCell, userId: String) {
+        // Fetch the user and show his name
         UsersDB.sharedInstance.findUserByKey(key: userId, whenFinished: { (user) in
             if (user != nil) {
                 cell.nameLabel.text = "\(user!.name!)"
@@ -95,6 +98,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     func updateUserImageInCell(cell: GroceryRequestTableViewCell, userId: String) {
+        // Fetch the image and show it
         ImageDB.sharedInstance.downloadImage(userId: userId, whenFinished: { (image) in
             cell.imagez.image = image
             
@@ -110,6 +114,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         }
     }
 
+    // Crossed-out gray item name label
     private func updatePurchasedItemNameInCell(cell: GroceryRequestTableViewCell, name: NSString) {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: name as String)
         attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -119,6 +124,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
         cell.itemLabel.alpha = 0.2
     }
 
+    // Regular item name label
     private func updateRequestedItemNameInCell(cell: GroceryRequestTableViewCell, name: NSString) {
         cell.itemLabel.text = name as String?
         cell.itemLabel.textColor = UIColor.black
@@ -126,6 +132,7 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
     }
 
     // MARK: UITableViewDelegate Methods
+    // Row selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let request = db!.getGroceryRequest(row: indexPath.row) {
             db!.toggleRequestPurchased(request: request)
@@ -139,14 +146,15 @@ class GroceryRequestTableViewController : UIViewController, UITableViewDataSourc
             
             // Get the path in which the long press occured
             if let indexPath = table.indexPathForRow(at: touchPoint) {
-                // Get the referenced request
+                // Get the request
                 if let request = db!.getGroceryRequest(row: indexPath.row) {
-                    // Make sure the current user created the request
+                    // Owner check - Make sure the current user created the request
                     if (request.userId.isEqual(to: AuthenticationUtilities.sharedInstance.getId()!)) {
-                        // Table view cells are reused and should be dequeued using a cell identifier.
+                        // Get the cell and manage it again (Essentialy create it again)
                         let cell = table.dequeueReusableCell(withIdentifier: "GroceryRequestTableViewCell", for: indexPath) as! GroceryRequestTableViewCell
                         manageCell(cell: cell, row: indexPath.row)
                         
+                        // Start editing the cell
                         cell.startEditing(whenFinishedEditing: { (newItemName) in
                             request.itemName = newItemName as NSString
                             

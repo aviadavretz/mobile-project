@@ -62,11 +62,11 @@ class GroupMembersTableViewController : UIViewController, UITableViewDataSource,
         cell.showSpinner()
 
         // Fetches the appropriate item for the data source layout.
-        let user = db!.getMember(row: indexPath.row)!
-        
-        // Update the views
-        updateUserDetailsInCell(cell: cell, user: user)
-        updateUserImageInCell(cell: cell, userId: user.key as String)
+        if let user = db!.getMember(row: indexPath.row) {
+            // Update the views
+            updateUserDetailsInCell(cell: cell, user: user)
+            updateUserImageInCell(cell: cell, userId: user.key as String)
+        }
 
         return cell
     }
